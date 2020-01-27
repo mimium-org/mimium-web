@@ -1,0 +1,24 @@
+{
+  "name": "mimium-website",
+  "version": "0.0.0",
+  "description": "web site of mimium",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "postcss-cli": "^7.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tomoyanonymous/mimium-website.git"
+  },
+  "author": "Tomoya Matsuura",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/tomoyanonymous/mimium-website/issues"
+  },
+  "homepage": "https://github.com/tomoyanonymous/mimium-website#readme"
+}
