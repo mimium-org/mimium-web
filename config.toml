@@ -1,5 +1,5 @@
 baseURL = "/"
-title = "Goldydocs"
+title = "mimium"
 
 enableRobotsTXT = true
 
@@ -12,7 +12,7 @@ enableGitInfo = true
 # Language settings
 contentDir = "content/en"
 defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = false
+defaultContentLanguageInSubdir = true
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
 
@@ -54,13 +54,13 @@ id = "UA-00000000-0"
 [languages]
 [languages.en]
 title = "mimium"
-description = "A Docsy example site"
+description = "mimium(MInimal Musical medIUM) - a programming language as an infrastructure for sound and music."
 languageName ="English"
 # Weight used for sorting.
 weight = 1
 [languages.ja]
 title = "mimium"
-description = "Docsy er operativsystem for skyen"
+description = "mimium(MInimal Musical medIUM) - a programmingu language as an infrastructure for sound and music."
 languageName ="Japanese"
 contentDir = "content/ja"
 time_format_default = "02.01.2006"
