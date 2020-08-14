@@ -1,22 +1,50 @@
 +++
-title = "TechOS"
-linkTitle = "TechOS"
-
+title = "mimium"
+linkTitle = "mimium"
 +++
 
-{{< blocks/cover title="Dette er TechOS!" image_anchor="top" height="full" >}}
+{{< blocks/cover title="mimium(MInimal-Musical-medIUM): An Infrastructural Programming Language for Sound and Music" image_anchor="top" height="full" color="orange" >}}
 <div class="mx-auto">
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
-		Dokumentasjon <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+	<!-- <a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
+		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+	</a> -->
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/mimium-org/mimium">
+		Download <i class="fab fa-github ml-2 "></i>
 	</a>
-	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/bep">
-		Last ned <i class="fab fa-github ml-2 "></i>
-	</a>
-	<p class="lead mt-5">TechOS kan nå lastes ned i <a href="#">AppStore!</a></p>
-	<div class="mx-auto mt-5">
-		{{< blocks/link-down color="info" >}}
-	</div>
+	<!-- <p class="lead mt-5">lead text 2</p> -->
+	{{< blocks/link-down color="info" >}}
 </div>
 {{< /blocks/cover >}}
 
+
+{{% blocks/lead color="primary" %}}
+**mimium** (*MInimal-Musical-medIUM*) は音楽の記述/生成に特化したプログラミング言語です。
+
+mimiumは音楽プログラミング言語を音楽科やプログラマーのためのツールとしてだけではなく、ソースコードという形で音楽を配布するための基盤:インフラストラクチャーとなるべく設計され、開発されています。
+
+この言語では、低レベルの信号処理から作曲レベルの長い時間軸を扱う表現まで、サンプル単位での制御処理を含めてシンプルな文法で記述ができます。実行にはLLVMというコンパイラ基盤を採用する事でC++等の低レベル言語に匹敵する処理性能を発揮することが可能です。
+
+これらの仕様や文法はいくつかのモダンな音声処理/音楽向けプログラミング言語、例えば *[Faust](https://faust.grame.fr)* や *[Extempore](https://extemporelang.github.io/)* から影響を受けています。
+
+{{% /blocks/lead %}}
+
+{{< blocks/section color="dark" >}}
+{{% blocks/feature icon="fa-lightbulb" title="New chair metrics!" %}}
+The Goldydocs UI now shows chair size metrics by default.
+
+Please follow this space for updates!
+{{% /blocks/feature %}}
+
+
+{{% blocks/feature icon="fab fa-github" title="Contributions welcome!" url="https://github.com/mimium-org" %}}
+mimium is now at very ealy stage of the development. Contributions for development including bugfix, documentation and user feedback are always welcome! 
+{{% /blocks/feature %}}
+
+
+{{% blocks/feature icon="fab fa-twitter" title="Follow us on Twitter!" url="https://twitter.com/mimium-org" %}}
+For announcement of latest features etc.
+{{% /blocks/feature %}}
+
+
+{{< /blocks/section >}}
 

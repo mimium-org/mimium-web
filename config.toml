@@ -31,6 +31,11 @@ pygmentsStyle = "tango"
 [permalinks]
 blog = "/:section/:year/:month/:day/:slug/"
 
+
+[[menu.main]]
+	name= "Community"
+	weight = 40
+	url = "https://gitter.im/mimium-dev/community"
 ## Configuration for BlackFriday markdown parser: https://github.com/russross/blackfriday
 [blackfriday]
 plainIDAnchors = true
@@ -74,26 +79,26 @@ time_format_blog = "02.01.2006"
 # Everything below this are Site Params
 
 [params]
-copyright = "Tomoya Matsuura"
-privacy_policy = "https://policies.google.com/privacy"
+copyright = "mimium development community(Tomoya Matsuura)"
+# privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
-# images = ["images/project-illustration.png"]
+images = ["img/mimium-sc.png"]
 
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
 version_menu = "Releases"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/tomoyanonymous/mimium"
+github_repo = "https://github.com/mimium-org/mimium-web"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-# github_project_repo = "https://github.com/google/docsy"
+github_project_repo = "https://github.com/mimium-org/mimium"
 
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "017350624150512272940:qpmrumn4g0z"
+# gcs_engine_id = "017350624150512272940:qpmrumn4g0z"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
@@ -112,7 +117,7 @@ sidebar_search_disable = false
 #  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
 navbar_logo = true
 # Set to true to disable the About link in the site footer
-footer_about_disable = false
+footer_about_disable =true
 
 # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
 # This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
@@ -121,40 +126,40 @@ footer_about_disable = false
 [params.ui.feedback]
 enable = true
 # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-yes = 'Glad to hear it! Please <a href="https://github.com/tomoyanonymous/mimium-web/issues/new">tell us how we can improve</a>.'
-no = 'Sorry to hear that. Please <a href="https://github.com/tomoyanonymous/mimium-web/issues/new">tell us how we can improve</a>.'
+yes = 'Glad to hear it! Please <a href="https://github.com/mimium/mimium-web/issues/new">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://github.com/mimium/mimium-web/issues/new">tell us how we can improve</a>.'
 
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.
 [[params.links.user]]
-	name = "User mailing list"
-	url = "https://example.org/mail"
-	icon = "fa fa-envelope"
-        desc = "Discussion and help from your fellow users"
+	name = "Original Author Website"
+	url = "https://matsuuratomoya.com"
+	icon = "fa fa-user-circle"
+        desc = "Website of Tomoya Matsuura, who launched this project"
 [[params.links.user]]
 	name ="Twitter"
-	url = "https://example.org/twitter"
+	url = "https://twitter.com/mimium-org"
 	icon = "fab fa-twitter"
         desc = "Follow us on Twitter to get the latest news!"
 [[params.links.user]]
-	name = "Stack Overflow"
-	url = "https://example.org/stack"
-	icon = "fab fa-stack-overflow"
-        desc = "Practical questions and curated answers"
+	name = "Gitter(Users)"
+	url = "https://gitter.im/mimium-dev/Users"
+	icon = "fab fa-gitter"
+        desc = "gitter room for users"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
-	name = "GitHub"
-	url = "https://github.com/google/docsy"
+	name = "GitHub Repository"
+	url = "https://github.com/mimium-org/mimium"
 	icon = "fab fa-github"
-        desc = "Development takes place here!"
+        desc = "Main development repository"
 [[params.links.developer]]
-	name = "Slack"
-	url = "https://example.org/slack"
-	icon = "fab fa-slack"
-        desc = "Chat with other project developers"
-[[params.links.developer]]
-	name = "Developer mailing list"
-	url = "https://example.org/mail"
-	icon = "fa fa-envelope"
-        desc = "Discuss development issues around the project"
+	name = "Gitter(Development)"
+	url = "https://gitter.im/mimium-dev/Development"
+	icon = "fab fa-gitter"
+        desc = "Gitter room for developers"
+# [[params.links.developer]]
+# 	name = "Developer mailing list"
+# 	url = "https://example.org/mail"
+# 	icon = "fa fa-envelope"
+#         desc = "Discuss development issues around the project"
 

@@ -6,19 +6,39 @@ weight: 20
 menu:
   main:
     weight: 20
+<!-- draft: true -->
 ---
 
 {{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
+Documentation is under preparation! Seeking for people who support documentations and translations.
 {{% /pageinfo %}}
 
 
-This section is where the user documentation for your project lives - all the information your users need to understand and successfully use your project. 
+mimium(*MInimal-Musical-medIUM*) is a domain specific programming language for describing/generating sound and music.
 
-For large documentation sets we recommend adding content under the headings in this section, though if some or all of them don’t apply to your project feel free to remove them or add your own. You can see an example of a smaller Docsy documentation site in the [Docsy User Guide](https://docsy.dev/docs/), which lives in the [Docsy theme repo](https://github.com/google/docsy/tree/master/userguide) if you'd like to copy its docs section. 
+With this language, you can write a low-level audio processing with an easy expression and high-performance powered by LLVM.
 
-Other content such as marketing material, case studies, and community updates should live in the [About](/about/) and [Community](/community/) pages.
+```rust
+fn lpf(input:float,fb:float){    
+    return (1-fb)*input + fb*self
+}
+```
 
-Find out how to use the Docsy theme in the [Docsy User Guide](https://docsy.dev/docs/). You can learn more about how to organize your documentation (and how we organized this site) in [Organizing Your Content](https://docsy.dev/docs/best-practices/organizing-content/).
+A special keyword `self` can be used in function, which is a last return value of the function.
+This enables an easy and clean expression of feedback connection of signal chain, inspired by [Faust](https://faust.grame.fr).
+
+you can also write a note-level processing by using a temporal recursion, inspired by [Extempore](https://extemporelang.github.io/).
+
+```rust
+
+fn noteloop()->void{
+    freq =  (freq+1200)%4000
+    noteloop()@(now + 48000)
+}
+
+```
+
+Calling function with `@` specifies the time when the function will be executed.
+An event scheduling for this mechanism is driven by a clock from an audio driver thus have a sample-accuracy.
 
 
