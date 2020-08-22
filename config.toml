@@ -79,7 +79,7 @@ time_format_blog = "02.01.2006"
 # Everything below this are Site Params
 
 [params]
-copyright = "mimium development community(Tomoya Matsuura)"
+copyright = "mimium development community. "
 # privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
@@ -117,7 +117,7 @@ sidebar_search_disable = false
 #  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
 navbar_logo = true
 # Set to true to disable the About link in the site footer
-footer_about_disable =true
+# footer_about_disable =true
 
 # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
 # This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
