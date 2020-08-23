@@ -19,7 +19,7 @@ macOSとLinux向けのパッケージマネージャツール、[Homebrew](https
 `brew`コマンドが使えるようになったら、以下のコマンドをコピー&ペースト、実行するとインストールされます。
 
 ```bash
-brew tap mimiu-org/mimium && brew install mimium
+brew tap mimium-org/mimium && brew install mimium
 ```
 
 以下のコマンドを打ってバージョンが表示されたらインストール完了です！

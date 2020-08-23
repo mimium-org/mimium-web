@@ -24,7 +24,7 @@ If you have not installed homebrew, open terminal app and copy & paste next line
 If you got homebrew, you can install mimium by typing 
 
 ```bash
-brew tap mimiu-org/mimium && brew install mimium
+brew tap mimium-org/mimium && brew install mimium
 ```
 
 That's it! You can check if you have successfully installed or not by
