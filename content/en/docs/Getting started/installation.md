@@ -39,7 +39,7 @@ You can download built binary from [GitHub Release Page](https://github.com/mimi
 
 *mimium-vx.x.x-Darwin.zip* is for macOS, and *mimium-vx.x.x-Linux.zip* is for Linux.
 
-After finished downloading and extracting zip files, copy `mimium` inside `bin` folder into `/usr/local/bin`, all files inside `lib` into `/usr/local/lib`.
+After finished downloading and extracting zip files, copy `mimium` inside `bin` folder into `/usr/local/bin`, all files inside `lib` into `/usr/local/lib`. Note that the directory `/usr/local/lib` is not in library path by default, so don't forget to add this directory to `/etc/ld.so.conf.d/` and run `ldconfig` as root.
 
 ## Build from source manually
 
