@@ -34,7 +34,7 @@ mimiumのビルド済みバイナリを[Github Release Page](https://github.com/
 
 *mimium-vx.x.x-Darwin.zip* がmacOS用、 *mimium-vx.x.x-Linux.zip* がLinux用です。
 
-ダウンロードとzip展開が終わったら、`bin`フォルダの中にある`mimium`プログラムを`/usr/local/mimium`に、`lib`フォルダにあるファイルすべてを`/usr/local/lib`にコピー/移動/シンボリックリンクを貼るのいずれかを行ってください。GNU/Linuxにおいてはその後、`/usr/local/lib`を`/etc/ld.so.conf.d/`配下のファイルに追記し、`ldconfig`をroot権限で実行してください。
+ダウンロードとzip展開が終わったら、`bin`フォルダの中にある`mimium`プログラムを`/usr/local/mimium`に、`lib`フォルダにあるファイルすべてを`/usr/local/lib`にコピー/移動/シンボリックリンクを貼るのいずれかを行ってください。GNU/Linuxにおいては`/usr/local/lib`はデフォルトで動的リンクのライブラリパスに入っていないので、`/usr/local/lib`を`/etc/ld.so.conf.d/`配下のファイルに追記し、`ldconfig`をroot権限で実行してください。
 
 ## ソースからビルドする
 
