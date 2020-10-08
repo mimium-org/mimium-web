@@ -1,0 +1,79 @@
+backend:
+  name: github
+  repo: mimium-org/mimium-web
+  open_authoring: true
+
+publish_mode: editorial_workflow
+display_url: https://mimium.org
+
+
+media_folder: static/img
+public_folder: /img
+i18n:
+  # Required and can be one of multiple_folders, multiple_files or single_file
+  # multiple_folders - persists files in `<folder>/<locale>/<slug>.<extension>`
+  # multiple_files - persists files in `<folder>/<slug>.<locale>.<extension>`
+  # single_file - persists a single file in `<folder>/<slug>.<extension>`
+  structure: multiple_files
+  # Required - a list of locales to show in the editor UI
+  locales: [en, ja]
+
+
+collections:
+  - name: 'docs'
+    label: 'Documentation'
+    folder: 'content/en/docs'
+    slug: '{{slug}}'
+    i18n: true
+    create: false
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'concepts'
+    label: 'Concepts'
+    folder: 'content/en/docs/Concepts'
+    i18n: true
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'Blog-news'
+    label: 'Blog-News'
+    folder: 'content/en/blog/news'
+    i18n: true
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'Blog-Tips'
+    label: 'Blog-Tips'
+    folder: 'content/en/blog/tips'
+    i18n: true
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }

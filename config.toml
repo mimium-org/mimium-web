@@ -67,7 +67,6 @@ weight = 1
 title = "mimium"
 description = "mimium(MInimal Musical medIUM) - a programmingu language as an infrastructure for sound and music."
 languageName ="Japanese"
-contentDir = "content/ja"
 time_format_default = "02.01.2006"
 time_format_blog = "02.01.2006"
 
