@@ -3,7 +3,7 @@ title: "Coding Style"
 date: 2020-08-16
 weight: 2
 description: >
-  C++のコーディング規約、方針について
+  Coding styles used in a development of mimium
 ---
 
 ## 基本的方針

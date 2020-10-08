@@ -1,9 +1,9 @@
 ---
-title: "Coding Style"
+title: "コーディング規約、方針test"
 date: 2020-08-16
-weight: 1
+weight: 2
 description: >
-  C++のコーディング規約、方針など
+  C++のコーディング規約、方針について
 ---
 
 ## 基本的方針
