@@ -35,9 +35,65 @@ collections:
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'Overview'
+    label: 'Overview'
+    folder: 'content/en/docs/Overview'
+    i18n: true
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'Getting Started'
+    label: 'Getting Started'
+    folder: 'content/en/docs/Getting Started'
+    i18n: true
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'concepts'
     label: 'Concepts'
     folder: 'content/en/docs/Concepts'
+    i18n: true
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'Development'
+    label: 'Development'
+    folder: 'content/en/docs/Development'
+    i18n: true
+    create: true
+    editor:
+      preview: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'Contribution guidelines'
+    label: 'Contribution guidelines'
+    folder: 'content/en/docs/Contribution guidelines'
     i18n: true
     create: true
     editor:
