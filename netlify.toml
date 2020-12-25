@@ -38,14 +38,14 @@
 
 # Specific branch context: all deploys from this specific branch will inherit
 # these settings.
-[context.staging] # “staging” is a branch name
-#   command = "echo 'staging'"
+# [context.staging] # “staging” is a branch name
+  # command = "cd themes/docsy && git submodule update -f --init && cd ../.. &&HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo"
 #   base = "staging"
 
 # For contexts of branches with special characters, enclose the branch name
 # with quotes.
-[context."feat/branch"]
-#   command = "echo 'special branch'"
+# [context."feat/branch"]
+  # command = "cd themes/docsy && git submodule update -f --init && cd ../.. &&HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo"
 #   base = "branch"
 
 # Redirects and headers are GLOBAL for all builds – they do not get scoped to
@@ -55,7 +55,7 @@
 
 
 # A redirect rule with many of the supported properties
-[[redirects]]
+# [[redirects]]
 #   from = "/old-path"
 #   to = "/new-path"
 
