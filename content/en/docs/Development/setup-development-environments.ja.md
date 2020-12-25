@@ -12,7 +12,7 @@ draft: true
 * cmake
 * bison
 * flex
-* llvm
+* llvm 9~10
 * libsndfile
 * rtaudio(cmakeが自動でインストールします)
 
