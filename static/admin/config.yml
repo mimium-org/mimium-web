@@ -5,6 +5,7 @@ backend:
 
 publish_mode: editorial_workflow
 site_url: https://mimium.org
+logo_url: https://raw.githubusercontent.com/mimium-org/mimium/132b8f7037b61a3836a8b9ecc486415994911c22/mimium_logo_slant.svg
 
 
 media_folder: static/img
