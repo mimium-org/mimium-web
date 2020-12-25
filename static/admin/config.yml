@@ -85,11 +85,11 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Title', name: 'title', widget: 'string', i18n: true }
+      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',i18n: true }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime',i18n: "duplicate" }
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', min: 1,default: 1 }
-      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'Contribution guidelines'
     label: 'Contribution guidelines'
