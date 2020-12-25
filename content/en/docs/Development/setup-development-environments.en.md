@@ -3,7 +3,7 @@ title: Setup development environments
 date: 2020-12-25T09:01:01.910Z
 weight: 1
 description: Setup development environments
-draft: true
+draft: false
 ---
 # Setup Development Environment
 
