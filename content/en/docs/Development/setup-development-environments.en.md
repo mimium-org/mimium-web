@@ -2,11 +2,9 @@
 title: Setup development environments
 date: 2020-12-25T09:01:01.910Z
 weight: 1
-description: Setup development environments
+description: How to install dependency libraries, build source codes, debug and test.
 draft: false
 ---
-# Setup Development Environment
-
 ## Dependencies
 
 * cmake

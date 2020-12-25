@@ -2,11 +2,9 @@
 title: 環境構築
 date: 2020-12-25T09:01:01.923Z
 weight: 1
-description: 環境構築
+description: 依存ライブラリのインストール、IDEの設定、ビルド、デバッグ、テストの解説
 draft: false
 ---
-# 環境構築
-
 ## 依存ライブラリ、ツール
 
 * cmake
