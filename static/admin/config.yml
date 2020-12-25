@@ -26,6 +26,7 @@ collections:
     label: 'Documentation'
     folder: 'content/en/docs'
     create: true
+    i18n: true
     slug: '{{slug}}'
     editor:
       preview: true
@@ -41,6 +42,7 @@ collections:
     label: 'Overview'
     folder: 'content/en/docs/Overview'
     create: true
+    i18n: true
     slug: '{{slug}}'
     editor:
       preview: true
@@ -56,6 +58,7 @@ collections:
     label: 'Getting Started'
     folder: 'content/en/docs/Getting Started'
     create: true
+    i18n: true
     slug: '{{slug}}'
     editor:
       preview: true
@@ -71,6 +74,7 @@ collections:
     label: 'Concepts'
     folder: 'content/en/docs/Concepts'
     create: true
+    i18n: true
     slug: '{{slug}}'
     editor:
       preview: true
@@ -86,6 +90,7 @@ collections:
     label: 'Development'
     folder: 'content/en/docs/Development'
     create: true
+    i18n: true
     slug: '{{slug}}'
     editor:
       preview: true
@@ -101,6 +106,7 @@ collections:
     label: 'Contribution guidelines'
     folder: 'content/en/docs/Contribution guidelines'
     create: true
+    i18n: true
     slug: '{{slug}}'
     editor:
       preview: true
@@ -116,6 +122,7 @@ collections:
     label: 'Blog-News'
     folder: 'content/en/blog/news'
     create: true
+    i18n: true
     slug: '{{slug}}'
     editor:
       preview: true
@@ -131,6 +138,7 @@ collections:
     label: 'Blog-Tips'
     folder: 'content/en/blog/tips'
     create: true
+    i18n: true
     editor:
       preview: true
     fields:
