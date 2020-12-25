@@ -54,9 +54,9 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Getting Started'
-    label: 'Getting Started'
-    folder: 'content/en/docs/Getting Started'
+  - name: 'Getting started'
+    label: 'Getting started'
+    folder: 'content/en/docs/Getting started'
     create: true
     i18n: true
     slug: '{{slug}}'
