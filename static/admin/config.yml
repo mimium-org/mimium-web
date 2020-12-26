@@ -54,8 +54,8 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Getting started'
-    label: 'Getting started'
+  - name: 'Getting-started'
+    label: 'Getting-started'
     folder: 'content/en/docs/Getting started'
     create: true
     i18n: true
@@ -102,8 +102,8 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Contribution guidelines'
-    label: 'Contribution guidelines'
+  - name: 'Contribution-guidelines'
+    label: 'Contribution-guidelines'
     folder: 'content/en/docs/Contribution guidelines'
     create: true
     i18n: true
