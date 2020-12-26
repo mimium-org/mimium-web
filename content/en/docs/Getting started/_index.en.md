@@ -1,10 +1,11 @@
 ---
-title: "Getting Started"
-linkTitle: "Getting Started"
+title: Getting Started
+linkTitle: Getting Started
+date: 2020-12-26T13:45:50.069Z
 weight: 1
-description: >
+description: |
   Let's start your mimium experiences
-
+draft: false
 ---
 
 {{% pageinfo %}}
@@ -26,3 +27,4 @@ brew install mimium
 
 for more detailed installation steps, please see [Installation](./installation) page.
 
+test
