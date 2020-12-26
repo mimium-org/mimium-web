@@ -27,7 +27,8 @@
 # inherit these settings.
 [context.deploy-preview]
 # OVERWRITE BASEURL to prevent from redirect
-  command = "cd themes/docsy && git submodule update -f --init && cd ../.. &&HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo"
+# draft and future articles are shown in deploy preview
+  command = "cd themes/docsy && git submodule update -f --init && cd ../.. &&HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo -D -F"
 
 # Branch Deploy context: all deploys that are not from a pull/merge request or
 # from the Production branch will inherit these settings.
