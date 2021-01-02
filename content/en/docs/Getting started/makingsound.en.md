@@ -7,7 +7,7 @@ draft: true
 ---
 # Making Sound
 Write the following code and using your command line tool, run this code.
-'''
+'''rust
 fn dsp(time){
     return sin(now*440*3.14*2/48000)
 }
