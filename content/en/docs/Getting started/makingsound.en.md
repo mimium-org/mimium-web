@@ -10,7 +10,7 @@ Documentation is under preparation! We are seeking for people who support docume
 {{% /pageinfo %}}
 
 ## Making 440Hz Sine wave sound
-1. Prepare a MMM file. (e.g. sin.mmm)
+1. Prepare a MMM file(e.g. sin.mmm). If you haven't installed *mimium* at this point, see Install.
 
 1. Write the following code and saving the file.
 ```rust
