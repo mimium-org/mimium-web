@@ -19,7 +19,8 @@ draft: true
 
 ## Dynamic Polymorphism
 
-There are two types of **polymorphism** that switches indivisual processing for each type in C++:Static Polymorphism, which determines the type at compile time, and Dynamic Polymorphism, which determines the operation at runtime.Static Polymorphism is mainly implemented by templates, and Dynamic Polymorphism is mainly implemented by inheritance and virtual function.
+There are two types of **polymorphism** that switches indivisual processing for each *type* in C++: *Static Polymorphism*, which determines the type at compile time, and *Dynamic Polymorphism*, which determines the operation at runtime.
+*Static Polymorphism* is mainly implemented by templates, and *Dynamic Polymorphism* is mainly implemented by inheritance and virtual function.
 
 しかしmimiumの開発では動的多相に仮想関数を基本的に使用しません。代わりにC++17よりSTLに導入された`std::variant`を用います。`std::variant<T1,T2,T3...>`はT1~Tnの複数種類のどれかの型を持つ変数を代入できる型であり、`std::get<T>`や`std::visit()`を用いることで動的に型に応じての処理を分けることが可能になります。これは関数型などでよく見られる **直和型** と呼ばれる型の代わりでもあり、`std::visit`はテンプレートやconstexprを用いた処理分けと組み合わせるといわゆるパターンマッチングに近い処理を可能にします。内部実装的には取りうる型の最大値のメモリ分+現在どの型を保持しているのかのタグ（整数）を確保する形になっているので **Tagged Union**とも呼ばれます。
 
