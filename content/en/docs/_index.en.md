@@ -1,10 +1,12 @@
 ---
-title: "Documentation"
-linkTitle: "Documentation"
+title: Documentation
+linkTitle: Documentation
+date: 2021-01-03T05:09:54.508Z
 weight: 20
 menu:
   main:
     weight: 20
+description: Overview for mimium
 draft: false
 ---
 
