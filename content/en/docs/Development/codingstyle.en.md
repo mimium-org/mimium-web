@@ -22,7 +22,7 @@ draft: true
 There are two types of **polymorphism** that switches indivisual processing for each *type* in C++: *Static Polymorphism*, which determines the type at compile time, and *Dynamic Polymorphism*, which determines the operation at runtime.
 *Static Polymorphism* is mainly implemented by templates, and *Dynamic Polymorphism* is mainly implemented by inheritance and virtual function.
 
-しかしmimiumの開発では動的多相に仮想関数を基本的に使用しません。代わりにC++17よりSTLに導入された`std::variant`を用います。`std::variant<T1,T2,T3...>`はT1~Tnの複数種類のどれかの型を持つ変数を代入できる型であり、`std::get<T>`や`std::visit()`を用いることで動的に型に応じての処理を分けることが可能になります。これは関数型などでよく見られる **直和型** と呼ばれる型の代わりでもあり、`std::visit`はテンプレートやconstexprを用いた処理分けと組み合わせるといわゆるパターンマッチングに近い処理を可能にします。内部実装的には取りうる型の最大値のメモリ分+現在どの型を保持しているのかのタグ（整数）を確保する形になっているので **Tagged Union**とも呼ばれます。
+However, the mimium development basically does not use virtual function for *Dynamic Polymorphism*.Instead, use `std::variant` introduced in STL since C++17.`std::variant<T1,T2,T3...>` is a *type* to which a variable having any of multiple types T1 to Tn can be substituted, and by using `std::get<T>` and `std::visit()`, it is possible to dynamically divide the processing according to the type.This is a substitute for the type called **sum type** that is often seen in functional types, and `std::visit` enables processing close to so-called pattern matching when combined processing division using templates and constexpr.In internal implementation, it is maximum memory of the type that can be taken and securing a tag (integer) of which type is currently held, so it is also called **Tagged Union**.
 
 mimiumにおける具体的な型でいうと抽象構文木である`mimium::ast::Expr`や`mimium::ast::Statement`、中間表現である`mimium::mir::Instruction`、（mimium言語における）型を表す`mimium::types::Value`などが`std::variant`へのエイリアスです。
 
