@@ -1,28 +1,28 @@
 ---
-title: コーディング規約、方針test
+title: Coding Style
 date: 2020-08-16
 weight: 2
 description: |
-  C++のコーディング規約、方針について
-draft: true
+  Coding styles used in a development of mimium
+draft: false
 ---
 
-## 基本的方針
+## Basic Policy
 
-- 言語仕様はC++17に準拠する。主な理由は`std::variant`や`std::optional`を積極的に利用するため、テンプレートの推論が`if constexpr`などで可読性が向上するため。
-- **可読性かわずかな実行速度の向上で迷ったら可読性を取る。** そもそもC++の時点である程度速いことが保証されているので多少は富豪的処理でも構わないし、その程度の迷いは大体最適化されるとほぼ同じになる。
-- できるだけ外部ライブラリを用いない（とくにboostなど汎用的なものについては）。STLはなるべく積極的に活用する。
-    - コンパイラにはパーサーでbison(yacc)とflex(lex)に依存している。これはとくにbisonのソースのドキュメントとしての価値があるため今後も利用していくつもりだが、flexに関してはUnicodeが読み込めないなどの問題があるためREflexなどに移行するか手動実装に切り替えるかもしれない。要検討。
-    - ランタイムには現在オーディオファイル読み込みでlibsndfileなどに依存しているがこれは実行時にしか必要ないので後々プロジェクト構造として分離していきたい。
-- 生ポインタは使わない。基本的に`std::shared_ptr<T>`を使用する。LLVMライブラリにおける`llvm::Type*`や`llvm::Value*`は独自に参照カウントが実装されているためこの限りではない。
-- ポインタ変数が空であることを`nullptr`を用いてifの条件式などで使用しない。多少手間がかかっても`std::optional<std::shared_ptr<T>>`の形をなるべく使うことでソースコードそのもののドキュメント的価値を向上させる。
+- language specification (LS) conforms to C++17.The main reason is why Code Template Inference improve readability such as `if constexpr` beacuse mimium use actively `std::variant` or `std::optional`. 
+- **If you are uncertain about readability or a slight improvement in execution speed, take readability.**In the first place C++ is guranteerd to be reasonably fast, so it doesn't matter if it can be a little rich processing, that degree of hesitation is about same when optimized. 
+- Avoid using external libraries as much as possible(especialy for general purpose such as boost).And STL is actively used.
+    - The compiler depends on bison(yacc) and flex(lex) as parser.This is especially valuable as bison source document,so we plan to continue using in the future, but there are problems Unicode not being able to be loaded for flex, I may move to REflex etc. or switch to manual implementation.Under consideration.
+    - The runtime currently depends on libsndfile etc. for reading audio file, but we would like to separate it as a project structure later because it is only needed at runtime.
+- Mimium does not use raw pointers.Basically mimium uses `std::shared_ptr<T>`.But `llvm::Type*` in the LLVM library and `llvm::Value*` are not limited to this because they implement their own reference counting.
+- In the conditional expression(e.g.*if block*),mimium does not use the fact the pointer variable is empty with `nullptr`.Even if it takes some effort,the document value of the source code itself is improved by using `std::optional<std::shared_ptr<T>>`.
 
+## Dynamic Polymorphism
 
-## 動的多相 (Dynamic Polymorphism)
+There are two types of **polymorphism** that switches indivisual processing for each *type* in C++: *Static Polymorphism*, which determines the type at compile time, and *Dynamic Polymorphism*, which determines the operation at runtime.
+*Static Polymorphism* is mainly implemented by templates, and *Dynamic Polymorphism* is mainly implemented by inheritance and virtual function.
 
-C++に置いて型ごとに個別の処理内容を分ける **多相（ポリモーフィズム）** にはコンパイル時に型を確定させる静的多相と実行時に動作を確定する動的多相の2種類が存在します。静的多相は主にテンプレートによって実現され、動的多相は主に継承と仮想関数を用いて実現されます。
-
-しかしmimiumの開発では動的多相に仮想関数を基本的に使用しません。代わりにC++17よりSTLに導入された`std::variant`を用います。`std::variant<T1,T2,T3...>`はT1~Tnの複数種類のどれかの型を持つ変数を代入できる型であり、`std::get<T>`や`std::visit()`を用いることで動的に型に応じての処理を分けることが可能になります。これは関数型などでよく見られる **直和型** と呼ばれる型の代わりでもあり、`std::visit`はテンプレートやconstexprを用いた処理分けと組み合わせるといわゆるパターンマッチングに近い処理を可能にします。内部実装的には取りうる型の最大値のメモリ分+現在どの型を保持しているのかのタグ（整数）を確保する形になっているので **Tagged Union**とも呼ばれます。
+However, the mimium development basically does not use virtual function for *Dynamic Polymorphism*.Instead, use `std::variant` introduced in STL since C++17.`std::variant<T1,T2,T3...>` is a *type* to which a variable having any of multiple types T1 to Tn can be substituted, and by using `std::get<T>` and `std::visit()`, it is possible to dynamically divide the processing according to the type.This is a substitute for the type called **sum type** that is often seen in functional types, and `std::visit` enables processing close to so-called pattern matching when combined processing division using templates and constexpr.In internal implementation, it is maximum memory of the type that can be taken and securing a tag (integer) of which type is currently held, so it is also called **Tagged Union**.
 
 mimiumにおける具体的な型でいうと抽象構文木である`mimium::ast::Expr`や`mimium::ast::Statement`、中間表現である`mimium::mir::Instruction`、（mimium言語における）型を表す`mimium::types::Value`などが`std::variant`へのエイリアスです。
 

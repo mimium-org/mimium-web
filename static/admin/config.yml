@@ -37,10 +37,11 @@ collections:
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
+      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Overview'
-    label: 'Overview'
-    folder: 'content/en/docs/Overview'
+  - name: 'Users-Guide'
+    label: 'Users-Guide'
+    folder: 'content/en/docs/Users Guide'
     create: true
     i18n: true
     slug: '{{slug}}'
@@ -53,10 +54,11 @@ collections:
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
+      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
   - name: 'Getting-started'
     label: 'Getting-started'
-    folder: 'content/en/docs/Getting started'
+    folder: 'content/en/docs/Users Guide/Getting started'
     create: true
     i18n: true
     slug: '{{slug}}'
@@ -69,10 +71,11 @@ collections:
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
+      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'concepts'
-    label: 'Concepts'
-    folder: 'content/en/docs/Concepts'
+  - name: 'Language-Specification'
+    label: 'Language-Specification'
+    folder: 'content/en/docs/Users Guide/Language Specification'
     create: true
     i18n: true
     slug: '{{slug}}'
@@ -85,10 +88,12 @@ collections:
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
+      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Development'
-    label: 'Development'
-    folder: 'content/en/docs/Development'
+
+  - name: 'Developers-Guide'
+    label: 'Developers-Guide'
+    folder: 'content/en/docs/Developers Guide'
     create: true
     i18n: true
     slug: '{{slug}}'
@@ -101,10 +106,11 @@ collections:
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
+      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Contribution-guidelines'
-    label: 'Contribution-guidelines'
-    folder: 'content/en/docs/Contribution guidelines'
+  - name: 'Contributing'
+    label: 'Contributing'
+    folder: 'content/en/docs/Contributing'
     create: true
     i18n: true
     slug: '{{slug}}'
@@ -117,6 +123,7 @@ collections:
       - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
       - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
       - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
+      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
       - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
   - name: 'Blog-news'
     label: 'Blog-News'
