@@ -1,10 +1,12 @@
 ---
-title: "Documentation"
-linkTitle: "Documentation"
+title: ドキュメント
+linkTitle: Documentation
+date: 2021-01-03T05:09:54.533Z
 weight: 20
 menu:
   main:
     weight: 20
+description: mimiumに関する概要
 draft: false
 ---
 
@@ -13,21 +15,22 @@ draft: false
 {{% /pageinfo %}}
 
 
-mimium(*MInimal-Musical-medIUM*) is a domain specific programming language for describing/generating sound and music.
+mimium（*MInimal-Musical-medIUM*）は、音楽やサウンドを表現／生成するための領域特殊性プログラミング言語です。
 
-With this language, you can write a low-level audio processing with an easy expression and high-performance powered by LLVM.
+この言語を使うと、あなたは簡単な記述やLLVMによるハイパフォーマンス力で低レベルオーディオ処理を書くことができます。
 
+（例１）
 ```rust
 fn lpf(input:float,fb:float){    
     return (1-fb)*input + fb*self
 }
 ```
 
-A special keyword `self` can be used in function, which is a last return value of the function.
-This enables an easy and clean expression of feedback connection of signal chain, inspired by [Faust](https://faust.grame.fr).
+特徴的なキーワード `self` は関数内で使うことができ、関数内の最後の返り値を表します。
+この使い方は、[Faust](https://faust.grame.fr)に影響を受けており、シグナルチェーンのフィードバック接続を簡単かつ簡潔に表現できます。
 
-you can also write a note-level processing by using a temporal recursion, inspired by [Extempore](https://extemporelang.github.io/).
-
+また、一時的な再帰処理を使ってノートレベル処理を書くことができます。これは、[Extempore](https://extemporelang.github.io/)から影響を受けました。
+（例２）
 ```rust
 
 fn noteloop()->void{
@@ -37,7 +40,6 @@ fn noteloop()->void{
 
 ```
 
-Calling function with `@` specifies the time when the function will be executed.
-An event scheduling for this mechanism is driven by a clock from an audio driver thus have a sample-accuracy.
+例２のように`@` を使うと、関数が実行される時間を指定して関数を呼び出すことができます。このメカニズムのためのイベントスケジューリングは、オーディオドライバーからのクロックによって駆動されるため、サンプル精度があります。
 
 
