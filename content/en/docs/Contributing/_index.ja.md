@@ -1,8 +1,8 @@
 ---
 title: Contributing
 date: 2021-01-09T15:05:54.990Z
-weight: 1
-draft: true
+weight: 30
+draft: false
 ---
 Code of Conduct
 Contribution guide

@@ -2,7 +2,6 @@
 title: ドキュメント
 linkTitle: Documentation
 date: 2021-01-03T05:09:54.533Z
-weight: 20
 menu:
   main:
     weight: 20

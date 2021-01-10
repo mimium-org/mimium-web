@@ -1,10 +1,10 @@
 ---
-title: コーディング規約、方針test
+title: コーディング方針
 date: 2020-08-16
 weight: 2
 description: |
   C++のコーディング規約、方針について
-draft: true
+draft: false
 ---
 
 ## 基本的方針

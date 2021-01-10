@@ -1,11 +1,9 @@
 ---
-title: Release Notes
-linkTitle: Release Notes
-date: 2021-01-03T05:09:54.533Z
-weight: 50
-menu:
-  main:
-    weight: 50
-description: Update/Deprecate infos on each update.
+title: "Release Notes"
+linkTitle: "Release Notes"
+date: 2021-01-10
 draft: false
+description: >
+ Update/Deprecation infos on each update
+weight: 50
 ---

@@ -4,7 +4,7 @@ date: 2020-08-16
 weight: 2
 description: |
   Coding styles used in a development of mimium
-draft: true
+draft: false
 ---
 
 ## Basic Policy
