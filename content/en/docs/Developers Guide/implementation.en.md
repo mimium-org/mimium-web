@@ -6,4 +6,16 @@ description: This page is about the implementation style of mimium.
 draft: true
 toc_hide: false
 ---
-This page is about the implementation style of mimium.
+Here is about the implementation style of mimium.
+
+1. Compiler
+
+   1. Data type
+   2. Processing machine
+
+1. Runtime
+
+   1. LLVM JIT compiler
+   2. RtAudio backend
+
+1. Others
