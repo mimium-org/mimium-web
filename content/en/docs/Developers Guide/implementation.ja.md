@@ -6,4 +6,14 @@ description: このページはmimium言語における実装様式について�
 draft: true
 toc_hide: false
 ---
-このページはmimium言語における実装様式についての項目です。
+1. コンパイラ
+
+   1. データ型
+   2. 処理機
+
+1. ランタイム
+
+   1. LLVM JITコンパイラ
+   2. RtAudioバックエンド
+
+1. その他
