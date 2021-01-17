@@ -7,3 +7,14 @@ draft: true
 toc_hide: false
 ---
 This page is about the rule of mimium grammer
+
+1. Comment out
+1. Type
+  1. Type inference
+1. Function definition
+1. function call / Pipe operator
+1. Condition "if"
+1. Loop(recursive function)
+1. "self" (mimium original)
+1. "@" operator(mimium original)
+1. include
