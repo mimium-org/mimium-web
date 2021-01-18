@@ -59,7 +59,7 @@ If you are subject to or witness unacceptable behavior, or have any other concer
 
 ## Addressing Grievances
 
-If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should notify one of the event organizers with a concise description of your grievance. Your grievance will be handled in accordance with our existing governing policies.
+If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should notify one of the community organizers with a concise description of your grievance. Your grievance will be handled in accordance with our existing governing policies.
 
 ## Scope
 
