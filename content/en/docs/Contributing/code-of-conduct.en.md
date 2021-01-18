@@ -20,7 +20,7 @@ As such, we are committed to providing a friendly, safe and welcoming environmen
 
 ## Expected Behavior as a member of the community
 
-- Participate in an authentic and active way. In doing so, you contribute to the - health and longevity of this community.
+- Participate in an authentic and active way. In doing so, you contribute to the health and longevity of this community.
 - Exercise consideration and respect in your speech and actions.
 - Attempt collaboration before conflict.
 - Be mindful of your surroundings and of your fellow participants. Alert community leaders if you notice a dangerous situation, someone in distress, or violations of this Code of Conduct, even if they seem inconsequential.
