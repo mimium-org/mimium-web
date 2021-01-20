@@ -3,7 +3,7 @@ title: 行動規範(CoC)
 date: 2021-01-14T20:52:20.219Z
 weight: 1
 description: コミュニティの目的と参加者としての期待される行動
-draft: true
+draft: false
 toc_hide: false
 ---
 ## 目標
