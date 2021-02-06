@@ -3,7 +3,8 @@ title: Making Sound
 date: 2021-01-02T18:42:37.550Z
 weight: 1
 description: Here you will learn how to make the basic sound using the mimium.
-draft: true
+draft: false
+toc_hide: true
 ---
 {{% pageinfo %}}
 Documentation is under preparation! We are seeking for people who support documentations and translations.
