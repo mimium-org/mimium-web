@@ -1,9 +1,9 @@
 ---
 title: サンプル
 date: 2021-01-17T03:13:24.840Z
-weight: 1
+weight: 3
 description: このセクションには、mimium言語を使った多くのシンプルな使用例があります。
-draft: true
+draft: false
 toc_hide: false
 ---
 1. dsp系
