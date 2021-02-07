@@ -1,7 +1,7 @@
 ---
 title: 組み込み関数
 date: 2021-01-17T03:22:59.561Z
-weight: 1
+weight: 2
 description: mimiumでライブラリなしで利用できるプリミティブな関数
 draft: false
 toc_hide: false
