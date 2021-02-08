@@ -24,7 +24,6 @@ xcode-select --install
 [Homebrew]をインストールし、以下のコマンドで依存パッケージをインストールします。
 
 ```sh
-brew install 
 brew tap mimium-org/mimium
 brew install mimium -s --only-dependencies
 ```
@@ -43,7 +42,7 @@ LinuxBrewを利用している場合はmacOSを同様のコマンドでも依存
 MSYS2(https://www.msys2.org/)のインストールを公式サイトの要領にしたがって行ってください。
 スタートメニューからMinGW64コマンドプロンプトを開いてください。
 
-以下のコマンドで依存パッケージをインストールします。
+MinGW64 Command Line Promptを開き、以下のコマンドで依存パッケージをインストールします。
 
 ```sh
 pacman -Syu --noconfirm git flex bison mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-libsndfile mingw64/mingw-w64-x86_64-opus mingw-w64-x86_64-ninja mingw-w64-x86_64-llvm

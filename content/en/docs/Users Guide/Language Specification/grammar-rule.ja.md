@@ -258,7 +258,7 @@ mimiumの条件分岐は`if (condition) then_expression else else_expression`と
 `condition`、`then_expression`、`else_expression`はすべて式です。
 conditionの値が0より大きい時`then_expression`部分が、そうでなければ`else_expression`が評価されます。
 
-thenelseの部分をブロックとして表現すれば、以下のようにC言語風の書き方ができます。
+then/elseの部分をブロックとして表現すれば、以下のようにC言語風の書き方ができます。
 
 ```rust
 fn fact(input:float){
