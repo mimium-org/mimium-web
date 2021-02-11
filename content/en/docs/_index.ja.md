@@ -14,7 +14,7 @@ draft: false
 {{% /pageinfo %}}
 
 
-mimium（*MInimal-Musical-medIUM*）は、音楽やサウンドを表現／生成するための領域特殊性プログラミング言語です。
+mimium（*MInimal-Musical-medIUM*）は、音楽やサウンドを表現／生成するためのドメイン特化プログラミング言語です。
 
 この言語を使うと、あなたは簡単な記述やLLVMによるハイパフォーマンス力で低レベルオーディオ処理を書くことができます。
 
