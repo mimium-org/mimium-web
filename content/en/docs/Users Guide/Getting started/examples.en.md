@@ -13,6 +13,9 @@ toc_hide: false
 5. sol-fa
 6. rhythm pattern
 
+
+## 5. *sol-fa*
+
 In the example below, the system's audio driver sample rate is 48000 Hz, and it will play *sol-fa sounds* every second.
 
 ```abc.mmm
@@ -36,6 +39,7 @@ fn dsp(){
 ### Point 1: Arrays.
 
 `notes = [440,495,260.7,293.3,330,347.7,391.1] // 1st line`
+
 In mimium, you can define an array. Arrays are defined using `[]`. The beginning of the index is 0.
 In this example, the first line of the array that creates the *sol-fa sounds* note contains the frequencies of the A-B-C-D-E-F-G notes, which are used in subsequent processing.
 
@@ -66,9 +70,12 @@ In the sol-fa example, after executing `updateIndex()` at 48000 samples in line 
 
 ### Point 3: Using the `now` and `@` keywords together
 
-`updateIndex()@(now+48000) // line 5`.
+`updateIndex()@(now+48000) // line 5`
+
 In mimium, the current number of samples can be retrieved using `now`. Users should note that in the v0.3.0 current specification, the `now` keyword does not represent real-time time. The unit is sample.
+
 Also, mimium has a `@` keyword, which means "execute the function before `@` when the number of samples is the number of values resulting from the calculation of the expression after `@`.
+
 The `@` time indicates the absolute time since the audio driver was started, so if you write `updateIndex()@48000` as in line 7, it will always execute `updateIndex()` once 48000 samples after it was started.
 In the fifth line of the example, by connecting `now` and `48000` with the `+` keyword, we can determine the sample point in time from the current time, and by using `@`, we can execute the function at that sample point.
 
