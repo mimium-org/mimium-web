@@ -65,7 +65,7 @@ fn updateIndex(){
 updateIndex()@48000
 ```
 
-In mimium, the current specification as of v0.3.0 does not adopt the for loop statement that most languages have. However, you can define a recursive function to represent a recursive loop as shown in lines 3~6.
+V0.3.0 does not adopt the for loop statement that most languages have. However, you can define a recursive function to represent a recursive loop as shown in lines 3~6.
 In the sol-fa example, after executing `updateIndex()` at 48000 samples in line 7, the `now` and `@` keywords are used together in the function to execute `updateIndex()` at 48000 samples from the current time (line 5).
 
 ### Point 3: Using the `now` and `@` keywords together
