@@ -1,5 +1,5 @@
 ---
-title: サンプル
+title: サンプル例
 date: 2021-01-17T03:13:24.840Z
 weight: 3
 description: このセクションには、mimium言語を使った多くのシンプルな使用例があります。
