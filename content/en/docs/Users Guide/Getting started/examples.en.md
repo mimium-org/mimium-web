@@ -14,7 +14,7 @@ toc_hide: false
 6. rhythm pattern
 
 
-## 5. *sol-fa*
+## Example: *sol-fa*
 
 In the example below, the system's audio driver sample rate is 48000 Hz, and it will play *sol-fa sounds* every second.
 
