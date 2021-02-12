@@ -81,7 +81,7 @@ In the fifth line of the example, by connecting `now` and `48000` with the `+` k
 
 ### Point 4: Octave
 
-The 
+```
 // Lines 8~15
 fn dsp(){
  vol = 0.2
@@ -94,4 +94,3 @@ fn dsp(){
 
 ```
 In the musical scale (Pythagorean scale), there is a relationship between doubling the frequency (Hz) and going up an octave, and conversely, halving the frequency and going down an octave. In lines 8 to 15 of the example, the value is fixed at `octave = 1`, so it plays a *sol-fa sounds* from 260.7Hz to 495Hz, but if you change this value to 2, for example, you can express a scale that goes up an octave.
-```
