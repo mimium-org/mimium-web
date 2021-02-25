@@ -10,7 +10,7 @@ toc_hide: false
 2. "self" example
 3. a simple effect
 4. composition
-5. [sol-fa](#Example-sol-fa)
+5. [sol-fa](#example-sol-fa)
 6. rhythm pattern
 
 ## Example: *sol-fa*
