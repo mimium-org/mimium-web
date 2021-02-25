@@ -88,7 +88,7 @@ fn dsp(){
  vol = 0.2
  octave = 1
  sec = now/48000
- freq = notes\[index]
+ freq = notes[index]
  out = vol  *sin(octave*freq*3.14*2*sec)
  return (0,out)
 }
