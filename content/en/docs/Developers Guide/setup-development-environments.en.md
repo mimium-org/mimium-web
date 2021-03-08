@@ -4,6 +4,7 @@ date: 2020-12-25T09:01:01.910Z
 weight: 1
 description: How to install dependency libraries, build source codes, debug and test.
 draft: false
+toc_hide: false
 ---
 ## Dependencies
 
@@ -37,11 +38,16 @@ brew install mimium -s --only-dependencies
 
 If you are using Homebrew on Linux, you can use same installation command in the section of macOS.
 
-If you want to install dependencies with apt, use the following command.
+If you want to install dependencies with apt, use the following command[^llvmonubuntu].
+
+[^llvmonubuntu]: On Linux(Ubuntu), we recommend installing llvm using an automatic installation script in https://apt.llvm.org/ because `llvm` package in apt does not contain `Polly` libs required by `llvm-config --libs`. [ref]((https://github.com/mimium-org/mimium/issues/60))
+
 
 ```sh
-sudo apt-get install libalsa-ocaml-dev llvm libfl-dev libbison-dev libz-dev libsndfile-dev libopus-dev gcc-9 ninja-build
+pushd /tmp && wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh && popd
+sudo apt-get install libalsa-ocaml-dev libfl-dev libbison-dev libz-dev libvorbis-dev libsndfile-dev libopus-dev gcc-9 ninja-build
 ```
+
 ### Windows (on MSYS2)
 
 Currently, build on Windows is realized by using MSYS2(https://www.msys2.org/). Follow the instruction on MSYS2 website to install it.
@@ -79,7 +85,7 @@ Especially, CMake Tools is necessary to develop C++ project with VSCode.
 
 ## Configure CMake Kit
 
-When you open workspace with the Cmake Tools installed, you will be asked which CMake kit you want to use (only at the first time).
+When you open the workspace with the Cmake Tools installed, you will be asked which CMake kit you want to use (only at the first time).
 
 If you are on macOS, choose `/usr/bin/clang`. Otherwise, choose an appropriate compiler you installsed, for example, `/usr/local/bin/g++` on Linux, and `/mingw64/bin/g++` on MSYS2. 
 
@@ -87,6 +93,7 @@ If you are on macOS, choose `/usr/bin/clang`. Otherwise, choose an appropriate c
 
 Select the CMake Tools tab from the menu on the left side of VS Code, and select Configure All. A build directory will be created under `build/` (RtAudio will be downloaded and built automatically at this time).
 Right next to Configure All, press Build All to start building all projects.
+
 ### Build Targets
 
 - `src/mimium_exe` : Builds the main `mimium` command.
@@ -105,14 +112,14 @@ If you want to launch by passing options to the command line, select "Launch wit
 
 ```json
 ...
-				{
-					"name": "Launch with arg(edit this config)", 
-					"type": "lldb",
-					"request": "launch",
-					"program": "${command:cmake.launchTargetPath}",
-					"args": ["${workspaceFolder}/examples/gain.mmm"], 
-					"cwd": "${workspaceFolder}/build", 
-				},
+	{
+		"name": "Launch with arg(edit this config)", 
+		"type": "lldb",
+		"request": "launch",
+		"program": "${command:cmake.launchTargetPath}",
+		"args": ["${workspaceFolder}/examples/gain.mmm"], 
+		"cwd": "${workspaceFolder}/build", 
+	},
 ...
 ```
 

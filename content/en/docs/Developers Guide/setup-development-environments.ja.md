@@ -1,9 +1,10 @@
 ---
-title: 環境構築
+title: 開発環境の構築
 date: 2020-12-25T09:01:01.923Z
 weight: 1
 description: 依存ライブラリのインストール、IDEの設定、ビルド、デバッグ、テストの解説
 draft: false
+toc_hide: false
 ---
 ## 依存ライブラリ、ツール
 
@@ -13,6 +14,8 @@ draft: false
 * llvm 11~
 * libsndfile
 * rtaudio（cmakeが自動でインストールします）
+
+加えて、Ninjaをインストールするとビルドが早くなる可能性があります。
 
 ### macOS
 
@@ -29,10 +32,13 @@ brew install mimium -s --only-dependencies
 ```
 ### Linux(Ubuntu)
 
-以下のコマンドで依存パッケージをインストールします。
+ターミナルから以下のコマンドで依存パッケージをインストールします[^llvmonubuntu]。
+
+[^llvmonubuntu]: UbuntuでLLVMをインストールするときは、例のように https://apt.llvm.org/ にある自動インストールスクリプトの利用をお勧めします。これはaptにある `llvm` パッケージが `Polly` 関連のライブラリが `llvm-config --libs` コマンドで要求されるにもかかわらず含まれていないためです。[参照](https://github.com/mimium-org/mimium/issues/60).
 
 ```sh
-sudo apt-get install libalsa-ocaml-dev llvm libfl-dev libbison-dev libz-dev libsndfile-dev libopus-dev gcc-9 ninja-build
+pushd /tmp && wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && sudo ./llvm.sh && popd
+sudo apt-get install libalsa-ocaml-dev libfl-dev libbison-dev libz-dev libvorbis-dev libsndfile-dev libopus-dev gcc-9 ninja-build
 ```
 
 LinuxBrewを利用している場合はmacOSを同様のコマンドでも依存パッケージのインストールが可能です。
@@ -75,6 +81,7 @@ mimiumディレクトリで`mimium.code-workspace`をVS Codeで開いてくだ�
 
 cmake-toolsがインストールされている状態でワークスペースを開くと、初回のみCMakeが使用するKit（コンパイラ）を選ぶメニューが出てきます。
 macOSでは`/usr/bin/clang`を選択してください。Linuxでは`/usr/local/bin/g++`、MinGW64なら`/mingw64/bin/g++`などそれぞれインストールしたC++コンパイラへのパスを指定します。
+
 ## ビルドする
 
 VS Code左側のメニューからCMake Toolsのタブを選択し、Configure Allを選択します。`build/`以下にビルドディレクトリが構築されます（この時、RtAudioのダウンロードとビルドも自動的に行われます）。
@@ -98,17 +105,19 @@ Runの実行ボタンの隣からコンフィグが選択できます。ワー�
 
 ```json
 ...
-				{
-					"name": "Launch with arg(edit this config)", 
-					"type": "lldb",
-					"request": "launch",
-					"program": "${command:cmake.launchTargetPath}",
-					"args": ["${workspaceFolder}/examples/gain.mmm"], 
-					"cwd": "${workspaceFolder}/build", 
-				},
+	{
+		"name": "Launch with arg(edit this config)", 
+		"type": "lldb",
+		"request": "launch",
+		"program": "${command:cmake.launchTargetPath}",
+		"args": ["${workspaceFolder}/examples/gain.mmm"], 
+		"cwd": "${workspaceFolder}/build", 
+	},
 ...
 ```
+
 他にも`"stdio": ["${workspaceFolder}/stdin.txt",null,null],`のようにすると、標準入力から入力を受け付けることも可能です。
+
 ## テスト
 
 テストには主にGoogle Testを利用した、3種類のテストが存在します。
@@ -129,6 +138,7 @@ Clangのlibfuzzerを利用するファジングテストです。
 ファジングテストとはランダムな入力（ここではソースコードの文字列のことです）を少しずつ変化させながら与え、正しい構文なら正しく処理され、エラーの場合はエラーとして処理され予期せぬクラッシュが発生しないかなどの検証に使用されています。
 
 macOSでのみ検証されており、CIには含まれていません。
+
 ## Ctestの実行
 
 buildフォルダで`ctest`コマンドを実行するか、VS Codeの右下のメニューから"Run Ctest"をクリックするとユニットテストと回帰テストが実行されます。
