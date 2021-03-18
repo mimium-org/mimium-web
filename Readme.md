@@ -1,6 +1,7 @@
 # <mimium.org>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e4c6dc8a-2362-4361-a43d-eb5da42c90ec/deploy-status)](https://app.netlify.com/sites/affectionate-goldstine-9b0ff5/deploys)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmimium-org%2Fmimium-web.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmimium-org%2Fmimium-web?ref=badge_shield)
 
 
 Content repository of https://mimium.org.
@@ -28,3 +29,6 @@ Hugo and Docsy is licensed under [Apache 2.0 license](https://github.com/google/
 
 
 
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmimium-org%2Fmimium-web.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmimium-org%2Fmimium-web?ref=badge_large)
