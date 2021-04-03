@@ -136,6 +136,33 @@ one,two,three = mytup
 
 Tuples are typically used in mimium to group together channels of audio signals such as stereo and multi-channel in signal processing.
 
+#### Type Alias
+
+Because type annotation for tuple can be redundant, it can be shorten using type alias semantics.
+
+```rust
+type FilterCoeffs = (float,float,float,float,float)
+```
+
+#### Struct(Record Type)
+
+Struct has similar functionality to Tuple type but it can have field names for each type. Struct type cannot be anonymous type. Thus user needs to declare a type alias before initializing value and construct a variable with `TypeName{val1,val2...}`.
+The values can be extracted by dot operator like `expr.field`.
+
+```rust
+type MyBigStruct = {"field1":float,"field2":FilterCoeffs,"field3":string}
+
+mystr = MyBigStruct{100,(0.0,1.0,1.2,0.8,0.4),"test"}
+
+println(mystr.field1)
+printlnstr(mystr.field3)
+```
+
+{{< alert color="warning">}}
+Destructive assignment for struct type variable like `mystr.fst = 111` is under implementation。
+{{< /alert >}}
+
+
 ## Functions
 
 A function is a collection of reusable procedures that take multiple values and return a new value.
