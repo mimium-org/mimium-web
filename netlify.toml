@@ -13,7 +13,7 @@
   publish = "public"
 
   # Default build command.
-  command = "cd themes/docsy && git submodule update -f --init && cd ../.. && hugo"
+  command = "hugo"
 
   # Directory with the serverless functions, including background functions,
   # to deploy to AWS. This is relative to the base directory if one has been set, 
@@ -21,19 +21,19 @@
 #   functions = "functions/"
 [build.environment]
   HUGO_ENV = "production"
-  HOGO_VERSION = "0.68.1"
+  HOGO_VERSION = "0.135.0"
 
 # Deploy Preview context: all deploys generated from a pull/merge request will
 # inherit these settings.
 [context.deploy-preview]
 # OVERWRITE BASEURL to prevent from redirect
 # draft and future articles are shown in deploy preview
-  command = "cd themes/docsy && git submodule update -f --init && cd ../.. &&HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo -D -F"
+  command = "HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo -D -F"
 
 # Branch Deploy context: all deploys that are not from a pull/merge request or
 # from the Production branch will inherit these settings.
 [context.branch-deploy]
-  command = "cd themes/docsy && git submodule update -f --init && cd ../.. &&HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo"
+  command = "HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo"
 [context.branch-deploy.environment]
 #   NODE_ENV = "development"
 
