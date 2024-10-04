@@ -40,7 +40,7 @@ If you are using Homebrew on Linux, you can use same installation command in the
 
 If you want to install dependencies with apt, use the following command[^llvmonubuntu].
 
-[^llvmonubuntu]: On Linux(Ubuntu), we recommend installing llvm using an automatic installation script in https://apt.llvm.org/ because `llvm` package in apt does not contain `Polly` libs required by `llvm-config --libs`. [ref]((https://github.com/mimium-org/mimium/issues/60))
+[^llvmonubuntu]: On Linux(Ubuntu), we recommend installing llvm using an automatic installation script in https://apt.llvm.org/ because `llvm` package in apt does not contain `Polly` libs required by `llvm-config --libs`. [ref](https://github.com/mimium-org/mimium/issues/60)
 
 
 ```sh

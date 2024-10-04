@@ -3,9 +3,6 @@ title = "mimium"
 
 enableRobotsTXT = true
 
-# Hugo allows theme composition (and inheritance). The precedence is from left to right.
-theme = ["docsy"]
-
 # Will give values to .Lastmod etc.
 enableGitInfo = true
 
@@ -16,7 +13,7 @@ defaultContentLanguageInSubdir = true
 # Useful when translating.
 enableMissingTranslationPlaceholders = true
 
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy"]
 
 # Highlighting config
 pygmentsCodeFences = true
@@ -50,7 +47,7 @@ latexDashes = true
 [imaging]
 resampleFilter = "CatmullRom"
 quality = 75
-anchor = "smart"
+anchor = "Smart"
 
 [services]
 [services.googleAnalytics]
@@ -62,21 +59,24 @@ id = "UA-00000000-0"
 [languages]
 [languages.en]
 title = "mimium"
-description = "mimium(MInimal Musical medIUM) - a programming language as an infrastructure for sound and music."
 languageName ="English"
+[languages.en.params]
+description = "mimium(MInimal Musical medIUM) - a programming language as an infrastructure for sound and music."
 # Weight used for sorting.
 weight = 1
 [languages.ja]
 title = "mimium"
-description = "mimium(MInimal Musical medIUM) - a programmingu language as an infrastructure for sound and music."
 languageName ="Japanese"
+[languages.ja.params]
 time_format_default = "02.01.2006"
 time_format_blog = "02.01.2006"
+description = "mimium(MInimal Musical medIUM) - a programmingu language as an infrastructure for sound and music."
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+
+[markup.goldmark.parser.attribute]
+block = true
+[markup.goldmark.renderer]
+unsafe = true
 
 # Everything below this are Site Params
 
@@ -101,9 +101,6 @@ github_project_repo = "https://github.com/mimium-org/mimium"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
 # gcs_engine_id = "017350624150512272940:qpmrumn4g0z"
-
-# Enable Algolia DocSearch
-algolia_docsearch = false
 
 # Enable Lunr.js offline search
 offlineSearch = false
@@ -167,3 +164,14 @@ no = 'Sorry to hear that. Please <a href="https://github.com/mimium/mimium-web/i
 [params.mermaid]
 enable = true
 theme = "neutral"
+
+[module]
+  proxy = "direct"
+  # uncomment line below for temporary local development of module
+  # replacements = "github.com/google/docsy -> ../../docsy"
+[module.hugoVersion]
+extended = true
+min = "0.130.0"
+[[module.imports]]
+	path = "github.com/google/docsy"
+	disable = false

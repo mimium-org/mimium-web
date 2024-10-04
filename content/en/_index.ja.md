@@ -1,19 +1,16 @@
-+++
-title = "mimium"
-linkTitle = "mimium"
-+++
+---
+title: "mimium"
+linkTitle: "mimium"
+---
 
-{{< blocks/cover title="mimium(MInimal-Musical-medIUM)" subtitle="An Infrastructural Programming Language for Sound and Music" image_anchor="top" height="full">}}
-<div class="mx-auto">
+{{< blocks/cover title="mimium(MInimal-Musical-medIUM)"image_anchor="top" height="full">}}
 
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/ja/docs/users-guide/getting-started/installation/">
-		Download <i class="fab fa-apple ml-2 "></i> <i class="fab fa-linux ml-2 "></i> <i class="fab fa-windows ml-2 "></i>
-	</a>
-	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/mimium-org/mimium" >
-		Visit Repository<i class="fab fa-github ml-2 "></i>
-	</a>
+
+<a class="btn btn-lg btn-primary mr-3 mb-4" href="/ja/docs/users-guide/getting-started/installation/">Download <i class="fab fa-apple ml-2 "></i> <i class="fab fa-linux ml-2 "></i> <i class="fab fa-windows ml-2 "></i></a>
+<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/mimium-org/mimium" >Visit Repository<i class="fab fa-github ml-2 "></i></a>
 	
-</div>
+An Infrastructural Programming Language for Sound and Music.
+
 {{< blocks/link-down color="info" >}}
 {{< /blocks/cover >}}
 
@@ -29,7 +26,7 @@ mimiumは音楽プログラミング言語を音楽科やプログラマーの�
 
 {{% /blocks/lead %}}
 
-{{< blocks/section color="dark" >}}
+{{% blocks/section type="row"  color="dark" %}}
 {{% blocks/feature icon="fab fa-gitter" title="Join Gitter Channel!" url="https://gitter.im/mimium-dev/community" %}}
 
 Join mimium Gitter Channel! You can talk anything about mimium including development, feature request, asking usage.
@@ -46,5 +43,5 @@ For announcement of latest features etc.
 {{% /blocks/feature %}}
 
 
-{{< /blocks/section >}}
+{{% /blocks/section %}}
 
