@@ -21,7 +21,7 @@ command = "npm i && hugo --gc --minify"
 #   functions = "functions/"
 [build.environment]
 HUGO_ENV = "production"
-HOGO_VERSION = "0.135.0"
+HUGO_VERSION = "0.135.0"
 
 # Deploy Preview context: all deploys generated from a pull/merge request will
 # inherit these settings.
