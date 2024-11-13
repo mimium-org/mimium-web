@@ -13,13 +13,13 @@ toc_hide: true
 
 ```rust
 fn dsp(){
-    output = sin(now*440*3.14*2/48000)
-    return (output,output)
+    let output = sin(now*440*3.14*2/samplerate)
+    (output,output)
 }
 ```
 
 1. 最後にbashなどを使って、先程のプログラムを起動します。
 
 ```bash
-$ mimium hello.mmm
+$ mimium-cli hello.mmm
 ```

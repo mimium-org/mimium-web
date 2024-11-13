@@ -14,30 +14,32 @@ draft: false
 {{% /pageinfo %}}
 
 
-mimium（*MInimal-Musical-medIUM*）は、音楽やサウンドを表現／生成するためのドメイン特化プログラミング言語です。
+mimium（*MInimal-Musical-medIUM*）は、音楽やサウンドを表現・生成するためのプログラミング言語です。
 
-mimiumを使うと、LLVMに裏打ちされた高いパフォーマンスを享受しつつ、簡潔な記述で低レベルなオーディオ処理を書くことができます。
+mimiumを使うと、信号処理を関数として簡潔に記述することができます。
 
 ### mimiumのソースコード例1
 
 以下のmimiumのコードを見てみましょう。
 
 ```rust
-fn lpf(input:float,fb:float){    
-    return (1-fb)*input + fb*self
+fn lpf(input,fb){    
+    (1-fb)*input + fb*self
 }
 ```
 
-このコードはローパスフィルタ、すなわち入力信号 `input` の高音域をカットし低音域のみを通すフィルタをmimiumで実装したものです。
+このコードはローパスフィルタ、すなわち入力信号 `input` の高音域をカットし低音域のみを通すフィルタをmimiumで実装したものです。`fb`の値を1.0に近づけるほど低周波の信号のみが出力されることになります。
 
-mimiumのキーワード `self` は関数内でのみ使うことができるキーワードで、その関数が最後に呼び出されたときの返り値が格納されています。このキーワードは音楽プログラミング言語[Faust](https://faust.grame.fr)に影響を受けており、信号処理におけるフィードバック接続簡単かつ簡潔に記述できるものです。
+ここで、`self` は関数内でのみ使うことができるmimiumの特別な予約語で、その関数の一時刻前の計算結果を参照できます。
+
+このキーワードは音楽プログラミング言語[Faust](https://faust.grame.fr)に影響を受けたもので、信号処理におけるフィードバック接続を簡単かつ簡潔に記述できるものです。
 
 ### mimiumのソースコード例2
 
 また、mimiumでは「時間再帰」 (temporal recursion) を用いて音符単位の処理を書くことができます。以下のコードを見てみましょう。
 
 ```rust
-fn noteloop()->void{
+fn noteloop(){
     freq = (freq+1200)%4000
     noteloop()@(now + 48000)
 }
@@ -47,4 +49,4 @@ fn noteloop()->void{
 
 `@` を使うと、関数が実行される時間を指定して関数を呼び出すことができます。これを実現するイベントスケジューリング機構はオーディオドライバの要求によって駆動される、サンプル単位の精度を持ちます。
 
-この機能は音楽プログラミング言語[Extempore](https://extemporelang.github.io/)から影響を受けました。
+この機能は音楽プログラミング言語[Extempore](https://extemporelang.github.io/)から影響を受けたものです。

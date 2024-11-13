@@ -33,8 +33,8 @@ mimiumは現在以下の環境で利用可能です。
 ```rust
 // hello.mmm
 fn dsp(){
-  output = sin(now*440*2*3.141595/48000)
-  return (output,output)
+  let output = sin(now*440*2*3.141595/samplerate)
+  (output,output)
 }
 ```
 
