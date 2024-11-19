@@ -8,29 +8,22 @@ toc_hide: false
 ---
 mimiumにおける組み込み関数について説明します。
 
-## delay(input:float,time:float)->float
+## delay(size:const float, input:float,time:float)->float
 
-入力をtime（単位:sample）だけ遅らせた値を返します。
+入力をtime（単位:sample）だけ遅らせた値を返します。sizeは最大の遅延時間をサンプルサイズで指定します。
 
 {{< alert color="warning" >}}
-timeの最大値は現在44100サンプルで固定されており、実際のディレイタイムにかかわらず44100サンプルを保存できるだけのメモリが必ず確保されています。これは将来的にコンパイル時定数の機能実装によって改善される予定です。
+sizeはコンパイル時に評価される特別な値なので、**数値リテラルのみ**で代入する必要があります（他のコンパイル時決定可能な値に依存する式を評価できるように今後改良予定です）。
 {{< /alert >}}
 
 たとえばディレイはselfと組み合わせることで以下のようなフィードバックディレイを作ることが可能です。
 
 ```rust
 fn fbdelay(input:float,time:float,feedback:float){
-    return delay(input*self*feedback,time)
+    delay(44100,input*self*feedback,time)
 }
 ```
 
-## random()->float
-
--1~1のランダムな値を返します。
-C++言語上での実装は以下のようになっています。
-```cpp
- (double)rand() / RAND_MAX) * 2 - 1
-```
 ## 数学関数
 
 C言語のmath.hの以下の関数を呼び出します。注記がない場合は1つのfloatを受け取り1つのfloatを返却します。
@@ -61,25 +54,39 @@ C言語のmath.hの以下の関数を呼び出します。注記がない場合�
 - `max` (x,y) fmaxへのエイリアス
 
 
-## print / println / printstr
+## print / println / probe / probeln
 
 デバッグ用途などに利用される関数です。
-標準出力に値を出力します。
-`print`、`println`は数値型のみを受け付けます。`println`は改行を入れて出力します。
-`printstr("hoge")`のようにすると文字列の出力が可能です
+標準出力に値を出力します。`print`、`println`は数値型のみを受け付ける、`(float)->void`な関数です。`println`は改行を入れて出力します。
 
-## loadwav(path:string)->[float x 0] / loadwavsize(path:string)->float
+また、`probe`、`probeln`は、与えられた入力を、標準出力に値を出しつつそのまま返す`(float)->float`な関数です。こちらもデバッグ用です。
 
-LibSndFileを利用してオーディオファイルを読み込みます。
-どちらもオーディオファイル（.wav、.aiff、.flacなど）のファイルパスをパラメータにとります。
-パスは絶対パスでなければソースファイルの位置を基準とした相対パスとして解釈されます。
+## make_sampler(path:string)->(float)->float
 
-`loadwavsize(path)`はオーディオファイルのサンプル数を返却します。
+RustのライブラリSymphoniaを利用してオーディオファイルを読み込みます。
+オーディオファイル（`.wav`、`.aiff`、`.flac`など）のファイルパスをパラメータにとります。パスは絶対パスでなければソースファイルの位置を基準とした相対パスとして解釈されます。
 
-`loadwav(path)`はオーディオファイルを読み込み配列として返却します。
-ファイルサイズより大きいインデックスでアクセスした場合はクラッシュしますので、loadwavsizeの値を利用して値を制限して使用する必要があります。
+
+`make_sampler(path)`を実行すると、配列のインデックスを入力に取り、その値を返す関数が返ってきます。
+
+例えば以下のようなコードで、読み込んだwavファイルを1秒ごとでループすることができます。
+
+```rust
+let mywav = make_sampler("./assets/bell.wav")
+fn phasor(){
+    (self+1.0) % 48000.0
+}
+fn dsp(){
+    mywav(phasor())
+}
+
+```
+
 
 {{< alert color="warning" >}}
 ファイル読み込みは仮の実装となっているため、1chのオーディオファイルのみが利用できます。
+
+サンプルの長さの取得のAPIを今後追加予定です。また現在配列の範囲外へのアクセスは0を返します。
+
 今後構造体の導入により、1つの関数でサンプル数、チャンネル数、サンプルレート、各チャンネルへの配列などをまとめて取得できるような仕様に変更される予定です。
 {{< /alert >}}
