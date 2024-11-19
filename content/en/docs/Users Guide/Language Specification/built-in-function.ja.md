@@ -61,18 +61,18 @@ C言語のmath.hの以下の関数を呼び出します。注記がない場合�
 
 また、`probe`、`probeln`は、与えられた入力を、標準出力に値を出しつつそのまま返す`(float)->float`な関数です。こちらもデバッグ用です。
 
-## make_sampler(path:string)->(float)->float
+## gen_sampler_mono(path:string)->(float)->float
 
 RustのライブラリSymphoniaを利用してオーディオファイルを読み込みます。
 オーディオファイル（`.wav`、`.aiff`、`.flac`など）のファイルパスをパラメータにとります。パスは絶対パスでなければソースファイルの位置を基準とした相対パスとして解釈されます。
 
 
-`make_sampler(path)`を実行すると、配列のインデックスを入力に取り、その値を返す関数が返ってきます。
+`gen_make_sampler_mono(path)`を実行すると、配列のインデックスを入力に取り、その値を返す関数が返ってきます。
 
 例えば以下のようなコードで、読み込んだwavファイルを1秒ごとでループすることができます。
 
 ```rust
-let mywav = make_sampler("./assets/bell.wav")
+let mywav = gen_sampler_mono("./assets/bell.wav")
 fn phasor(){
     (self+1.0) % 48000.0
 }

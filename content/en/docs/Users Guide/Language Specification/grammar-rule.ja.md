@@ -262,16 +262,23 @@ let addone =　|lambda_a1| add(lambda_a1,1)
 パイプ演算子と組み合わせると、次のような形でデータフローを表せます。
 
 ```rust
-fn osc(input,freq,phase){
-  ...
+fn foo(x, y, z) {
+    100.0 * x + 10.0 * y + z
 }
-fn gain(input,amp){
-  input*amp
-}
-fn dsp(input){
-  input 
-  |> osc(_,440,0.0)
-  |> gain(_,0.5)
+let d2 = _ / _
+let f = foo(1.0, _, 3.0)
+fn dsp(){
+    let x = 3.0 |>
+        1.0 + _ |>
+        d2(_, 2.0) |>
+        f
+
+    let y = 3.0
+        |> 1.0 + _
+        |> |arg| d2(arg, 2.0)
+        |> f
+
+    (x, y)
 }
 ```
 
