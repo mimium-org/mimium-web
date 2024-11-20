@@ -2,13 +2,14 @@
 title: 組み込み関数
 date: 2021-01-17T03:22:59.561Z
 weight: 2
-description: mimiumでライブラリなしで利用できるプリミティブな関数
+description: mimiumでライブラリなしで利用できるプリミティブ関数
 draft: false
 toc_hide: false
 ---
+
 mimiumにおける組み込み関数について説明します。
 
-## delay(size:const float, input:float,time:float)->float
+## delay(size:const float,input:float,time:float)->float
 
 入力をtime（単位:sample）だけ遅らせた値を返します。sizeは最大の遅延時間をサンプルサイズで指定します。
 
@@ -16,7 +17,7 @@ mimiumにおける組み込み関数について説明します。
 sizeはコンパイル時に評価される特別な値なので、**数値リテラルのみ**で代入する必要があります（他のコンパイル時決定可能な値に依存する式を評価できるように今後改良予定です）。
 {{< /alert >}}
 
-たとえばディレイはselfと組み合わせることで以下のようなフィードバックディレイを作ることが可能です。
+たとえばディレイは以下のように`self`と組み合わせることでフィードバックディレイを作ることが可能です。
 
 ```rust
 fn fbdelay(input:float,time:float,feedback:float){
@@ -26,7 +27,7 @@ fn fbdelay(input:float,time:float,feedback:float){
 
 ## 数学関数
 
-C言語のmath.hの以下の関数を呼び出します。注記がない場合は1つのfloatを受け取り1つのfloatを返却します。
+一般的な算術演算関数として、以下のものが使用できます。
 
 - `sin`
 - `cos`
@@ -34,24 +35,21 @@ C言語のmath.hの以下の関数を呼び出します。注記がない場合�
 - `asin`
 - `acos`
 - `atan`
-- `atan2` (x,y)
-- `sinh`
+<!-- - `sinh`
 - `cosh`
-- `tanh`
+- `tanh` -->
 - `log`
 - `log10`
-- `exp`
 - `pow` (x,y)
 - `sqrt`
 - `abs`
 - `ceil`
 - `floor`
-- `trunc`
 - `round`
 - `fmod` (x,y)　`%`演算子はこの関数へのエイリアスです
 - `remainder` (x,y)
-- `min` (x,y) fminへのエイリアス
-- `max` (x,y) fmaxへのエイリアス
+- `min` (x,y)
+- `max` (x,y)
 
 
 ## print / println / probe / probeln
@@ -84,9 +82,11 @@ fn dsp(){
 
 
 {{< alert color="warning" >}}
+
 ファイル読み込みは仮の実装となっているため、1chのオーディオファイルのみが利用できます。
 
 サンプルの長さの取得のAPIを今後追加予定です。また現在配列の範囲外へのアクセスは0を返します。
 
 今後構造体の導入により、1つの関数でサンプル数、チャンネル数、サンプルレート、各チャンネルへの配列などをまとめて取得できるような仕様に変更される予定です。
+
 {{< /alert >}}

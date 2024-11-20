@@ -4,7 +4,7 @@ date: 2021-01-02T18:42:37.550Z
 weight: 1
 description: Here you will learn how to make the basic sound using the mimium.
 draft: false
-toc_hide: true
+toc_hide: false
 ---
 {{% pageinfo %}}
 Documentation is under preparation! We are seeking for people who support documentations and translations.

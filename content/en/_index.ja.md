@@ -3,17 +3,16 @@ title: "mimium"
 linkTitle: "mimium"
 ---
 
-{{< blocks/cover title="mimium(MInimal-Musical-medIUM)"image_anchor="top" height="full">}}
+{{< blocks/cover title="mimium(MInimal-Musical-medIUM)" image_anchor="top" height="full" >}}
 
 
-<a class="btn btn-lg btn-primary mr-3 mb-4" href="/ja/docs/users-guide/getting-started/installation/">Download <i class="fab fa-apple ml-2 "></i> <i class="fab fa-linux ml-2 "></i> <i class="fab fa-windows ml-2 "></i></a>
-<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/mimium-org/mimium" >Visit Repository<i class="fab fa-github ml-2 "></i></a>
-	
+<a class="btn btn-lg btn-primary mr-3 mb-4" href="/ja/docs/users-guide/getting-started/"> Download <i class="fab fa-apple ml-2 "></i> <i class="fab fa-linux ml-2 "></i> <i class="fab fa-windows ml-2 "></i></a>
+<a class="btn btn-lg btn-primary me-3 mb-4" href="https://github.com/tomoyanonymous/mimium-rs"> View Source Code <i class="fab fa-github ms-2 "></i></a>
+
 An Infrastructural Programming Language for Sound and Music.
 
 {{< blocks/link-down color="info" >}}
 {{< /blocks/cover >}}
-
 
 {{% blocks/lead color="primary" %}}
 
