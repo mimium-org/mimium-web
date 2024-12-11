@@ -81,11 +81,17 @@ unsafe = true
 # Everything below this are Site Params
 
 [params]
+
+BookTheme = 'auto'
+
 copyright = "mimium development community. "
 # privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
 images = ["img/mimium-sc.png"]
+BookLogo = "img/mimium_logo_slant.svg"
+BookDateFormat = '2006-01-02'
+BookComments = false
 
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
@@ -172,6 +178,8 @@ theme = "neutral"
 [module.hugoVersion]
 extended = true
 min = "0.130.0"
+# [[module.imports]]
+	# path = "github.com/google/docsy"
+	# disable = false
 [[module.imports]]
-	path = "github.com/google/docsy"
-	disable = false
+	path = 'github.com/alex-shpak/hugo-book'

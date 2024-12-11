@@ -119,18 +119,16 @@ cargo test
 cargo bench
 ```
 
-{{< alert color="warning" >}}
 
-ベンチマーク機能を使用するためには、RustのツールチェーンをNightlyにスイッチする必要があります。未インストールの場合以下のコマンドでインストールし、
-
-```sh
-rustup install nightly
-```
-
-以下のコマンドで使用するツールチェーンのデフォルトをnightlyにできます。(この設定は他のRustでの開発プロジェクトに影響を与える可能性があるので注意してください。)
-
-```sh
-rustup default nightly
-```
-
-{{</ alert >}}
+> [!WARN]
+> ベンチマーク機能を使用するためには、RustのツールチェーンをNightlyにスイッチする必要があります。未インストールの場合以下のコマンドでインストールし、
+> 
+> ```sh
+> rustup install nightly
+> ```
+> 
+> 以下のコマンドで使用するツールチェーンのデフォルトをnightlyにできます。(この設定は他のRustでの開発プロジェクトに影響を与える可能性があるので注意してください。)
+> 
+> ```sh
+> rustup default nightly
+> ```

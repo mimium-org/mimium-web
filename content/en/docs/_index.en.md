@@ -10,9 +10,8 @@ description: Overview for mimium
 draft: false
 ---
 
-{{% pageinfo %}}
-Documentation is under preparation! Seeking for people who support documentations and translations.
-{{% /pageinfo %}}
+> [!NOTE]
+> Documentation is under preparation! Seeking for people who support documentations and translations.
 
 
 mimium(*MInimal-Musical-medIUM*) is a domain specific programming language for describing/generating sound and music.

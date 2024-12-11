@@ -130,9 +130,8 @@ You can retrieve the value of a tuple by placing a comma-separated variable at t
 one,two,three = mytup
 ```
 
-{{< alert color="warning">}}
-*In the future, we will implement a notation to extract by index, like `mytup.1`, instead of just decomposing by left side value.*
-{{< /alert >}}
+> [!WARN]
+> *In the future, we will implement a notation to extract by index, like `mytup.1`, instead of just decomposing by left side value.*
 
 Tuples are typically used in mimium to group together channels of audio signals such as stereo and multi-channel in signal processing.
 
@@ -158,9 +157,8 @@ println(mystr.field1)
 printlnstr(mystr.field3)
 ```
 
-{{< alert color="warning">}}
-Destructive assignment for struct type variable like `mystr.fst = 111` is under implementation。
-{{< /alert >}}
+> [!WARN]
+> Destructive assignment for struct type variable like `mystr.fst = 111` is under implementation。
 
 
 ## Functions
@@ -206,9 +204,8 @@ add = |x,y|{x+y}
 
 In mimium, you can use the pipe operator `|>` to rewrite nested function calls like `a(b(c(d)))` as `d |> c |> b |> a`.
 
-{{< alert color="warning">}}
-*Currently, the pipe operator can only be used with functions that have a single parameter. It will be possible to use it in functions with more than one parameter by automatically expanding the tuple type value with a feature such as the parameter pack.*
-{{< /alert >}}
+> [!WARN]
+> *Currently, the pipe operator can only be used with functions that have a single parameter. It will be possible to use it in functions with more than one parameter by automatically expanding the tuple type value with a feature such as the parameter pack.*
 
 ### Looping by recursion
 
@@ -249,9 +246,8 @@ fn dsp()->(float,float){
 }
 ```
 
-{{< alert color="warning">}}
-Self is currently always initialized with 0. We are currently working on a way to change this initial value.
-{{< /alert >}}
+> [!WARN]
+> Self is currently always initialized with 0. We are currently working on a way to change this initial value.
 
 
 ### Scope of variables

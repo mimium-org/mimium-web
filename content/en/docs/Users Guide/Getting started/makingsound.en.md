@@ -6,9 +6,8 @@ description: Here you will learn how to make the basic sound using the mimium.
 draft: false
 toc_hide: false
 ---
-{{% pageinfo %}}
-Documentation is under preparation! We are seeking for people who support documentations and translations.
-{{% /pageinfo %}}
+> [!NOTE]
+> Documentation is under preparation! We are seeking for people who support documentations and translations.
 
 ## Making 440Hz Sine wave sound
 
