@@ -5,7 +5,7 @@ date: 2021-01-03T05:09:54.533Z
 menu:
   main:
     weight: 20
-description: mimiumに関する概要
+description: mimiumにの概要
 draft: false
 ---
 
