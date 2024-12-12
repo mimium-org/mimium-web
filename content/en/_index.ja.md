@@ -3,18 +3,9 @@ title: "mimium"
 linkTitle: "mimium"
 ---
 
-{{< blocks/cover title="mimium(MInimal-Musical-medIUM)" image_anchor="top" height="full" >}}
+# mimium
 
-
-<a class="btn btn-lg btn-primary mr-3 mb-4" href="/ja/docs/users-guide/getting-started/"> Download <i class="fab fa-apple ml-2 "></i> <i class="fab fa-linux ml-2 "></i> <i class="fab fa-windows ml-2 "></i></a>
-<a class="btn btn-lg btn-primary me-3 mb-4" href="https://github.com/tomoyanonymous/mimium-rs"> View Source Code <i class="fab fa-github ms-2 "></i></a>
-
-An Infrastructural Programming Language for Sound and Music.
-
-{{< blocks/link-down color="info" >}}
-{{< /blocks/cover >}}
-
-{{% blocks/lead color="primary" %}}
+ ![](/img/mimium-sc.png) 
 
 **mimium** (*MInimal-Musical-medIUM*) は音楽の記述/生成に特化したプログラミング言語です。
 
@@ -24,25 +15,20 @@ mimiumは、ラムダ計算を基本にした関数型プログラミング言�
 
 また、Luaのようにホスト言語上でのネイティブ拡張を簡単に定義できるため、ゲームエンジンやアプリケーションの中に埋め込んで簡単に利用することができます。
 
+```rust
+include("math.mmm")
+include("osc.mmm")
+include("core.mmm")
+let probe1 = make_probe("gain")
+let probe2 = make_probe("out")
+let boundval = bind_midi_note_mono(0,69,127);
+fn dsp(){
+    let (note,vel) = boundval();
+    let sig = note |> midi_to_hz |> osc
+    let gain = vel / 127 |> probe1 
+    let r = sig * gain |> probe2
+    (r,r)
+}
+```
 
-{{% /blocks/lead %}}
-
-{{% blocks/section type="row"  color="dark" %}}
-{{% blocks/feature icon="fab fa-gitter" title="Join Gitter Channel!" url="https://gitter.im/mimium-dev/community" %}}
-
-Join mimium Gitter Channel! You can talk anything about mimium including development, feature request, asking usage.
-
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="fab fa-github" title="Contributions welcome!" url="https://github.com/mimium-org" %}}
-mimium is now at very ealy stage of the development. Contributions for development including bugfix, documentation and user feedback are always welcome! 
-{{% /blocks/feature %}}
-
-
-{{% blocks/feature icon="fab fa-twitter" title="Follow us on Twitter!" url="https://twitter.com/mimium-org" %}}
-For announcement of latest features etc.
-{{% /blocks/feature %}}
-
-
-{{% /blocks/section %}}
-
+**[{{< icons/icon vendor=fab name=github color=#000 >}} https://github.com/tomoyanonymous/mimium-rs](https://github.com/tomoyanonymous/mimium-rs)**

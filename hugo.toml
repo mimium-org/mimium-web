@@ -24,8 +24,8 @@ pygmentsUseClassic = false
 # See https://help.farbox.com/pygments.html
 pygmentsStyle = "tango"
 
-[outputs]# add print &rss support
-section = [ "HTML", "RSS", "print" ]
+[outputs] # add print &rss support
+section = ["HTML", "RSS", "print"]
 
 # Configure how URLs look like per section.
 [permalinks]
@@ -33,9 +33,9 @@ blog = "/:section/:year/:month/:day/:slug/"
 
 
 [[menu.main]]
-	name= "Community"
-	weight = 40
-	url = "https://gitter.im/mimium-dev/community"
+name = "Community"
+weight = 40
+url = "https://gitter.im/mimium-dev/community"
 ## Configuration for BlackFriday markdown parser: https://github.com/russross/blackfriday
 [blackfriday]
 plainIDAnchors = true
@@ -59,18 +59,18 @@ id = "UA-00000000-0"
 [languages]
 [languages.en]
 title = "mimium"
-languageName ="English"
+languageName = "English"
 [languages.en.params]
 description = "mimium(MInimal Musical medIUM) - a programming language as an infrastructure for sound and music."
 # Weight used for sorting.
 weight = 1
 [languages.ja]
 title = "mimium"
-languageName ="Japanese"
+languageName = "Japanese"
 [languages.ja.params]
 time_format_default = "02.01.2006"
 time_format_blog = "02.01.2006"
-description = "mimium(MInimal Musical medIUM) - a programmingu language as an infrastructure for sound and music."
+description = "mimium(MInimal Musical medIUM) - a programming language as an infrastructure for sound and music."
 
 
 [markup.goldmark.parser.attribute]
@@ -81,18 +81,27 @@ unsafe = true
 # Everything below this are Site Params
 
 [params]
+
+BookTheme = 'auto'
+
 copyright = "mimium development community. "
 # privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
 images = ["img/mimium-sc.png"]
+BookLogo = "img/mimium_logo_slant.svg"
+BookDateFormat = '2006-01-02'
+BookComments = false
 
 # Menu title if your navbar has a versions selector to access old versions of your site.
 # This menu appears only if you have at least one [params.versions] set.
 version_menu = "Releases"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/mimium-org/mimium-web"
+BookRepo = "https://github.com/mimium-org/mimium-web"
+BookCommitPath = 'commit'
+BookEditPath = 'edit/master'
+
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 github_project_repo = "https://github.com/mimium-org/mimium"
 
@@ -131,31 +140,31 @@ enable = false
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.
 [[params.links.user]]
-	name = "Original Author Website"
-	url = "https://matsuuratomoya.com"
-	icon = "fa fa-user-circle"
-        desc = "Website of Tomoya Matsuura, who launched this project"
+name = "Original Author Website"
+url = "https://matsuuratomoya.com"
+icon = "fa fa-user-circle"
+desc = "Website of Tomoya Matsuura, who launched this project"
 [[params.links.user]]
-	name ="Twitter"
-	url = "https://twitter.com/mimium-org"
-	icon = "fab fa-twitter"
-        desc = "Follow us on Twitter to get the latest news!"
+name = "Twitter"
+url = "https://twitter.com/mimium-org"
+icon = "fab fa-twitter"
+desc = "Follow us on Twitter to get the latest news!"
 [[params.links.user]]
-	name = "Gitter(Users)"
-	url = "https://gitter.im/mimium-dev/Users"
-	icon = "fab fa-gitter"
-        desc = "gitter room for users"
+name = "Gitter(Users)"
+url = "https://gitter.im/mimium-dev/Users"
+icon = "fab fa-gitter"
+desc = "gitter room for users"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
-	name = "GitHub Repository"
-	url = "https://github.com/mimium-org/mimium"
-	icon = "fab fa-github"
-        desc = "Main development repository"
+name = "GitHub Repository"
+url = "https://github.com/mimium-org/mimium"
+icon = "fab fa-github"
+desc = "Main development repository"
 [[params.links.developer]]
-	name = "Gitter(Development)"
-	url = "https://gitter.im/mimium-dev/Development"
-	icon = "fab fa-gitter"
-        desc = "Gitter room for developers"
+name = "Gitter(Development)"
+url = "https://gitter.im/mimium-dev/Development"
+icon = "fab fa-gitter"
+desc = "Gitter room for developers"
 # [[params.links.developer]]
 # 	name = "Developer mailing list"
 # 	url = "https://example.org/mail"
@@ -164,14 +173,23 @@ enable = false
 [params.mermaid]
 enable = true
 theme = "neutral"
-
+[params.icons]
+throw_on_error = true
 [module]
-  proxy = "direct"
-  # uncomment line below for temporary local development of module
-  # replacements = "github.com/google/docsy -> ../../docsy"
+proxy = "direct"
+# uncomment line below for temporary local development of module
+# replacements = "github.com/google/docsy -> ../../docsy"
 [module.hugoVersion]
 extended = true
 min = "0.130.0"
+# [[module.imports]]
+# path = "github.com/google/docsy"
+# disable = false
 [[module.imports]]
-	path = "github.com/google/docsy"
-	disable = false
+path = "github.com/KKKZOZ/hugo-admonitions"
+[[module.imports]]
+path = 'github.com/alex-shpak/hugo-book'
+[[module.imports]]
+path = 'github.com/tomoyanonymous/hugo-micromorph'
+[[module.imports]]
+path = 'github.com/hugomods/icons/vendors/font-awesome'

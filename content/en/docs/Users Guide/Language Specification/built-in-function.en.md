@@ -12,9 +12,8 @@ This section describes the built-in function in mimium.
 Returns delayed `input` value with the duration of `time`(unit: samples).
 
 
-{{< alert color="warning" >}}
-The maximum value of time is currently fixed at 44100 samples, and there is always enough memory to store 44100 samples regardless of the actual delay time. This will be improved in the future with the implementation of compile-time constant functionality.
-{{< /alert >}}
+> [!NOTE]
+> The maximum value of time is currently fixed at 44100 samples, and there is always enough memory to store 44100 samples regardless of the actual delay time. This will be improved in the future with the implementation of compile-time constant functionality.
 
 For example, the delay can be combined with self to create a feedback delay as shown below.
 
@@ -86,7 +85,7 @@ If the path is not absolute, it is interpreted as relative to the location of th
 `loadwav(path)` returns the audio file as a read array.
 If you access the file with an index larger than the file size, it will crash, so you need to use the value of loadwavsize to limit the value.
 
-{{< alert color="warning" >}}
-File loading is a temporary implementation, so only 1-channel audio files can be used.
-In the future, with the introduction of the structure, the specification will be changed so that you can get the number of samples, channels, sample rate, and arrays to each channel all in one function.
-{{< /alert >}}
+> [!NOTE]
+> File loading is a temporary implementation, so only 1-channel audio files can be used.
+> In the future, with the introduction of the structure, the specification will be changed so that you can get the number of samples, channels, sample rate, and arrays to each channel all in one function.
+> 

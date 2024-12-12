@@ -1,24 +1,35 @@
 {
-  "name": "mimium-website",
-  "version": "0.0.0",
+  "author": "Tomoya Matsuura",
+  "bugs": {
+    "url": "https://github.com/tomoyanonymous/mimium-website/issues"
+  },
+  "comments": {
+    "dependencies": {
+      "micromorph": "github.com/tomoyanonymous/hugo-micromorph"
+    },
+    "devDependencies": {
+      "autoprefixer": "project",
+      "postcss-cli": "project"
+    }
+  },
+  "dependencies": {
+    "micromorph": "^0.4.5"
+  },
   "description": "web site of mimium",
-  "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.7.4",
     "postcss-cli": "^7.1.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "homepage": "https://github.com/tomoyanonymous/mimium-website#readme",
+  "license": "MPL-2.0",
+  "main": "index.js",
+  "name": "mimium-website",
   "repository": {
     "type": "git",
     "url": "git://github.com/tomoyanonymous/mimium-website.git"
   },
-  "author": "Tomoya Matsuura",
-  "license": "MPL-2.0",
-  "bugs": {
-    "url": "https://github.com/tomoyanonymous/mimium-website/issues"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/tomoyanonymous/mimium-website#readme"
+  "version": "0.0.0"
 }

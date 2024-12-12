@@ -9,9 +9,8 @@ description: mimiumにの概要
 draft: false
 ---
 
-{{% pageinfo %}}
-ドキュメントはv2のリリースに伴い更新中の部分を含みます。
-{{% /pageinfo %}}
+> [!NOTE]
+> ドキュメントはv2のリリースに伴い更新中の部分を含みます。
 
 
 mimium（*MInimal-Musical-medIUM*）は、音楽やサウンドを表現・生成するためのプログラミング言語です。
