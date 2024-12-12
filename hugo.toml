@@ -84,9 +84,6 @@ unsafe = true
 
 BookTheme = 'auto'
 
-copyright = "mimium development community. "
-# privacy_policy = "https://policies.google.com/privacy"
-
 # First one is picked as the Twitter card image if not set on page.
 images = ["img/mimium-sc.png"]
 BookLogo = "img/mimium_logo_slant.svg"
@@ -101,41 +98,16 @@ version_menu = "Releases"
 BookRepo = "https://github.com/mimium-org/mimium-web"
 BookCommitPath = 'commit'
 BookEditPath = 'edit/master'
+[menus]
+[[menu.after]]
+name = "GitHub"
+url = "https://github.com/tomoyanonymous/mimium-rs"
+weight = 10
+[[menu.after]]
+name = "Twitter(X)"
+url = "https://twitter.com/mimium-org"
+weight = 20
 
-# An optional link to a related project repo. For example, the sibling repository where your product code lives.
-github_project_repo = "https://github.com/mimium-org/mimium"
-
-# Specify a value here if your content directory is not in your repo's root directory
-# github_subdir = ""
-
-# Google Custom Search Engine ID. Remove or comment out to disable search.
-# gcs_engine_id = "017350624150512272940:qpmrumn4g0z"
-
-# Enable Lunr.js offline search
-offlineSearch = false
-
-# User interface configuration
-[params.ui]
-# Enable to show the side bar menu in its compact state.
-sidebar_menu_compact = false
-#  Set to true to disable breadcrumb navigation.
-breadcrumb_disable = false
-#  Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
-sidebar_search_disable = false
-#  Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top nav bar
-navbar_logo = true
-# Set to true to disable the About link in the site footer
-# footer_about_disable =true
-
-# Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
-# This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
-# If you want this feature, but occasionally need to remove the "Feedback" section from a single page,
-# add "hide_feedback: true" to the page's front matter.
-[params.ui.feedback]
-enable = false
-# The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-# yes = 'Glad to hear it! Please <a href="https://github.com/mimium/mimium-web/issues/new">tell us how we can improve</a>.'
-# no = 'Sorry to hear that. Please <a href="https://github.com/mimium/mimium-web/issues/new">tell us how we can improve</a>.'
 
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.
@@ -170,11 +142,7 @@ desc = "Gitter room for developers"
 # 	url = "https://example.org/mail"
 # 	icon = "fa fa-envelope"
 #         desc = "Discuss development issues around the project"
-[params.mermaid]
-enable = true
-theme = "neutral"
-[params.icons]
-throw_on_error = true
+
 [module]
 proxy = "direct"
 # uncomment line below for temporary local development of module

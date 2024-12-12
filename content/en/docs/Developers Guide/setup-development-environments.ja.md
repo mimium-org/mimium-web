@@ -7,25 +7,25 @@ draft: false
 toc_hide: false
 ---
 
-## 開発環境セットアップ
+# 開発環境セットアップ
 
 mimiumはコンパイラや拡張機能の実装に、Rust言語を使用しています。
 
 デバッグやテストも、RustのためのツールチェーンであるCargoを中心に利用します。
 
-### Rustのインストール
+## Rustのインストール
 
 Rust言語は[`rustup`](https://www.rust-lang.org/ja/tools/install)というツールを用いて、Rustコンパイラのインストールやバージョン管理ができます。
 
 rustupはターミナル（Windowsならコマンドプロンプト）を開いて、以下のコマンドをコピーし、Enterキーで実行します。
 
-```sh
+```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 設定の内容を聞かれますが、デフォルトのままインストールで問題ありません。
 
-### Visual Studio Codeのインストール
+## Visual Studio Codeのインストール
 
 mimiumの開発では、統合開発環境（IDE、エディターやデバッガーなど複数の機能を組み合わせたもの）として、Visual Studio Codeを使用しています。
 
@@ -38,17 +38,17 @@ https://code.visualstudio.com/
 https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-ja
 
 
-### 開発リポジトリのダウンロード
+## 開発リポジトリのダウンロード
 
 Visual Studio Codeを開き、表示→コマンドパレット（Cmd＋Shift＋P）でコマンド入力画面を開き、「Clone」と検索します。
 
 Git：クローンという候補が現れると思いますので、それをクリックしたら以下のURLを入力してください。
 
-```sh
+```
 https://github.com/tomoyanonymous/mimium-rs.git
 ```
 
-### ワークスペースを開く
+## ワークスペースを開く
 
 エクスプローラー/Finderでダウンロードしたリポジトリの`mimium-rs.code-workspace`というファイルを開きます。`.code-workspace`は、VSCode上での作業環境を環境に依らず統一するための設定ファイルで、必要な拡張機能、エディタや拡張機能の設定、デバッガー用の設定などが書き込まれています。
 
@@ -59,23 +59,23 @@ https://github.com/tomoyanonymous/mimium-rs.git
 - rust-analizer (RustのLanguage Server、シンタックスハイライトや型ヒント、様々な補完機能を提供)
 - CodeLLDB （デバッガー、Rustでのブレークポイントを用いたデバッグ機能に必要）
 
-### 開発中のmimium-cliを実行する
+## 開発中のmimium-cliを実行する
 
-```sh
+```
 cd mimium-cli
 cargo run -- <オプション> <実行したいファイルのmimium-cliからの相対パス>
 ```
 
 開発に便利なオプションとしては以下のようなものがあります。
 
-```sh
+```
 --emit-ast LISPライクな形式でパース直後のシンタックスツリーを出力
 --emit-mir SSA形式の中間表現を出力
 --emit-bytecode VM用のバイトコードを出力
 --output-format=CSV --times=10 先頭の10サンプルの計算結果をCSV形式で出力
 ```
 
-### LLDBでのデバッグ
+## LLDBでのデバッグ
 
 VSCodeの左サイドバーのデバッグタブをクリックします。
 
@@ -83,7 +83,7 @@ VSCodeの左サイドバーのデバッグタブをクリックします。
 
 このコンフィグは標準で`mimium-cli/examples/sinewave.mmm`をオプションなしで実行します。実行するファイルを切り替えたい場合は`mimium-rs.code-workspace`内の以下の行の内容を変更してください。
 
-```jsonc
+```json
       {
         "type": "lldb",
         "request": "launch",
@@ -103,19 +103,19 @@ VSCodeの左サイドバーのデバッグタブをクリックします。
 ```
 
 
-### テストの実行
+## テストの実行
 
 ワークスペースのルートフォルダで以下のコマンドを実行してください。
 
-```sh
+```
 cargo test
 ```
 
-### ベンチマークの実行
+## ベンチマークの実行
 
 ワークスペースルートフォルダで以下のコマンドを実行してください。
 
-```sh
+```
 cargo bench
 ```
 
@@ -123,12 +123,12 @@ cargo bench
 > [!NOTE]
 > ベンチマーク機能を使用するためには、RustのツールチェーンをNightlyにスイッチする必要があります。未インストールの場合以下のコマンドでインストールし、
 > 
-> ```sh
+> ```
 > rustup install nightly
 > ```
 > 
 > 以下のコマンドで使用するツールチェーンのデフォルトをnightlyにできます。(この設定は他のRustでの開発プロジェクトに影響を与える可能性があるので注意してください。)
 > 
-> ```sh
+> ```
 > rustup default nightly
 > ```

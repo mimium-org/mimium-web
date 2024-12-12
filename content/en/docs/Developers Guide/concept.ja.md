@@ -6,6 +6,8 @@ draft: false
 toc_hide: false
 ---
 
+# mimiumの設計思想
+
 このセクションでは、mimiumのプログラミング言語としての理論的バックグラウンドについて解説します。
 
 mimiumは、単純型付きラムダ計算（Simply Typed Lambda Calculus:STLC）と呼ばれる計算体系を独自に拡張した、λ<sub>mmm</sub>(lambda-triple-m)という計算体系に基づいています。
