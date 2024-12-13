@@ -20,17 +20,18 @@ mimiumは現在以下の環境で利用可能です。
 
 ## Visual Studio Code拡張ではじめる
 
-もっとも簡単にmimiumを利用する方法は無料のテキストエディタ/IDEである[Visual Studio Code](https://code.visualstudio.com/)を利用する方法です[^macOS]。
-
-[^macOS]: VSCode拡張では、macOSはApple Sillicon用のバイナリを自動でインストールしようとします。Intel CPUのMacを使用している場合は手動でのインストールが必要です。
+mimiumのインストールは、無料のテキストエディタ/IDEである[Visual Studio Code](https://code.visualstudio.com/)の拡張機能を使うのが簡単でおすすめです。
 
 1. [Visual Studio Code](https://code.visualstudio.com/) を公式Webサイトからインストールする。 
 2. Visual Studio Codeを起動したら、拡張機能メニューを開く。 (Cmd+Shift+X).
 3. 検索欄から"mimium"と検索し、出てきた拡張をインストールする。
 4. `hello.mmm'という名前でファイルを作成し、以下のコードを貼り付けて保存し、再度開く。
-5. 最新版のmimiumバイナリをダウンロード、インストールするか聞くダイアログが現れるのでインストールする。
+5. 最新版のmimiumバイナリをダウンロード、インストールするか聞くダイアログが現れるのでインストールする[^macOS]。
 6. Cmd+Shift+P でコマンドパレットを開き、"mimium"で検索する。 "Run currently opening file" を選択すると、ターミナルが新たに立ち上がり、現在開いているファイルを実行します。
 7. ターミナルでEnterかCtrl+Cを押すこと音を止めることができます。
+
+[^macOS]: VSCode拡張では、macOSはApple Sillicon用のバイナリを自動でインストールしようとします。Intel CPUのMacを使用している場合は手動でのインストールが必要です。
+
 
 ```rust
 // hello.mmm
