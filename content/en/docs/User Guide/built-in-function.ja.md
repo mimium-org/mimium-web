@@ -1,7 +1,7 @@
 ---
 title: 組み込み関数・変数
 date: 2021-01-17T03:22:59.561Z
-weight: 2
+weight: 3
 description: mimiumでライブラリなしで利用できるプリミティブ関数
 draft: false
 toc_hide: false
@@ -44,9 +44,6 @@ fn fbdelay(input:float,time:float,feedback:float){
 - `asin`
 - `acos`
 - `atan`
-<!-- - `sinh`
-- `cosh`
-- `tanh` -->
 - `log`　（log関数は自然対数）
 - `pow` (x,y)
 - `sqrt`

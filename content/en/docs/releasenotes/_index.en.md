@@ -8,6 +8,43 @@ description: |
 draft: false
 toc_hide: false
 ---
+# Release Notes
+
+
+## v2.2.0
+
+### Improvement
+
+- `include("file.mmm")` directive can now find files in `${HOME}/.mimium/lib` (#109).
+- added "reactive.mmm" example
+
+### Bug fix
+
+- Fixed incorrect inplementation of `log` function(#107)
+
+## v2.1.1
+
+### Bug fix
+
+- Fixed another bug incomment tokenizer so that the line comment on the last line can be parsed correctly (#106)
+- Fixed crash on WSL by trying to load midi plugin though it is not available on wsl(#105)
+
+## v2.1.0
+
+### Improvement
+
+- Error reporting is improved so that the multiple errors can be reported(#84).
+- The maximum size of PopState/ShiftState is now 24bit(#102)
+
+### Bug fix
+
+- Fixed bug in comment parser (#97)
+- Other small refactors(#103)
+
+# v2.0.0
+
+See [Changes in V2](./v2).
+
 ## v0.4.0(2021-04-03)
 
 ### New Language Feature

@@ -1,5 +1,5 @@
 ---
-title: Rustライブラリとしてのmimium
+title: Rustでmimiumを使う
 date: 2021-01-16T23:12:18.732Z
 weight: 2
 description: mimiumの実行環境はコア機能、プラグイン、フロントエンドに分割して実装されています。現在のプロジェクト構成は主に以下のように分けられます。
