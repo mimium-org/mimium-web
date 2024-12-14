@@ -3,7 +3,7 @@ title: 影響を受けた言語
 date: 2024-12-14
 weight: 4
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 
 # 影響を受けた言語

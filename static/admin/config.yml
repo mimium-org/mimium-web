@@ -7,7 +7,6 @@ publish_mode: editorial_workflow
 site_url: https://mimium.org
 logo_url: https://raw.githubusercontent.com/mimium-org/mimium/132b8f7037b61a3836a8b9ecc486415994911c22/mimium_logo_slant.svg
 
-
 media_folder: static/img
 public_folder: /img
 i18n:
@@ -20,138 +19,321 @@ i18n:
   locales: [en, ja]
   default_locale: en
 
-
 collections:
-  - name: 'docs'
-    label: 'Documentation'
-    folder: 'content/en/docs'
+  - name: "docs"
+    label: "Documentation"
+    folder: "content/en/docs"
     create: true
     i18n: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' ,i18n: true}
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false ,i18n: true}
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
-      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
-      - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
-      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
-      - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Users-Guide'
-    label: 'Users-Guide'
-    folder: 'content/en/docs/Users Guide'
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - {
+          label: "LinkTitle",
+          name: "LinkTitle",
+          widget: "string",
+          required: false,
+          i18n: true,
+        }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          value_type: "int",
+          required: false,
+          min: 1,
+          default: 1,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          i18n: true,
+        }
+      - {
+          label: "Draft",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Hide from Sidebar Menu",
+          name: "bookHidden",
+          widget: "boolean",
+          default: false,
+          i18n: "duplicate",
+        }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+  - name: "Users-Guide"
+    label: "Users-Guide"
+    folder: "content/en/docs/user_guide"
     create: true
     i18n: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' ,i18n: true}
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false ,i18n: true}
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
-      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
-      - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
-      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
-      - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Getting-started'
-    label: 'Getting-started'
-    folder: 'content/en/docs/Users Guide/Getting started'
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - {
+          label: "LinkTitle",
+          name: "LinkTitle",
+          widget: "string",
+          required: false,
+          i18n: true,
+        }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          value_type: "int",
+          required: false,
+          min: 1,
+          default: 1,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          i18n: true,
+        }
+      - {
+          label: "Draft",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Hide from Sidebar Menu",
+          name: "BoolHideSection",
+          widget: "boolean",
+          default: false,
+          i18n: "duplicate",
+        }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+  - name: "Getting-started"
+    label: "Getting-started"
+    folder: "content/en/docs/getting_started"
     create: true
     i18n: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' ,i18n: true}
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false ,i18n: true}
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
-      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
-      - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
-      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
-      - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Language-Specification'
-    label: 'Language-Specification'
-    folder: 'content/en/docs/Users Guide/Language Specification'
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - {
+          label: "LinkTitle",
+          name: "LinkTitle",
+          widget: "string",
+          required: false,
+          i18n: true,
+        }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          value_type: "int",
+          required: false,
+          min: 1,
+          default: 1,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          i18n: true,
+        }
+      - {
+          label: "Draft",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Hide from Sidebar Menu",
+          name: "bookHidden",
+          widget: "boolean",
+          default: false,
+          i18n: "duplicate",
+        }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+  - name: "Developers-Guide"
+    label: "Developers-Guide"
+    folder: "content/en/docs/developer_guide"
     create: true
     i18n: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' ,i18n: true}
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false ,i18n: true}
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
-      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
-      - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
-      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
-      - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-
-  - name: 'Developers-Guide'
-    label: 'Developers-Guide'
-    folder: 'content/en/docs/Developers Guide'
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - {
+          label: "LinkTitle",
+          name: "LinkTitle",
+          widget: "string",
+          required: false,
+          i18n: true,
+        }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          value_type: "int",
+          required: false,
+          min: 1,
+          default: 1,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          i18n: true,
+        }
+      - {
+          label: "Draft",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Hide from Sidebar Menu",
+          name: "bookHidden",
+          widget: "boolean",
+          default: false,
+          i18n: "duplicate",
+        }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+  - name: "Contributing"
+    label: "Contributing"
+    folder: "content/en/docs/contributing"
     create: true
     i18n: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' ,i18n: true}
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false ,i18n: true}
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
-      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
-      - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
-      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
-      - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Contributing'
-    label: 'Contributing'
-    folder: 'content/en/docs/Contributing'
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - {
+          label: "LinkTitle",
+          name: "LinkTitle",
+          widget: "string",
+          required: false,
+          i18n: true,
+        }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          value_type: "int",
+          required: false,
+          min: 1,
+          default: 1,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          i18n: true,
+        }
+      - {
+          label: "Draft",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Hide from Sidebar Menu",
+          name: "bookHidden",
+          widget: "boolean",
+          default: false,
+          i18n: "duplicate",
+        }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+  - name: "Blog-news"
+    label: "Blog-News"
+    folder: "content/en/posts"
     create: true
     i18n: true
-    slug: '{{slug}}'
+    slug: "{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' ,i18n: true}
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false ,i18n: true}
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
-      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
-      - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
-      - { label: "Hide from Sidebar Menu", name: "toc_hide", widget: "boolean", default: false ,i18n: 'duplicate'}
-      - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Blog-news'
-    label: 'Blog-News'
-    folder: 'content/en/blog/news'
-    create: true
-    i18n: true
-    slug: '{{slug}}'
-    editor:
-      preview: true
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' ,i18n: true}
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false ,i18n: true}
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 ,i18n: 'duplicate'}
-      - { label: 'Description', name: 'description', widget: 'string' ,i18n: true}
-      - { label: "Draft", name: "draft", widget: "boolean", default: true ,i18n: 'duplicate'}
-      - { label: 'Body', name: 'body', widget: 'markdown',i18n: true}
-  - name: 'Blog-Tips'
-    label: 'Blog-Tips'
-    folder: 'content/en/blog/tips'
-    create: true
-    i18n: true
-    editor:
-      preview: true
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'LinkTitle', name: 'LinkTitle', widget: 'string',required: false }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' ,required: false}
-      - { label: 'Weight', name: 'weight', widget: 'number', value_type: 'int', required: false, min: 1,default: 1 }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - {
+          label: "LinkTitle",
+          name: "LinkTitle",
+          widget: "string",
+          required: false,
+          i18n: true,
+        }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          required: false,
+        }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          value_type: "int",
+          required: false,
+          min: 1,
+          default: 1,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          i18n: true,
+        }
+      - {
+          label: "Draft",
+          name: "draft",
+          widget: "boolean",
+          default: true,
+          i18n: "duplicate",
+        }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }

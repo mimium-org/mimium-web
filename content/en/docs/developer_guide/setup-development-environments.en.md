@@ -4,7 +4,7 @@ date: 2020-12-25T09:01:01.910Z
 weight: 1
 description: How to install dependency libraries, build source codes, debug and test.
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 ## Dependencies
 

@@ -4,7 +4,7 @@ date: 2021-01-14T20:52:20.219Z
 weight: 2
 description: コミュニティの目的と参加者としての期待される行動
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 ## 目標
 

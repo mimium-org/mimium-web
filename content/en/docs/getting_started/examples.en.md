@@ -4,7 +4,7 @@ date: 2021-01-17T03:13:24.793Z
 weight: 1
 description: The entry point for the beginners of mimium - step by step example.
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 1. dsp
 2. "self" example

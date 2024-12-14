@@ -4,7 +4,7 @@ date: 2021-01-17T03:22:59.519Z
 weight: 3
 description: This section describes the built-in function in mimium.
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 This section describes the built-in function in mimium.
 ## delay(input:float,time:float)->float

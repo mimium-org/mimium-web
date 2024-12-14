@@ -4,7 +4,7 @@ date: 2021-01-16T10:57:29.049Z
 weight: 1
 description: mimium言語の言語仕様に関する項目です。
 draft: false
-toc_hide: false
+bookHidden: false
 mermaid: true
 ---
 

@@ -6,7 +6,7 @@ weight: 50
 description: |
   Update/Deprecation infos on each update
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 # Release Notes
 

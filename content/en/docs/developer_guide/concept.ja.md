@@ -3,7 +3,7 @@ title: 設計思想
 date: 2024-11-20
 weight: 3
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 
 # mimiumの設計思想

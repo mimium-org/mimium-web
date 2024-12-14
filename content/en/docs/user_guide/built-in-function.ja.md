@@ -4,7 +4,7 @@ date: 2021-01-17T03:22:59.561Z
 weight: 3
 description: mimiumでライブラリなしで利用できるプリミティブ関数
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 
 # 組み込み関数・変数

@@ -6,7 +6,7 @@ weight: 1
 description: |
   Let's start your mimium experiences
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 
 ## Prerequisites

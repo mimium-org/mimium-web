@@ -4,7 +4,7 @@ date: 2021-01-17T03:32:12.504Z
 weight: 2
 description: このセクションでは、mimiumの特徴的な言語機能について説明します。
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 
 # mimium固有の言語機能

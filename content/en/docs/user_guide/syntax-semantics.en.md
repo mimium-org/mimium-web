@@ -4,7 +4,7 @@ date: 2021-01-16T10:57:29.018Z
 weight: 1
 description: This page is about the definition of mimium grammer.
 draft: false
-toc_hide: false
+bookHidden: false
 ---
 This page is about the rule of mimium grammer.
 
