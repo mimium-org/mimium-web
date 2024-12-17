@@ -1,41 +1,42 @@
 ---
-title: Built-in Function
-date: 2021-01-17T03:22:59.519Z
+title: Built-in Functions and Variables
+date: 2021-01-17T03:22:59.561Z
 weight: 3
-description: This section describes the built-in function in mimium.
+description: Primitive functions available in mimium without libraries
 draft: false
 bookHidden: false
 ---
-This section describes the built-in function in mimium.
-## delay(input:float,time:float)->float
 
-Returns delayed `input` value with the duration of `time`(unit: samples).
+# Built-in Functions and Variables
 
+This section explains the built-in functions and variables available in mimium.
 
-> [!NOTE]
-> The maximum value of time is currently fixed at 44100 samples, and there is always enough memory to store 44100 samples regardless of the actual delay time. This will be improved in the future with the implementation of compile-time constant functionality.
+## now: float
 
-For example, the delay can be combined with self to create a feedback delay as shown below.
+`now` returns the elapsed time **in samples** since DSP execution started. For example, if the sample rate is 48,000 Hz, the value of `now` will be 48,000 after one second.
+
+## samplerate: float
+
+Returns the sample rate of the audio driver in Hz.
+
+## delay(size:const float, input:float, time:float) -> float
+
+Returns the input delayed by `time` (in samples). `size` specifies the maximum delay time in samples.
+
+> [!WARNING]  
+> `size` is a special value evaluated at compile time, so it must be assigned using **numeric literals only** (future improvements may allow evaluating expressions that depend on other compile-time values).
+
+For example, you can create a feedback delay by combining `delay` with `self` as shown below:
 
 ```rust
-fn fbdelay(input:float,time:float,feedback:float){
-    return delay(input*self*feedback,time)
+fn fbdelay(input:float, time:float, feedback:float){
+    delay(44100, input * self * feedback, time)
 }
 ```
 
-## random()->float
+## Mathematical Functions
 
-Returns random value in a range of -1 to 1。An acutual implementation on C++ uses rand() function in C standard library like below.
-
-```cpp
- (double)rand() / RAND_MAX) * 2 - 1
-```
-
-## Basic mathematical functions
-
-Listed functions in math.h of C language is included in mimium by default.
-
-Takes one float and returns one float if it has no explanation.
+The following arithmetic functions are available:
 
 - `sin`
 - `cos`
@@ -43,49 +44,89 @@ Takes one float and returns one float if it has no explanation.
 - `asin`
 - `acos`
 - `atan`
-- `atan2` (x,y)
-- `sinh`
-- `cosh`
-- `tanh`
-- `log`
-- `log10`
-- `exp`
-- `pow` (x,y)
+- `log` (natural logarithm)
+- `pow` (x, y)
 - `sqrt`
 - `abs`
 - `ceil`
 - `floor`
-- `trunc`
 - `round`
-- `fmod` (x,y)　`%` operator is an alias to this function.
-- `remainder` (x,y)
-- `min` (x,y) alias to `fmin` in C language.
-- `max` (x,y) alias to `fmax` in C language.
+- `fmod` (x, y) – the `%` operator is an alias for this function
+- `remainder` (x, y)
+- `min` (x, y)
+- `max` (x, y)
 
+## print / println / probe / probeln
 
-## print / println / printstr
+These functions are used for debugging purposes and output values to the standard output.  
+- `print` and `println` accept numerical values and have the type `(float) -> void`.  
+  `println` outputs with a newline.  
+- `probe` and `probeln` accept numerical inputs, output their values to the standard output, and return the same values. Their type is `(float) -> float`.
 
-Mainly used for debugging purpose.
+## Functions Provided by System Plugins
 
-Print values to stdout.
-`print`,`println` accept number type as parameter.
-`println` output value with newline.
-You can output string type values by using `printstr`.
+These functions are implemented as system plugins and may not work in all environments.
 
-## loadwav(path:string)->[float x 0] / loadwavsize(path:string)->float
+### mimium-guitools
 
-Load audio files by using LibSndFile.
+Provides a simple oscilloscope feature using the Rust GUI library `egui`.
 
-Both take the file path of the audio file (.wav, .aiff, .flac, etc.) as a parameter.
+`make_probe(name:string) -> (float) -> float`
 
-If the path is not absolute, it is interpreted as relative to the location of the source file.
+Running `make_probe` with a probe name as an argument returns a new function that takes a numerical value as input, sends it to the GUI, and returns the same value.
 
-`loadwavsize(path)` returns the number of samples of the audio file.
+For example, consider the following code:
 
-`loadwav(path)` returns the audio file as a read array.
-If you access the file with an index larger than the file size, it will crash, so you need to use the value of loadwavsize to limit the value.
+```rust
+include("osc.mmm")
+fn dsp() -> float{
+  let sig = sinwave(440, 0)
+  sig
+}
+```
 
-> [!NOTE]
-> File loading is a temporary implementation, so only 1-channel audio files can be used.
-> In the future, with the introduction of the structure, the specification will be changed so that you can get the number of samples, channels, sample rate, and arrays to each channel all in one function.
-> 
+You can use the pipe operator with `make_probe` for debugging:
+
+```rust
+include("osc.mmm")
+let myprobe = make_probe("test")
+fn dsp() -> float{
+  let sig = sinwave(440, 0)
+            |> myprobe
+  sig
+}
+```
+
+### mimium-midi
+
+- **`set_midi_port(name:string) -> void`**  
+  Specifies the device name to use for MIDI input. If this function is not called or an invalid device name is specified, the runtime will attempt to use the system’s default MIDI device.
+
+- **`bind_midi_note_mono(ch:float, note_init:float, vel_init:float) -> () -> (float, float)`**  
+  Returns a function for receiving note data on the specified channel. When executed, this function returns the latest note input as a tuple `(note, velocity)`. (Note-off signals are treated as note-on signals with a velocity of 0.)
+
+### mimium-symphonia
+
+**`gen_sampler_mono(path:string) -> (float) -> float`**  
+
+Loads an audio file using the Rust library Symphonia. It accepts the file path of an audio file (e.g., `.wav`, `.aiff`, `.flac`). If the path is not absolute, it is interpreted as a relative path based on the source file's location.
+
+Running `gen_sampler_mono(path)` returns a function that takes an array index as input and returns the corresponding sample value.
+
+For example, the following code loops a loaded WAV file every second:
+
+```rust
+let mywav = gen_sampler_mono("./assets/bell.wav")
+fn phasor(){
+    (self + 1.0) % 48000.0
+}
+fn dsp(){
+    mywav(phasor())
+}
+```
+
+> [!NOTE]  
+> File loading is a temporary implementation, so only mono audio files can be used.  
+> APIs for obtaining sample length will be added in the future. Currently, accessing out-of-range indices returns 0.  
+> Future updates will introduce structures that allow retrieving sample count, channel count, sample rate, and arrays for each channel within a single function.
+

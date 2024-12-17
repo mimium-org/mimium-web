@@ -5,7 +5,5 @@ weight: 20
 date: 2020-08-16
 BookCollapseSection: false
 description: >
-  Overall structure, C++ coding style and guideline for compiler&runtime development.
+  Development environments and the structure of the compiler and runtime
 ---
-
-# Development

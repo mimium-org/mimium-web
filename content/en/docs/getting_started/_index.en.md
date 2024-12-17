@@ -1,6 +1,5 @@
 ---
-title: Users Guide
-linkTitle: Users Guide
+title: Getting Started
 bookCollapseSection: false
 date: 2021-01-03T05:09:54.533Z
 draft: false

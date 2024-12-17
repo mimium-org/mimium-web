@@ -2,8 +2,7 @@
 title: インストール
 date: 2021-03-08T16:24:07.776Z
 weight: 1
-description: |
-  Let's start your mimium experiences
+description: mimiumのインストール方法
 draft: false
 bookHidden: false
 ---

@@ -1,18 +1,17 @@
 ---
-title: mimium固有の機能
+title: Unique Features of mimium
 date: 2021-01-17T03:32:12.504Z
 weight: 2
-description: このセクションでは、mimiumの特徴的な言語機能について説明します。
+description: This section explains the distinctive language features of mimium.
 draft: false
 bookHidden: false
 ---
 
-# mimium固有の言語機能
+# Unique Language Features of mimium
 
-## `self`による信号フィードバックの表現
+## Signal Feedback with `self`
 
-関数の中では、`self`という特別なキーワードが使用できます。
-`self`は関数が最後に返した値を参照できる変数です。たとえば、以下のような関数を作ると呼び出される度`increment`ずつ増える値を返します。
+Inside a function, you can use the special keyword `self`. `self` is a variable that references the last value returned by the function. For example, the following function returns an incremented value each time it is called.
 
 ```rust
 fn counter(increment){
@@ -20,8 +19,7 @@ fn counter(increment){
 }
 ```
 
-`self`はオーディオエンジンが開始された時に0で初期化され、呼び出しコンテキストごとに別々の値が生成、管理されます。
-たとえば以下の例では`counter`関数にそれぞれ異なる`increment`を与えていますが、この場合内部的に`self`のためのメモリは2つ分確保され、`lch`は毎サンプル0.01ずつ増えて1を越えるたび0にリセットされ、`rch`は毎サンプル0.05ずつ増えます。
+`self` is initialized to 0 when the audio engine starts, and a separate `self` value is generated and managed for each call context. In the following example, the `counter` function is called with different `increment` values. Internally, two separate pieces of memory are allocated for `self`: `lch` increases by 0.01 per sample and resets to 0 when it exceeds 1, while `rch` increases by 0.05 per sample.
 
 ```rust
 fn dsp()->(float,float){
@@ -32,30 +30,55 @@ fn dsp()->(float,float){
 ```
 
 > [!NOTE]
-> selfは現在常に0か、タプルであれば全てのメンバが0になるような形で初期化されます。この初期値を変更する方法は現在検討中です。またself自体が関数型や関数型をメンバに含むタプル型になる場合はコンパイルエラーになります。
+> Currently, `self` is always initialized to 0 or, in the case of tuples, all members are initialized to 0. The ability to change this initial value is under consideration. Also, if `self` becomes a function type or a tuple containing a function type, it will result in a compilation error.
 
+## Scheduling with the `@` Operator
 
+By appending the `@` operator and a numeric value to a `void` function (a function with no return value), you can delay the function’s execution (the unit of time is in samples).
 
-## `@`演算子による遅延実行
-
-関数呼び出しに続けて`@`と数値型の値を続けることで、関数の実行を遅らせることができます。
-時間の単位はサンプルです。
-
-たとえば以下の例ではオーディオドライバをスタートしてから0サンプル目と48000サンプル目に、100と200を続けて標準出力に書き込みます。
+For example, the following code defines a function `updater` that changes the frequency of an oscillator and recursively calls itself after 1 second. This pattern is known as **Temporal Recursion** and is used in languages like [**Extempore**](https://extemporelang.github.io/).
 
 ```rust
-println(100)@0
-println(200)@48000
+include("osc.mmm")
+let freq = 100
+
+fn updater(){
+    freq = (freq + 1.0)%1000
+    println(freq)
+    updater@(now+1.0*samplerate)
+}
+updater@1.0
+fn dsp(){
+    sinwave(freq,0.0)
+}
 ```
 
-現在`@`演算子は`void`型の（返り値を持たない）関数にのみ使用することが可能です。
+However, this scheduling works by combining functions with destructive assignment, which does not pair well with functional data flows. In practice, it is useful to combine this with higher-order functions that update stateful functions at slower intervals rather than on a per-sample basis, such as the `metro` function in the `reactive.mmm` library.
 
-再帰関数の実行を`@`で遅延させることにより、一定間隔で特定の処理を繰り返すことも可能です。
-たとえば以下の例では48000サンプル間隔で0から1ずつ数値を増やして標準出力に書き込みます。
 ```rust
-fn loopprint(input)->void{
-  println(input)
-  loopprint(input+1)@(now+48000)
+fn metro(interval,sig:()->float)->()->float{
+    let v = 0.0
+    letrec updater = | |{
+      let s:float =sig();
+      v = s
+      let _ = updater@(now+interval);
+    }
+    let _ = updater@(now+1)
+    | | {v}
 }
-loopprint(0)@0
+```
+
+Using the `metro` function, the previous code that updates the frequency at regular intervals can be rewritten as follows:
+
+```rust
+include("osc.mmm")
+include("reactive.mmm")
+fn counter(){
+    (self+100)%1000
+}
+let myfreq:()->float = metro(1.0*samplerate ,counter);
+fn dsp(){
+    let r = sinwave(myfreq,0.0) * 0.5
+    (r,r)
+}
 ```

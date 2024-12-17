@@ -1,71 +1,76 @@
 ---
-title: Getting Started
-linkTitle: Getting Started
-date: 2021-03-08T16:24:07.765Z
+title: Installation
+date: 2021-03-08T16:24:07.776Z
 weight: 1
-description: |
-  Let's start your mimium experiences
+description: How to install mimium
 draft: false
 bookHidden: false
 ---
 
-## Prerequisites
+# How to Install mimium
 
-Currently, mimium can be used on the following environments.
+## Supported Environments
 
-- macOS (x86)
-- Linux(tested on Ubuntu, uses ALSA as backend)
-- Windows 10
+mimium is currently available for the following environments:
 
-## Getting started with an extension for Visual Studio Code
-The easiest way to get started is to use Visual Studio Code, a free text editor/IDE. 
+- macOS (x86/arm64)
+- Linux (uses ALSA)
+- Windows 11 (MIDI plugins do not work on WSL)
 
-1. download and install [Visual Studio Code](https://code.visualstudio.com/) from the official website. 
-2. Start Visual Studio Code, and open the Extensions menu (Cmd+Shift+X).
-3. search for "mimium" in the search field and install it. 
-4. Create a file with the name of `hello.mmm', copy the following code snippet, save it, and open it again in Visual Studio Code. 
-5. A pop-up window will appear asking you to install the latest version of the mimium binary. 
-6. Cmd+Shift+P to open the command palette, search for "mimium", and execute the command "Run currently opening file" to run the file currently open in the editor from the terminal. 
-7. If you want to stop the sound, press Ctrl+C in the terminal.
+## Getting Started with the Visual Studio Code Extension
+
+The easiest and recommended way to install mimium is by using the [Visual Studio Code](https://code.visualstudio.com/) extension for this free text editor/IDE.
+
+1. Install [Visual Studio Code](https://code.visualstudio.com/) from the official website.
+2. Launch Visual Studio Code and open the Extensions menu (Cmd+Shift+X).
+3. Search for "mimium" in the search bar and install the extension that appears.
+4. Create a file named `hello.mmm`, paste the following code, save it, and open the file again.
+5. A dialog will appear prompting you to download and install the latest mimium binary[^macOS].
+6. Open the command palette with Cmd+Shift+P, search for "mimium," and select "Run currently opening file." A terminal will open and execute the currently opened file.
+7. You can stop the sound by pressing Enter or Ctrl+C in the terminal.
+
+[^macOS]: The VSCode extension will automatically try to install a binary for Apple Silicon on macOS. If you are using an Intel-based Mac, you will need to install it manually.
 
 ```rust
 // hello.mmm
 fn dsp(){
-  output = sin(now*440*2*3.141595/48000)
-  return (output,output)
+  let output = sin(now*440*2*3.141595/samplerate)
+  (output,output)
 }
 ```
 
-## Other ways to install
+## Manual Installation
 
-You can download latest binaries from [GitHub Release](https://github.com/mimium-org/mimium/releases). Copy `bin/mimium` to appropariate path (for example, `/usr/loca/bin` on macOS/Linux).
+You can download the latest binary from the [GitHub Release](https://github.com/tomoyanonymous/mimium-rs/releases) page. Copy `mimium-cli` to an appropriate location (for macOS/Linux, `~/.mimium` is recommended).
 
-On macOS/Linux, you can easily install mimium by using [Homebrew/Linuxbrew](https://brew.sh/)[^bigsur]. 
+## Installation Directory
 
-[^bigsur]: Currently, we can not provide a binary package for macOS 11.0 thus it tries to build from the source. Installing Xcode and some additional software are required.
+When installed via the VSCode extension, mimium's command-line tools, libraries, and sample files are located in the `.mimium` directory under the user's home directory (on Windows, `%HOME%`; on macOS or Linux, `~`). When including external files, mimium will first look in `~/.mimium/lib`, so make sure your libraries are installed in this location.
 
-```bash
-brew install mimium-org/mimium/mimium
+## Running from the Terminal
+
+You can also use mimium from the command line by running `mimium-cli`. To use it, ensure that `~/.mimium` is included in your PATH.
+
+For macOS, open the `~/.zshrc` file and add the following line:
+
+```
+export PATH="$PATH:$HOME/.mimium"
 ```
 
-for more detailed information such as building from source, check [Installation](./installation) page.
+After saving, restart your terminal.
 
-## Run the command
+If everything is set up correctly, you can view the help with the following command:
 
-You can run mimium by running `mimium` command. If the binary is correctly installed, you can see the help menu with the following command.
-
-```sh
-mimium --help
+```
+mimium-cli --help
 ```
 
-Make text file with the name of `hello.mmm` on current working directory and paste the code snippet above.
+Create a file named `hello.mmm` in your current directory, copy the code above, and save it.
 
-Then, type the following command to run the file. (Take care the volume of speakers.) You will hear the sine wave sound of 440Hz.
+Now, try running the following command in the terminal (make sure your speaker volume is set appropriately). You should hear a 440Hz sine wave.
 
-```sh
-mimium hello.mmm
+```
+mimium-cli hello.mmm
 ```
 
-Conguraturations! 
-
-You can read further explanation such as a grammer of the language and available functions on [Making Sound](./makingsound) page.
+Proceed to the [Making Sound](./makingsound) page for a more detailed explanation of the syntax.

@@ -2,7 +2,6 @@
 title: リリースノート
 date: 2021-01-10
 weight: 50
-BookCollapseSection: true
 description: |
   Update/Deprecation infos on each update
 draft: false
