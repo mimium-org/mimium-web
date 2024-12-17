@@ -232,7 +232,7 @@ This is internally equivalent to the `fn` syntax. Note that variables declared w
 
 TBD
 
-### Expressions, Statements, and Blocks
+## Expressions, Statements, and Blocks
 
 A collection of **statements** enclosed in curly braces `{}` is called a **block**. A **statement** usually consists of assignments using expressions, such as `let a = b` or `x = y`. An **expression** can be a number like `1000`, a variable symbol like `mynumber`, an arithmetic expression like `1+2*3`, or a function call like `add(x,y)`.
 
