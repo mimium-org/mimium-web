@@ -36,26 +36,54 @@ fn dsp()->(float,float){
 
 
 
-## `@`演算子による遅延実行
+## `@`演算子によるスケジューリング
 
-関数呼び出しに続けて`@`と数値型の値を続けることで、関数の実行を遅らせることができます。
-時間の単位はサンプルです。
+`void`型の（返り値を持たない）関数に続けて`@`演算子、とさらに数値型の値を続けることで、関数の実行を遅らせることができます。（時間の単位はサンプルです。）
 
-たとえば以下の例ではオーディオドライバをスタートしてから0サンプル目と48000サンプル目に、100と200を続けて標準出力に書き込みます。
+例えば次のコードではオシレーターの周波数を変更して、再帰的に自分自身を1秒後に呼び出すような関数`updater`を定義しています。このパターンは**Temporal Recursion**と呼ばれるもので、[**Extempore**](https://extemporelang.github.io/)のような言語で使われているものです。
 
 ```rust
-println(100)@0
-println(200)@48000
+include("osc.mmm")
+let freq = 100
+
+fn updater(){
+    freq = (freq + 1.0)%1000
+    println(freq)
+    updater@(now+1.0*samplerate)
+}
+updater@1.0
+fn dsp(){
+    sinwave(freq,0.0)
+}
 ```
 
-現在`@`演算子は`void`型の（返り値を持たない）関数にのみ使用することが可能です。
+ただし、このスケジューリングの関数は破壊的代入との組み合わせによって効果を成す物なので、関数型のデータフローとの相性があまり良くありません。実際に使う際には、ライブラリの`reactive.mmm`にある`metro`関数のように、ステートフルな関数をサンプル単位ではなく遅い間隔で更新する高階関数と組み合わせて使うのが便利でしょう。
 
-再帰関数の実行を`@`で遅延させることにより、一定間隔で特定の処理を繰り返すことも可能です。
-たとえば以下の例では48000サンプル間隔で0から1ずつ数値を増やして標準出力に書き込みます。
+
 ```rust
-fn loopprint(input)->void{
-  println(input)
-  loopprint(input+1)@(now+48000)
+fn metro(interval,sig:()->float)->()->float{
+    let v = 0.0
+    letrec updater = | |{
+      let s:float =sig();
+    v = s
+      let _ = updater@(now+interval);
+    }
+    let _ = updater@(now+1)
+    | | {v}
 }
-loopprint(0)@0
+```
+
+`metro`関数を使うと、同じように一定間隔で周波数を更新する先程のコードは次のように書くことができます。
+
+```rust
+include("osc.mmm")
+include("reactive.mmm")
+fn counter(){
+    (self+100)%1000
+}
+let myfreq:()->float = metro(1.0*samplerate ,counter);
+fn dsp(){
+    let r = sinwave(myfreq,0.0) * 0.5
+    (r,r)
+}
 ```
