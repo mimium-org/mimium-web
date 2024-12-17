@@ -8,6 +8,18 @@ bookHidden: false
 ---
 # Release Notes
 
+## v2.2.2
+
+### Bug fix
+
+- fixed incorrect type unifications in function type.
+- fixed higher-order function type inference.
+- fixed possible infinite loop `include` tries to expand itself.(Note that mutually recursive inclusion is still possible)
+- Better error report for `include` 
+
+## v2.2.1
+
+updated examples
 
 ## v2.2.0
 
