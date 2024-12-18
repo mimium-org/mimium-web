@@ -36,7 +36,16 @@ fn fbdelay(input:float,time:float,feedback:float){
 
 ## 数学関数
 
-一般的な算術演算関数として、以下のものが使用できます。
+mimiumでは基本的な算術演算として以下の中置演算子が使えます。
+
+- `+` 加算
+- `-` 減算（単項演算子としても使用できます）
+- `*` 乗算
+- `/` 除算
+- `^` 累乗
+- `%` モジュロ
+
+ほかに一般的な算術演算関数として、以下のものが使用できます。
 
 - `sin`
 - `cos`
@@ -56,6 +65,21 @@ fn fbdelay(input:float,time:float,feedback:float){
 - `min` (x,y)
 - `max` (x,y)
 
+
+## 論理演算
+
+mimiumでは真偽値を単に0より大きい数値をtrue、そうでなければfalseとして扱います。
+
+論理演算の組み込み関数は、trueの場合1を、falseの場合0を返します。
+
+- `<`
+- `>`
+- `>=`
+- `<=`
+- `==`
+- `!=`
+- `&&`
+- `||`
 
 ## print / println / probe / probeln
 

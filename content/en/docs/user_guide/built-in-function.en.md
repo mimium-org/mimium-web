@@ -36,7 +36,17 @@ fn fbdelay(input:float, time:float, feedback:float){
 
 ## Mathematical Functions
 
-The following arithmetic functions are available:
+In mimium, you can use following infix arithmetic operations.
+
+- `+` addition
+- `-` subtraction (can be unary operator)
+- `*` multiplication
+- `/` division
+- `^` power
+- `%` modulo
+
+
+Also, the following arithmetic functions are available:
 
 - `sin`
 - `cos`
@@ -55,6 +65,21 @@ The following arithmetic functions are available:
 - `remainder` (x, y)
 - `min` (x, y)
 - `max` (x, y)
+
+## Boolean operation
+
+In mimium, boolean operation is done by treating number as true when it is larger than 0, otherwise false.
+
+The built-in boolean operation functions returns 1 if the value means true, otherwise 0.
+
+- `<`
+- `>`
+- `>=`
+- `<=`
+- `==`
+- `!=`
+- `&&`
+- `||`
 
 ## print / println / probe / probeln
 
