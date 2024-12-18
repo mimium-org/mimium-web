@@ -4,9 +4,11 @@
     {{$url := .URL}}
     {{$name := .Name }}
  {{with .Params }}
+    {{if .icon }}
     <a href = "{{$url}}" target = "_blank" style="color:#000;">
         {{- partial "icons/icon" (dict "vendor" .icon_vendor  "name" .icon "size" "30px" ) -}}
     </a>
+    {{ end }}
   {{ end }}
 </div>
   {{end}}
