@@ -45,7 +45,7 @@ Open Visual Studio Code, go to **View → Command Palette** (Cmd+Shift+P), and t
 Select the **Git: Clone** option and enter the following URL:
 
 ```
-https://github.com/tomoyanonymous/mimium-rs.git
+https://github.com/mimium-org/mimium-rs.git
 ```
 
 

@@ -3,7 +3,7 @@ title: コードサンプル
 date: 2021-01-17T03:13:24.840Z
 weight: 3
 description: mimium初心者のための例を交えた簡単な機能紹介。
-draft: false
+draft: true
 bookHidden: false
 ---
 

@@ -42,7 +42,7 @@ fn dsp(){
 
 ## 手動でのインストール方法
 
-[GitHub Release](https://github.com/tomoyanonymous/mimium-rs/releases)より最新版のバイナリをダウンロードできます。`mimium-cli`を適当な場所（macOS/Linuxであれば`~/.mimium`）にコピーしてください。
+[GitHub Release](https://github.com/mimium-org/mimium-rs/releases)より最新版のバイナリをダウンロードできます。`mimium-cli`を適当な場所（macOS/Linuxであれば`~/.mimium`）にコピーしてください。
 
 ## インストールディレクトリ
 

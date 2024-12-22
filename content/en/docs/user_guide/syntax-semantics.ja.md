@@ -185,7 +185,7 @@ type FilterCoeffs = (float,float,float,float,float)
 
 #### 構造体（レコード型）
 
-*レコード型はmimium v2では現在実装中です。詳しくはこちらのプロポーザルを参照。* https://github.com/tomoyanonymous/mimium-rs/issues/99 
+*レコード型はmimium v2では現在実装中です。詳しくはこちらのプロポーザルを参照。* https://github.com/mimium-org/mimium-rs/issues/99 
 
 
 <!-- 構造体は、タプルと同じ機能を持ちますがフィールド名を持たせることが可能です。

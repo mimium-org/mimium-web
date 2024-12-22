@@ -35,7 +35,7 @@ fn dsp(){
 
 mimiumはオープンソースソフトウェアとして、以下のリポジトリで開発されています。
 
-**[{{< icons/icon vendor=fab name=github  >}} https://github.com/tomoyanonymous/mimium-rs](https://github.com/tomoyanonymous/mimium-rs)**
+**[{{< icons/icon vendor=fab name=github  >}} https://github.com/mimium-org/mimium-rs](https://github.com/mimium-org/mimium-rs)**
 
 
 

@@ -101,7 +101,7 @@ BookEditPath = 'edit/master'
 [menus]
 [[menu.after]]
 name = "GitHub"
-url = "https://github.com/tomoyanonymous/mimium-rs"
+url = "https://github.com/mimium-org/mimium-rs"
 weight = 10
 [menu.after.params]
 icon_vendor = "fab"

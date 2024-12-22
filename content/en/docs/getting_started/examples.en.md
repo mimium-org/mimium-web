@@ -3,7 +3,7 @@ title: Examples
 date: 2021-01-17T03:13:24.793Z
 weight: 1
 description: The entry point for the beginners of mimium - step by step example.
-draft: false
+draft: true
 bookHidden: false
 ---
 1. dsp

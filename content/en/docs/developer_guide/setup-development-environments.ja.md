@@ -45,7 +45,7 @@ Visual Studio Codeを開き、表示→コマンドパレット（Cmd＋Shift＋
 Git：クローンという候補が現れると思いますので、それをクリックしたら以下のURLを入力してください。
 
 ```
-https://github.com/tomoyanonymous/mimium-rs.git
+https://github.com/mimium-org/mimium-rs.git
 ```
 
 ## ワークスペースを開く

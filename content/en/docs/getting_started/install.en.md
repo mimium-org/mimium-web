@@ -41,7 +41,7 @@ fn dsp(){
 
 ## Manual Installation
 
-You can download the latest binary from the [GitHub Release](https://github.com/tomoyanonymous/mimium-rs/releases) page. Copy `mimium-cli` to an appropriate location (for macOS/Linux, `~/.mimium` is recommended).
+You can download the latest binary from the [GitHub Release](https://github.com/mimium-org/mimium-rs/releases) page. Copy `mimium-cli` to an appropriate location (for macOS/Linux, `~/.mimium` is recommended).
 
 ## Installation Directory
 
