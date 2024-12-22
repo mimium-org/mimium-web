@@ -7,6 +7,14 @@ linkTitle: "mimium"
 
 {{< figure src="/img/mimium_logo_slant.svg" class="center" >}}
 
+```mimium
+fn dsp(){
+    let phase = (now/samplerate)%1
+    let r = 440* phase * 6.2831853 |> sin
+    (r,r)
+}
+```
+
 **mimium** (*MInimal-Musical-medIUM*) は音楽の記述/生成に特化したプログラミング言語です。
 
 mimiumは音楽プログラミング言語を音楽家やプログラマーのためのツールとしてだけではなく、ソースコードという形で音楽を配布するための基盤:インフラストラクチャとなるべく設計され、開発されています。

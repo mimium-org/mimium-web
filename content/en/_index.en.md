@@ -9,6 +9,14 @@ linkTitle: "mimium"
 
 **mimium** (*MInimal-Musical-medIUM*) is a programming language specialized for describing and generating music.
 
+```mimium
+fn dsp(){
+    let phase = (now/samplerate)%1
+    let r = 440* phase * 6.2831853 |> sin
+    (r,r)
+}
+```
+
 mimium is designed and developed not just as a tool for musicians and programmers, but also as infrastructure for distributing music in the form of source code.
 
 mimium is a functional programming language based on lambda calculus. By adopting its own semantics, mimium allows concise expression of fundamental signal processing tasks, such as oscillators and filters, directly within the language. It also lets you represent signal processing chains as simple function pipes.
