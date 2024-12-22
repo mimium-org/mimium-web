@@ -1,0 +1,38 @@
+{{ partialCached "micromorph.html" . }}
+{{ if .Store.Get "hasMimium" }}
+<script src="/scripts/prism.js"></script>
+<script src="/scripts/mimium-web-component.js" type="module"></script>
+<script>
+let js = document.querySelector('#src');
+/**
+ * Handle input events on our fields
+ * @param  {Event}  event The event object
+ */
+function inputHandler (event) {
+  // Only run on our three fields
+  if ( event.target !== src ) return;
+
+  // Clone text into pre immediately
+  let code = event.target.previousElementSibling.firstChild;
+  if (!code) return;
+  code.textContent = event.target.value;
+  // Highlight the syntax
+  Prism.highlightElement(code);
+}
+// Listen for input events
+document.addEventListener('input', inputHandler);
+</script>
+{{end}}
+{{ if .IsHome}}
+<script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+{{end}}

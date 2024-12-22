@@ -1,7 +1,7 @@
 ---
 title: Code of Conduct
 date: 2021-01-14T20:52:20.179Z
-weight: 1
+weight: 2
 description: Purpose of the community and expected behavior as a participant
 draft: false
 toc_hide: false

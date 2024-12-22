@@ -3,45 +3,55 @@ title: "mimium"
 linkTitle: "mimium"
 ---
 
-{{< blocks/cover title="mimium(MInimal-Musical-medIUM)"image_anchor="top" height="full">}}
+# mimium
 
+{{< figure src="/img/mimium_logo_slant.svg" class="center" >}}
 
-<a class="btn btn-lg btn-primary mr-3 mb-4" href="/ja/docs/users-guide/getting-started/installation/">Download <i class="fab fa-apple ml-2 "></i> <i class="fab fa-linux ml-2 "></i> <i class="fab fa-windows ml-2 "></i></a>
-<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/mimium-org/mimium" >Visit Repository<i class="fab fa-github ml-2 "></i></a>
-	
-An Infrastructural Programming Language for Sound and Music.
+```mimium
+fn dsp(){
+    let phase = (now/samplerate)%1
+    let r = 440* phase * 6.2831853 |> sin
+    (r,r)
+}
+```
 
-{{< blocks/link-down color="info" >}}
-{{< /blocks/cover >}}
-
-
-{{% blocks/lead color="primary" %}}
 **mimium** (*MInimal-Musical-medIUM*) は音楽の記述/生成に特化したプログラミング言語です。
 
-mimiumは音楽プログラミング言語を音楽科やプログラマーのためのツールとしてだけではなく、ソースコードという形で音楽を配布するための基盤:インフラストラクチャーとなるべく設計され、開発されています。
+mimiumは音楽プログラミング言語を音楽家やプログラマーのためのツールとしてだけではなく、ソースコードという形で音楽を配布するための基盤:インフラストラクチャとなるべく設計され、開発されています。
 
-この言語では、低レベルの信号処理から作曲レベルの長い時間軸を扱う表現まで、サンプル単位での制御処理を含めてシンプルな文法で記述ができます。実行にはLLVMというコンパイラ基盤を採用する事でC++等の低レベル言語に匹敵する処理性能を発揮することが可能です。
+mimiumは、ラムダ計算を基本にした関数型プログラミング言語です。独自の意味論を採用することで、オシレーターやフィルターのような非常に基本的なレベルの信号処理をmimium言語上で簡潔に表現できるほか、信号処理のチェーンを単なる関数のパイプとして表現することができます。
 
-これらの仕様や文法はいくつかのモダンな音声処理/音楽向けプログラミング言語、例えば *[Faust](https://faust.grame.fr)* や *[Extempore](https://extemporelang.github.io/)* から影響を受けています。
+また、Luaのようにホスト言語上でのネイティブ拡張を簡単に定義できるため、ゲームエンジンやアプリケーションの中に埋め込んで簡単に利用できることを目指しています。
 
-{{% /blocks/lead %}}
+```rust
+include("core.mmm")//load midi_to_hz
+include("osc.mmm") //load sinwave
+let probe1 = make_probe("gain")
+let probe2 = make_probe("out")
+let boundval = bind_midi_note_mono(0,69,127) //assign midi input
+fn osc(freq){
+    sinwave(freq,0.0)
+}
+fn dsp(){
+    let (note,vel) = boundval();
+    let sig = note |> midi_to_hz |> osc
+    let gain = vel / 127 |> probe1 
+    let r = sig * gain |> probe2
+    (r,r)
+}
+```
 
-{{% blocks/section type="row"  color="dark" %}}
-{{% blocks/feature icon="fab fa-gitter" title="Join Gitter Channel!" url="https://gitter.im/mimium-dev/community" %}}
+mimiumはオープンソースソフトウェアとして、以下のリポジトリで開発されています。
 
-Join mimium Gitter Channel! You can talk anything about mimium including development, feature request, asking usage.
-
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="fab fa-github" title="Contributions welcome!" url="https://github.com/mimium-org" %}}
-mimium is now at very ealy stage of the development. Contributions for development including bugfix, documentation and user feedback are always welcome! 
-{{% /blocks/feature %}}
+**[{{< icons/icon vendor=fab name=github  >}} https://github.com/mimium-org/mimium-rs](https://github.com/mimium-org/mimium-rs)**
 
 
-{{% blocks/feature icon="fab fa-twitter" title="Follow us on Twitter!" url="https://twitter.com/mimium-org" %}}
-For announcement of latest features etc.
-{{% /blocks/feature %}}
 
+## インストール方法
 
-{{% /blocks/section %}}
+mimiumはWindows、macOS、Linux全てのOSで動作します。
+
+[Visual Studio Codeの拡張機能](https://github.com/mimium-org/mimium-language)でインストールするのが最も簡単な方法です。シンタックスハイライトに加えて、最新版の実行環境のインストーラー機能、開いているファイルを実行する機能を兼ねています。
+
+詳しい解説は[インストール](docs/users-guide/getting-started/)ページを参照してください。
 

@@ -1,0 +1,19 @@
+<div class = "book-columns flex flex-wrap" style = "width:75%; margin:20px auto;">
+{{range .Site.Menus.after }}
+<div class ="flex-even markdown-inner text-center">
+    {{$url := .URL}}
+    {{$name := .Name }}
+ {{with .Params }}
+    {{if .icon }}
+    <a href = "{{$url}}" target = "_blank" aria-label="{{$name}}" style="color:#000;">
+        {{- partial "icons/icon" (dict "vendor" .icon_vendor  "name" .icon "size" "30px" ) -}}
+    </a>
+    {{ end }}
+  {{ end }}
+</div>
+  {{end}}
+</div>
+
+<div class="text-center">
+(c) mimium development community({{ time.Now | time.Format "2006"}})
+</div>

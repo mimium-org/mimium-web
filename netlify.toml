@@ -13,7 +13,7 @@
 publish = "public"
 
 # Default build command.
-command = "npm i && hugo --gc --minify"
+command = "hugo mod get -u && hugo mod npm pack && npm i && hugo --gc --minify"
 
 # Directory with the serverless functions, including background functions,
 # to deploy to AWS. This is relative to the base directory if one has been set, 
@@ -21,19 +21,19 @@ command = "npm i && hugo --gc --minify"
 #   functions = "functions/"
 [build.environment]
 HUGO_ENV = "production"
-HUGO_VERSION = "0.135.0"
-GO_VERSION = "1.20.0"
+HUGO_VERSION = "0.138.0"
+GO_VERSION = "1.22.0"
 # Deploy Preview context: all deploys generated from a pull/merge request will
 # inherit these settings.
 [context.deploy-preview]
 # OVERWRITE BASEURL to prevent from redirect
 # draft and future articles are shown in deploy preview
-command = "npm i && HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo --gc --minify -D -F"
+command = "hugo mod get -u && hugo mod npm pack npm i && HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo --gc --minify -D -F"
 
 # Branch Deploy context: all deploys that are not from a pull/merge request or
 # from the Production branch will inherit these settings.
 [context.branch-deploy]
-command = "npm i && HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo --gc --minify"
+command = "hugo mod get -u && hugo mod npm pack && npm i && HUGO_BASEURL=${DEPLOY_PRIME_URL} hugo --gc --minify"
 [context.branch-deploy.environment]
 #   NODE_ENV = "development"
 
