@@ -1,0 +1,13 @@
+<div class="editor">
+	<pre class="lang-rust" id ="src-pre"><code>{{.Inner}}</code></pre>
+	<textarea id="src" spellcheck="false" autocorrect="off" autocapitalize="off" translate="no">{{.Inner}}</textarea>
+</div>
+<div class="mimium-control">
+    <button id="play_button">
+    {{- partial "icons/icon" (dict "vendor" "fas"  "name" "play" "size" "15px" ) -}}
+    </button>
+    <button id="stop_button">
+    {{- partial "icons/icon" (dict "vendor" "fas"  "name" "stop" "size" "15px" ) -}}
+    </button>
+</div>
+  {{ .Page.Store.Set "hasMimium" true }}

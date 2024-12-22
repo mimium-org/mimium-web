@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "web site of mimium",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@mimium/mimium-webaudio": "^1.0.8"
+  },
   "devDependencies": {
     "autoprefixer": "^9.7.4",
     "postcss-cli": "^7.1.0"
