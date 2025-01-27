@@ -83,7 +83,7 @@ fn counter(){
 }
 let myfreq:()->float = metro(1.0*samplerate ,counter);
 fn dsp(){
-    let r = sinwave(myfreq,0.0) * 0.5
+    let r = sinwave(myfreq(),0.0) * 0.5
     (r,r)
 }
 ```
