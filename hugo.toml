@@ -24,8 +24,6 @@ pygmentsUseClassic = false
 # See https://help.farbox.com/pygments.html
 pygmentsStyle = "tango"
 
-[outputs] # add print &rss support
-section = ["HTML", "RSS", "print"]
 
 # Configure how URLs look like per section.
 [permalinks]
@@ -130,7 +128,7 @@ proxy = "direct"
 # replacements = "github.com/google/docsy -> ../../docsy"
 [module.hugoVersion]
 extended = true
-min = "0.130.0"
+min = "0.140.0"
 # [[module.imports]]
 # path = "github.com/google/docsy"
 # disable = false
