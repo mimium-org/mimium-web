@@ -19,13 +19,13 @@ Contributing to mimium is not limited to working on the compiler. Sharing your m
 
 The development of mimium (v2) is currently hosted on the source code platform GitHub.
 
-https://github.com/tomoyanonymous/mimium-rs
+https://github.com/mimium-org/mimium-rs
 
 ### Reporting Bugs, Proposing Features, and Suggesting Improvements
 
 If you discover a bug or unexpected behavior, you can report it using GitHub Issues (a discussion board feature). Although development is primarily conducted in English, reports in Japanese are also welcome.
 
-https://github.com/tomoyanonymous/mimium-rs/issues
+https://github.com/mimium-org/mimium-rs/issues
 
 Before submitting a bug report, please search existing Issues to check if a similar issue has already been reported.
 

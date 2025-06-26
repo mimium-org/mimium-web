@@ -21,13 +21,13 @@ mimiumで作った音楽のコードをコミュニティでシェアしたり�
 
 mimium(v2)の開発は現在ソースコード共有プラットフォームGitHub上で開発されています。
 
-https://github.com/tomoyanonymous/mimium-rs
+https://github.com/mimium-org/mimium-rs
 
 ### バグ報告、追加機能や改善の提案
 
 バグや不可解な挙動を発見した場合は、Github上のIssueと呼ばれる掲示板機能を用いて報告できます。（開発では主に英語で投稿していますが、日本語での報告も歓迎です。）
 
-https://github.com/tomoyanonymous/mimium-rs/issues
+https://github.com/mimium-org/mimium-rs/issues
 
 バグ報告の場合は、まず過去のIssueの中に同様の内容がないか検索して確認してみてください。
 
