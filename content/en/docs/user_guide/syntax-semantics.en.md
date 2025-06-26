@@ -102,6 +102,35 @@ mimium supports the following primitive types: `float`, `string`, and `void`.
 
 Function types are denoted as `(T1,T2,...)->T`.
 
+#### Arrays
+
+Arrays are a type that can store multiple values of the same type in sequence. You can create them using comma-separated values enclosed in `[]` (square brackets).
+
+```rust
+let myarr = [1,2,3,4,5,6,7,8,9,10]
+```
+
+Aggregate types like tuples (described later) can also be elements of arrays, but all elements in an array must be of the same type.
+
+```rust
+let tuparr = [(1,2),(3,4)]
+```
+
+You can extract values from an array by specifying a zero-based index in square brackets, like `myarr[0]`.
+
+```rust
+let arr_content = myarr[0] //arr_content should be 1
+```
+
+You can get the number of elements in an array at runtime using the `length_array()` function.
+
+```rust
+let len = length_array(myarr) // len should be 10.0
+```
+
+**Currently, arrays are fixed-size and immutable. You cannot append values to the end of an array. Also, there is no boundary checking, so accessing elements outside the array's range will cause a crash.**
+
+
 #### Tuples
 
 Tuples group different types together. They are created with `()` and comma-separated values:
