@@ -8,9 +8,42 @@ linkTitle: "mimium"
 {{< figure src="/img/mimium_logo_slant.svg" class="center" >}}
 
 ```mimium
+//same as cascadeosc.mmm, but written with new multi-stage computation feature.
+// include("osc.mmm")
+#stage(main)
+let PI = 3.14159265359
+fn phasor_shift(freq,phase_shift){
+    (self + freq/samplerate + phase_shift)%1.0
+}
+
+fn sinwave(freq,phase){
+    phasor_shift(freq,phase)*2.0*PI |> sin
+}
+fn osc(freq){
+  sinwave(freq,0.0)
+}
+#stage(macro)
+fn cascade (n,gen:`(float)->float)->`(float)->float{
+    if (n>0.0){
+        let multiplier = 1.0-(1.0/(n*0.2)) |> lift_f
+        `{|rate| rate - ($gen)(rate/10) * rate * $multiplier  
+                    |> $cascade(n - 1.0 ,gen) }
+    }else{
+        `{|rate| ($gen)(rate)}
+    }
+}
+
+#stage(main)
+fn fbdelay(input,time,fb,mix){
+    input*mix + (1.0-mix) * delay(40001.0,(input+self*fb),time)
+}
 fn dsp(){
-    let phase = (now/samplerate)%1
-    let r = 440* phase * 6.2831853 |> sin
+    let time_r = sinwave(0.015,0) *1500
+    let time_l = sinwave(0.01,0) *1000
+    let f = 700
+    let r =  (f |> cascade!(6,`osc))*0.2
+    let l = fbdelay(r,20400+time_l,0.9,0.7)
+    let r = fbdelay(r,20000+time_r,0.9,0.7)
     (r,r)
 }
 ```
@@ -26,8 +59,7 @@ mimiumは、ラムダ計算を基本にした関数型プログラミング言�
 ```rust
 include("core.mmm")//load midi_to_hz
 include("osc.mmm") //load sinwave
-let probe1 = make_probe("gain")
-let probe2 = make_probe("out")
+#stage(main)
 let boundval = bind_midi_note_mono(0,69,127) //assign midi input
 fn osc(freq){
     sinwave(freq,0.0)
@@ -35,8 +67,8 @@ fn osc(freq){
 fn dsp(){
     let (note,vel) = boundval();
     let sig = note |> midi_to_hz |> osc
-    let gain = vel / 127 |> probe1 
-    let r = sig * gain |> probe2
+    let gain = vel / 127 |> Probe!("gain")
+    let r = sig * gain |> Probe!("out")
     (r,r)
 }
 ```
