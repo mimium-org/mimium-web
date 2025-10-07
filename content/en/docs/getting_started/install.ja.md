@@ -40,6 +40,11 @@ fn dsp(){
 }
 ```
 
+VSCodeでインストールしたバイナリには、Language Server Protocol(LSP)に対応したサーバー(`mimium-language-server`)が含まれます。インストール後にVSCodeを再起動すると、より見やすいシンタックスハイライトや、コンパイルエラーのエディタ上での報告が見れるようになります。
+
+*Language Serverは開発初期段階であり、時々クラッシュ後プロセスが応答しないままハングアップすることがあります。この場合、VSCodeを再起動するようにしてください。＊
+
+
 ## 手動でのインストール方法
 
 [GitHub Release](https://github.com/mimium-org/mimium-rs/releases)より最新版のバイナリをダウンロードできます。`mimium-cli`を適当な場所（macOS/Linuxであれば`~/.mimium`）にコピーしてください。

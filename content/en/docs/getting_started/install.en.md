@@ -39,6 +39,10 @@ fn dsp(){
 }
 ```
 
+The binary installed through VSCode includes a Language Server Protocol (LSP) compatible server (`mimium-language-server`). After installation, restart VSCode to enable improved syntax highlighting and in-editor reporting of compilation errors.
+
+*The Language Server is in early development and may occasionally hang after crashes. In such cases, please restart VSCode.*
+
 ## Manual Installation
 
 You can download the latest binary from the [GitHub Release](https://github.com/mimium-org/mimium-rs/releases) page. Copy `mimium-cli` to an appropriate location (for macOS/Linux, `~/.mimium` is recommended).

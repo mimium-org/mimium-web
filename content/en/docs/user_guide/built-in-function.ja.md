@@ -34,6 +34,11 @@ fn fbdelay(input:float,time:float,feedback:float){
 }
 ```
 
+## mem(input:float)->float
+
+memはディレイの1サンプルのみのバージョンです。
+
+
 ## 数学関数
 
 mimiumでは基本的な算術演算として以下の中置演算子が使えます。
@@ -96,9 +101,11 @@ mimiumでは真偽値を単に0より大きい数値をtrue、そうでなけれ
 
 RustのGUIライブラリ`egui`を利用した簡易的なオシロスコープ機能を提供します。
 
-`make_probe(name:string)->(float)->float`
+#### ``Probe(name:string)->`(float)->float``
 
-使用するプローブ名を引数として`make_probe`を実行すると、数値型を引数とする新しい関数が返り値として受け取れます。この関数は入力された値をGUIへ送り、同じ値を返却します。
+使用するプローブ名を引数として`Probe!("name")`を実行すると、数値型を引数とする新しい関数のコードが返り値として受け取れます。この関数は[マクロ](multistage.ja.md)として実装されているので、dspコンテキスト内で `Probe!("test")`のように呼び出すのが普通です。
+
+この関数は入力された値をGUIへ送り、同じ値を返却します。
 
 例えば次のようなコードがあったとして、
 
@@ -114,10 +121,23 @@ fn dsp()->float{
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
 fn dsp()->float{
   let sig　= sinwave(440,0)
-            |> myprobe
+           |> Probe!("test") //コメントアウトすれば消せる
+  sig
+}
+```
+
+#### ``Slider(name:string,init:float,min:float,max:float)->`float``
+
+GUIに簡易的な動的に編集できるパラメーターを追加します。この関数もマクロとして実行されるので、`Slider!`で呼び出すことが一般的です。
+
+```rust
+include("osc.mmm")
+fn dsp()->float{
+  let sig　=  Slider!("freq",440,20,20000)
+           |> sinwave 
+           |> Probe!("test") //コメントアウトすれば消せる
   sig
 }
 ```
@@ -131,27 +151,25 @@ fn dsp()->float{
 
 ### mimium-symphonia 
 
-`gen_sampler_mono(path:string)->(float)->float`
+``Sampler_mono!(path:string)->`(float)->float``
 
 RustのライブラリSymphoniaを利用してオーディオファイルを読み込みます。
 オーディオファイル（`.wav`、`.aiff`、`.flac`など）のファイルパスをパラメータにとります。パスは絶対パスでなければソースファイルの位置を基準とした相対パスとして解釈されます。
 
 
-`gen_make_sampler_mono(path)`を実行すると、配列のインデックスを入力に取り、その値を返す関数が返ってきます。
+`Sampler_mono!(path)`を実行すると、配列のインデックスを入力に取り、その値を返す関数が埋め込まれます。
 
 例えば以下のようなコードで、読み込んだwavファイルを1秒ごとでループすることができます。
 
 ```rust
-let mywav = gen_sampler_mono("./assets/bell.wav")
 fn phasor(){
     (self+1.0) % 48000.0
 }
 fn dsp(){
-    mywav(phasor())
+    phasor() |> Sampler_mono!("./assets/bell.wav")
 }
 
 ```
-
 
 > [!NOTE]
 > 

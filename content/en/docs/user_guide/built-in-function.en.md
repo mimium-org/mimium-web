@@ -34,6 +34,10 @@ fn fbdelay(input:float, time:float, feedback:float){
 }
 ```
 
+## mem(input:float)->float
+
+`mem` is a single-sample version of delay.
+
 ## Mathematical Functions
 
 In mimium, you can use following infix arithmetic operations.
@@ -96,28 +100,43 @@ These functions are implemented as system plugins and may not work in all enviro
 
 Provides a simple oscilloscope feature using the Rust GUI library `egui`.
 
-`make_probe(name:string) -> (float) -> float`
+#### ``Probe(name:string)->`(float)->float``
 
-Running `make_probe` with a probe name as an argument returns a new function that takes a numerical value as input, sends it to the GUI, and returns the same value.
+Running `Probe!("name")` with a probe name as an argument returns code for a new function that takes a numerical value as input. This function is implemented as a [macro](multistage.en.md), so it's typical to call it as `Probe!("test")` within a dsp context.
+
+This function sends the input value to the GUI and returns the same value.
 
 For example, consider the following code:
 
 ```rust
 include("osc.mmm")
-fn dsp() -> float{
-  let sig = sinwave(440, 0)
+fn dsp()->float{
+  let sig= sinwave(440,0)
   sig
 }
 ```
 
-You can use the pipe operator with `make_probe` for debugging:
+You can use it with the pipe operator as shown below. By commenting/uncommenting the line with `|> Probe!("test")`, you can control sending to the GUI, which is convenient for debugging:
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
-fn dsp() -> float{
-  let sig = sinwave(440, 0)
-            |> myprobe
+fn dsp()->float{
+  let sig = sinwave(440,0)
+           |> Probe!("test") // Can be removed by commenting out
+  sig
+}
+```
+
+#### ``Slider(name:string,init:float,min:float,max:float)->`float``
+
+Adds a simple dynamically editable parameter to the GUI. This function is also executed as a macro, so it's common to call it with `Slider!`.
+
+```rust
+include("osc.mmm")
+fn dsp()->float{
+  let sig = Slider!("freq",440,20,20000)
+           |> sinwave 
+           |> Probe!("test") // Can be removed by commenting out
   sig
 }
 ```
@@ -130,23 +149,22 @@ fn dsp() -> float{
 - **`bind_midi_note_mono(ch:float, note_init:float, vel_init:float) -> () -> (float, float)`**  
   Returns a function for receiving note data on the specified channel. When executed, this function returns the latest note input as a tuple `(note, velocity)`. (Note-off signals are treated as note-on signals with a velocity of 0.)
 
-### mimium-symphonia
+### mimium-symphonia 
 
-**`gen_sampler_mono(path:string) -> (float) -> float`**  
+``Sampler_mono!(path:string)->`(float)->float``
 
 Loads an audio file using the Rust library Symphonia. It accepts the file path of an audio file (e.g., `.wav`, `.aiff`, `.flac`). If the path is not absolute, it is interpreted as a relative path based on the source file's location.
 
-Running `gen_sampler_mono(path)` returns a function that takes an array index as input and returns the corresponding sample value.
+Running `Sampler_mono!(path)` embeds a function that takes an array index as input and returns the corresponding sample value.
 
 For example, the following code loops a loaded WAV file every second:
 
 ```rust
-let mywav = gen_sampler_mono("./assets/bell.wav")
 fn phasor(){
-    (self + 1.0) % 48000.0
+    (self+1.0) % 48000.0
 }
 fn dsp(){
-    mywav(phasor())
+    phasor() |> Sampler_mono!("./assets/bell.wav")
 }
 ```
 

@@ -5,6 +5,11 @@ linkTitle: "mimium"
 
 # mimium
 
+
+> [!INFO] 🎉 **mimium v3 has been released!** 
+> New features include record type, multi-stage computation(macro), live coding capabilities.
+> Check out the [v3 release notes](docs/releasenotes/v3) for details.
+
 {{< figure src="/img/mimium_logo_slant.svg" class="center" >}}
 
 **mimium** (*MInimal-Musical-medIUM*) is a programming language specialized for describing and generating music.

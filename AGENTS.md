@@ -23,3 +23,7 @@ The articles are written in English primarily, in Japanese secondary.
 
 The author is non-native English speaker. If the english expression is not ok, don't hasitate proofreading.
 
+You can use callout expression as extended blockquote notation, not a hugo shortcode, like this 
+
+> [!INFO] Title
+> some information inserted here.
