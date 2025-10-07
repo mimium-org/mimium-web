@@ -37,8 +37,9 @@ Let’s observe the waveform being sent to the audio driver. Add the following t
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
+
 fn dsp(){
+  let myprobe = Probe!("test")
   myprobe(sinwave(440.0,0.0))
 }
 ```
@@ -47,18 +48,18 @@ When you run this code, a new oscilloscope window will open during execution.
 
 ![](/img/vscode2.jpeg)
 
-The line `let myprobe = make_probe("test")` creates a variable `myprobe` by running the `make_probe` function.
+The line `let myprobe = Probe!("test")` creates a variable `myprobe` by running the `Probe!` macro (more precisely, a macro).
 
-`make_probe` returns a new function that sends input values to the GUI and returns those values. 
+`Probe!` returns a new function that sends input values to the GUI and returns those values. 
 
 mimium supports the **pipe operator** `|>` to apply functions in a readable way. The following code is equivalent:
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
+
 fn dsp(){
     sinwave(440.0,0.0)
-        |> myprobe
+        |> Probe!("test")
 }
 ```
 
@@ -68,12 +69,10 @@ The previous `dsp` function returned a single value. To output stereo signals, r
 
 ```rust
 include("osc.mmm")
-let p_left = make_probe("left")
-let p_right = make_probe("right")
 
 fn dsp(){
-    let left = sinwave(440.0,0.0) |> p_left
-    let right = sinwave(300.0,0.0) |> p_right
+    let left = sinwave(440.0,0.0) |> Probe!("left")
+    let right = sinwave(300.0,0.0) |> Probe!("right")
     (left,right)
 }
 ```
@@ -92,11 +91,11 @@ You can also modify this frequency with calculations:
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
+
 fn dsp(){
     let freq = 440 * (sinwave(1.0,0.0)+2.0)
     sinwave(freq,0.0)
-      |> myprobe
+      |> Probe!("test")
 }
 ```
 
@@ -110,11 +109,11 @@ To reduce the volume by half, multiply the output by `0.5`. (Note: reducing the 
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
+
 fn dsp(){
     let freq = 440 * (sinwave(1.0,0.0)+2.0)
     sinwave(freq,0.0) * 0.5
-      |> myprobe
+      |> Probe!("test")
 }
 ```
 
@@ -122,12 +121,12 @@ You can also modulate the volume with a sine wave, creating a **tremolo** effect
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
+
 fn dsp(){
     let freq = 440 * (sinwave(1.0,0.0)+2.0)
     let gain = (sinwave(3,0.0)+1.0)/2.0
     sinwave(freq,0.0) * gain
-      |> myprobe
+      |> Probe!("test")
 }
 ```
 

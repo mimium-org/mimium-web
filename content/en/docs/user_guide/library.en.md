@@ -44,8 +44,13 @@ This section describes the mimium libraries.
 
 - `gen_noise(seed)->float`
 - `noise()->float`
+- ``unoise()->`float``
 
-`noise()` is same as `gen_noise(1.0)`. Noise with the same seed returns always same number sequence. If you need to use multiple noise source, use `gen_noise`.
+`noise()` is same as `gen_noise(1.0)`. Noise with the same seed returns always same number sequence.
+
+The `unoise` macro is a mechanism for automatically allocating noise seeds. Each time you execute `unoise!()`, different seeded noise sources like `gen_noise(1)`, `gen_noise(2)`, etc. are embedded. However, all noise sources will always output the same deterministic uncorrelated noise each time.
+
+If you need to use a noise source with a specific seed, use `gen_noise` directly.
 
 ## `osc.mmm`
 

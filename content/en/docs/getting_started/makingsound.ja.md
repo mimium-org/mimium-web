@@ -37,8 +37,9 @@ mimiumでは、`dsp`という名前の関数を定義することで、オーデ
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
+
 fn dsp(){
+  let myprobe = Probe!("test")
   myprobe(sinwave(440.0,0.0))
 }
 ```
@@ -47,18 +48,17 @@ fn dsp(){
 
 ![](/img/vscode2.jpeg)
 
-`let myprobe = make_probe("test")`という行は、`make_probe`という関数を実行した結果を、`myprobe`という名前を付けた`変数`としてあとで利用できるようにするものです。
+`let myprobe = Probe!("test")`という行は、`Probe`という関数（正確にはマクロ）を実行した結果を、`myprobe`という名前を付けた`変数`としてあとで利用できるようにするものです。
 
-`make_probe`を実行すると、GUIに値を転送する用の新しい関数が値として返ってきます。新しく作られた`myprobe`関数は入力された値をGUIに送り、元の値を返す関数です。
+`Probe`を実行すると、GUIに値を転送する用の新しい関数が値として返ってきます。新しく作られた`myprobe`関数は入力された値をGUIに送り、元の値を返す関数です。
 
 mimiumには関数適用`f(x)`を`x |> f`として書ける **パイプ演算子** があるので、次のような書き方も可能です。
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
 fn dsp(){
     sinwave(440.0,0.0)
-  　    |> myprobe
+  　    |> Probe!("test")
 }
 ```
 
@@ -68,12 +68,9 @@ fn dsp(){
 
 ```rust
 include("osc.mmm")
-let p_left = make_probe("left")
-let p_right = make_probe("right")
-
 fn dsp(){
-    let left = sinwave(440.0,0.0) |> p_left
-    let right = sinwave(300.0,0.0) |> p_right
+    let left = sinwave(440.0,0.0) |> Probe!("left")
+    let right = sinwave(300.0,0.0) |> Probe!("right")
     (left,right)
 }
 ```
@@ -92,11 +89,10 @@ fn dsp(){
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
 fn dsp(){
     let freq = 440 * (sinwave(1.0,0.0)+2.0)
     sinwave(freq,0.0)
-      |> myprobe
+      |> Probe!("test")
 }
 ```
 
@@ -114,11 +110,10 @@ fn dsp(){
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
 fn dsp(){
     let freq = 440 * (sinwave(1.0,0.0)+2.0)
     sinwave(freq,0.0) * 0.5
-      |> myprobe
+      |> Probe!("test")
 }
 ```
 
@@ -127,12 +122,11 @@ fn dsp(){
 
 ```rust
 include("osc.mmm")
-let myprobe = make_probe("test")
 fn dsp(){
     let freq = 440 * (sinwave(1.0,0.0)+2.0)
     let gain = (sinwave(3,0.0)+1.0)/2.0
     sinwave(freq,0.0) * gain
-      |> myprobe
+      |> Probe!("test")
 }
 ```
 

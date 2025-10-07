@@ -90,10 +90,11 @@ fn add(x,y){
 mimium supports the following primitive types: `float`, `string`, and `void`.
 
 - **`float`**: Represents numbers (internally as 64-bit floats). To work with integers, use functions like `round`, `ceil`, or `floor`.
-- **`string`**: Created with double quotes (e.g., `"hoge"`). Strings are currently limited to:
-  1. Debugging with `make_probe`
-  2. Loading audio files with `make_sampler`
-  3. Including other source files with `include`
+- **`string`**: Created with double quotes (e.g., `"hoge"`). String values are currently used primarily for:
+
+1. Debugging with `Probe!` macro
+2. Loading audio files with `Sampler_mono!` macro
+3. Including other source files with `include`
 - **`void`**: Indicates a function has no return value.
 
 ### Aggregate Types
@@ -154,6 +155,69 @@ let (one,two,three):(float,float,float) = mytup
 > [!NOTE]
 > In future versions, accessing tuple elements by index (e.g., `mytup.1`) will be implemented.
 
+#### Records
+
+mimium v3 introduces record types (similar to structs in other languages) with syntax inspired by Elm. Records allow you to group related data together with named fields, making code more readable and maintainable.
+
+**Basic Syntax:**
+
+```rust
+// Record literal with named fields
+let myadsr_param = { 
+   attack = 100.0,
+   decay = 200.0,
+   sustain = 0.6,
+   release = 2000.0,
+}
+
+// Type annotations are optional
+let myrecord = {
+  freq:float = 440.0,
+  amp = 0.5,
+}
+
+// Single-field records require trailing comma
+let singlerecord = {
+  value = 100,
+}
+```
+
+**Accessing Record Fields:**
+
+```rust
+// Dot operator for field access
+let attack_time = myadsr_param.attack
+
+// Pattern matching in let bindings
+let {attack, decay, sustain, release} = myadsr_param
+
+// With partial application using underscore
+let myattack = myadsr_param |> _.attack
+```
+
+**Record Update Syntax:**
+
+Creating modified versions of records is a common pattern in functional programming. mimium v3 introduces a clean syntax for updating records:
+
+```rust
+let myadsr = { attack = 0.0, decay = 10.0, sustain = 0.7, release = 10.0 }
+
+// Update specific fields while keeping others unchanged
+let newadsr = { myadsr <- attack = 4000.0, decay = 2000.0 }
+// newadsr is { attack = 4000.0, decay = 10.0, sustain = 0.7, release = 10.0 }
+
+// Original record remains unchanged (immutable semantics)
+// myadsr is still { attack = 0.0, decay = 10.0, sustain = 0.7, release = 10.0 }
+```
+
+The record update syntax is implemented as syntactic sugar and ensures functional programming semantics - creating new records rather than modifying existing ones.
+
+## Multi-Stage Computation (Macros)
+
+mimium v3 introduces **multi-stage computation** as a type-safe macro system. This allows you to generate code at compile-time for efficient audio processing.
+
+For details on multi-stage computation, see the [Multi-Stage Computation (Macros)](./multistage.en.md) page.
+
 ## Functions
 
 Functions encapsulate reusable procedures that take inputs and return outputs.
@@ -169,6 +233,67 @@ Functions are **first-class** in mimium, meaning they can be assigned to variabl
 ```rust
 let my_function:(float,float)->float = add
 ```
+
+### Parameter Pack
+
+mimium v3 introduces parameter pack functionality, allowing functions to accept tuples or records as arguments and automatically unpack them into individual parameters.
+
+**With Tuples:**
+
+```rust
+fn add(a:float, b:float)->float {
+  a + b
+}
+
+// Direct call with individual arguments
+add(100, 200)  // Returns 300
+
+// Automatic unpacking of tuples
+add((100, 200))  // Returns 300
+
+// Works seamlessly with pipe operators
+(100, 200) |> add  // Returns 300
+```
+
+**With Records:**
+
+```rust
+fn adsr(attack:float, decay:float, sustain:float, release:float)->float {
+  // ADSR envelope implementation...
+}
+
+// Call with a record - fields can be in any order
+let params = { attack = 100, decay = 200, sustain = 0.7, release = 1000 }
+adsr(params)
+
+// Or inline
+adsr({ decay = 200, attack = 100, release = 1000, sustain = 0.7 })
+```
+
+This feature is particularly useful for audio processing functions that often have many parameters.
+
+### Default Parameters
+
+Functions can specify default values for parameters:
+
+```rust
+fn foo(x = 100, y = 200) {
+  x + y + 1
+}
+
+fn bar(x = 100, y) {
+  x + y
+}
+
+fn dsp() {
+  // Use empty record {} to accept all defaults
+  foo({}) +           // Uses x=100, y=200, returns 301
+  bar({y = 300})      // Uses x=100, y=300, returns 400
+  // Total: 701
+}
+```
+
+Default values work with parameter pack syntax. You can use `{}` to accept all default values and specify only the parameters you want to override.
 
 ### Anonymous Functions (Lambdas)
 
@@ -191,7 +316,7 @@ In mimium, the pipe operator `|>` allows you to transform nested function calls 
 The pipe operator has lower precedence than any other operator. Line breaks are allowed before and after the pipe. When combined with partial application, it can clearly express data flow.
 
 > [!NOTE]  
-> *Currently, the pipe operator only works with functions that take a single parameter. Future updates will support unpacking tuples for functions with two or more parameters using features like parameter packs.*
+> With mimium v3's parameter pack functionality, the pipe operator can now be used with functions that accept tuples or records.
 
 ### Partial Application with Underscore (`_`)
 

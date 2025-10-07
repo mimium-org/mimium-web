@@ -14,7 +14,7 @@
     }
   },
   "dependencies": {
-    "@mimium/mimium-webaudio": "^1.0.8",
+    "@mimium/mimium-webaudio": "^2.0.0",
     "micromorph": "^0.4.5"
   },
   "description": "web site of mimium",

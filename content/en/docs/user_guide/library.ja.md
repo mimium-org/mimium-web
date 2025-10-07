@@ -43,8 +43,13 @@ bookHidden: false
 
 - `gen_noise(seed)->float`
 - `noise()->float`
+- ``unoise()->`float``
 
-`noise()`は`gen_noise(1.0)`と同じです。seedが同じnoiseは毎回同じ数列を返すので、複数のノイズソースを使用する場合は`gen_noise`を使用してノイズを複数生成してください。
+`noise()`は`gen_noise(1)`と同じです。seedが同じnoiseは毎回同じ数列を返します。
+
+`unoise`マクロは、ノイズのseedを自動的に割り振るための仕組みです。`unoise!()`で実行するたびに、`gen_noise(1)`、`gen_noise(2)`、、、という別のシードのノイズが埋め込まれます。しかし、毎回全てのノイズは決定的に同じ無相関のノイズを出力することになります。
+
+任意のシードでノイズソースを使用する場合は`gen_noise`を直接使用してください。
 
 ## `osc.mmm`
 
