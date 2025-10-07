@@ -8,6 +8,101 @@ bookHidden: false
 ---
 # Release Notes
 
+## v3.0.0 (See [Changes in V3](./v3.md))
+
+### Added feature
+
+- Added Live State Updating feature, which enables live coding on mimium. When you save the mimium file that you're running on, the compiler automatically renew instances without audio interruption.(#159)
+- Added a global stage decalaration syntax `#stage(main) / #stage(macro)`.(#154)
+- Now a destructive assignment in stage 0 evaluation is allowed. With this feature, standard library function `unoise` is newly implemented with this manner.(#162)
+- Added record update syntax `{rec_var <- field1 = 100, field2 = 200}`(#158)
+
+### Breaking changes
+
+- `gen_sampler_mono` was replaced with `Sampler_mono!("file_path")` macro.(#161)
+- `make_probe` function was replaced with `Probe("name")` macro.(#156)
+
+## v2.4.2
+
+- Fixed language server crashes
+
+## v2.4.1
+
+- Added a hygienic macro feature with multi stage computation paradigm(experimental).(#136)
+- Added record type and parameter-packing feature(experimental).(#128,#134,#130)
+- Added basic language server support(#151)
+- Added a simple slider ui(#147)
+
+- (For developers, the directory structure is significantly changes to organize many crates)
+
+## v2.3.1
+
+(2.3.0 is skipped due to the release workflow)
+
+### Added feature
+
+- Basic implementation for Array has done(#124)
+- `cargo-dist` is switched to the forked version by Astral(#125 by @yutannihilation)
+- Now minimal rust edition is required to be **2024**(due to the limitation by `coreaudio-sys` crate).
+
+### Others
+
+- Improved CI caching (#120 by @yutannihilation)
+- Experimenting development w/ LLM. Added `.clinerules` and `.cline/` for the basic bank for models. Added some documentation comment using this.(#119)
+
+## v2.2.7
+
+### Bugfix
+
+- Added option to control the initial return value of the function which uses `self` and changed the default behavior.(#118)
+- Fixed singe-line comment lexer consumes linebreak and causes parse error (#119)
+
+### Other
+
+- Added manually triggerable release workflow for Github Action CI
+
+## v2.2.6
+
+### Bugfix
+
+- Fixed an incorrect lookup order of local variables(#116)
+- Fixed type checker so that the block with curly brace creates local variable scope(#117)
+
+### Other
+
+- Now integration test is done in wasm build too, using node.js as filesystem host
+
+## v2.2.5
+
+### Bugfix
+
+This release fixes several degradations introduces in the web platform.
+
+- Fixed audio driver crash
+- Fixed file loader is not working on native platform
+
+## v2.2.4
+
+### New Features
+
+- Basic setting for WASM build is completed(#112). The actual entrypoint for webaudio is [mimium-webaudio](https://github.com/mimium-org/mimium-webaudio). The editor webcomponent is now working on [mimium-web-component](https://github.com/tomoyanonymous/mimium-web-component). Example of the mimium-webaudio usage is on there.
+
+### Bug fix
+
+- Fixed the type inference bug in the let declaration.(#114)
+
+## v2.2.3
+
+### Library update
+
+- added `delay.mmm` which contains ping-pong delay
+- added `reverb.mmm` which contains freeverb
+
+### Bug fix
+
+- Fixed incorrect format in parsing error.
+- Fixed incorrect implementation in `core.mmm`
+
 ## v2.2.2
 
 ### Bug fix

@@ -69,7 +69,7 @@ var mimium_web_component = (function(exports) {
     );
     updatebutton.setAttribute("disabled", "");
     button.addEventListener("click", async () => {
-      if (!g_context) {
+      if (!g_context || !g_node) {
         const textarea = document.querySelector("#src");
         const src = textarea.value;
         updatebutton.removeAttribute("disabled");
@@ -79,6 +79,7 @@ var mimium_web_component = (function(exports) {
     stopbutton.addEventListener("click", async () => {
       if (g_context) {
         g_context.close();
+        g_context = null;
         updatebutton.setAttribute("disabled", "");
       }
     });
