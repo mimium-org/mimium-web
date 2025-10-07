@@ -60,8 +60,6 @@ Additionally, mimium is designed to allow easy definition of native extensions w
 ```rust
 include("core.mmm") // load midi_to_hz
 include("osc.mmm")  // load sinwave
-let probe1 = make_probe("gain")
-let probe2 = make_probe("out")
 let boundval = bind_midi_note_mono(0, 69, 127) // assign MIDI input
 fn osc(freq){
     sinwave(freq, 0.0)
@@ -69,8 +67,8 @@ fn osc(freq){
 fn dsp(){
     let (note, vel) = boundval();
     let sig = note |> midi_to_hz |> osc
-    let gain = vel / 127 |> probe1 
-    let r = sig * gain |> probe2
+    let gain = vel / 127 |> Probe!("gain")
+    let r = sig * gain |> Probe!("out")
     (r, r)
 }
 ```
