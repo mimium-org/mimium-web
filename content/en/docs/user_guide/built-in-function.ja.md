@@ -147,7 +147,7 @@ fn dsp()->float{
 
 - `set_midi_port(name:string)->void` MIDIインプットに使用するデバイス名を指定します。この関数を使わなかったり、存在しないデバイス名を指定した場合、ランタイムはシステムのデフォルトMIDIデバイスを使用を試みます。
 
-- `bind_midi_note_mono(ch:float,note_init:float,vel_init:float)->()->(float,float)`　指定したチャンネルのノートデータを受け取るための関数です。この関数をグローバル環境で実行すると、引数を取らない新たな関数が返却されます。この関数は実行すると、指定したチャンネルのノート入力の最新の値を`(note,velocity)`のタプルの値として受け取れます。（ノートオフ信号はベロシティ0のノートオンとして扱われます。）
+- **``midi_note_mono(ch:float, note_init:float, vel_init:float) ->`{pitch:float,velocity:float}``**　指定したチャンネルのノートデータを埋め込むマクロ関数です。この関数をグローバル環境で実行すると、引数を取らない新たな関数が返却されます。この関数は実行すると、指定したチャンネルのノート入力の最新の値を`{pitch:float,velocity:float}`のレコードの値として受け取れます。（ノートオフ信号はベロシティ0のノートオンとして扱われます。）
 
 ### mimium-symphonia 
 

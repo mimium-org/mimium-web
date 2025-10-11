@@ -146,8 +146,8 @@ fn dsp()->float{
 - **`set_midi_port(name:string) -> void`**  
   Specifies the device name to use for MIDI input. If this function is not called or an invalid device name is specified, the runtime will attempt to use the system’s default MIDI device.
 
-- **`bind_midi_note_mono(ch:float, note_init:float, vel_init:float) -> () -> (float, float)`**  
-  Returns a function for receiving note data on the specified channel. When executed, this function returns the latest note input as a tuple `(note, velocity)`. (Note-off signals are treated as note-on signals with a velocity of 0.)
+- **``midi_note_mono(ch:float, note_init:float, vel_init:float) ->`{pitch:float,velocity:float}``**  
+  Embeds a record for receiving note data on the specified channel. When executed, this function returns the latest note input as a record `{pitch:float,velocity:float}`. (Note-off signals are treated as note-on signals with a velocity of 0.)
 
 ### mimium-symphonia 
 

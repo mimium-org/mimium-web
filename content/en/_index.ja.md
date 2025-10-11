@@ -61,19 +61,18 @@ mimiumは、ラムダ計算を基本にした関数型プログラミング言�
 また、Luaのようにホスト言語上でのネイティブ拡張を簡単に定義できるため、ゲームエンジンやアプリケーションの中に埋め込んで簡単に利用できることを目指しています。
 
 ```rust
-include("core.mmm")//load midi_to_hz
-include("osc.mmm") //load sinwave
-#stage(main)
-let boundval = bind_midi_note_mono(0,69,127) //assign midi input
+include("core.mmm") // load midi_to_hz
+include("osc.mmm")  // load sinwave
+
 fn osc(freq){
-    sinwave(freq,0.0)
+    sinwave(freq, 0.0)
 }
 fn dsp(){
-    let (note,vel) = boundval();
-    let sig = note |> midi_to_hz |> osc
-    let gain = vel / 127 |> Probe!("gain")
+    let note = midi_note_mono!(0, 69, 127) // assign MIDI input
+    let sig = note.pitch |> midi_to_hz |> osc
+    let gain = note.velocity / 127 |> Probe!("gain")
     let r = sig * gain |> Probe!("out")
-    (r,r)
+    (r, r)
 }
 ```
 
