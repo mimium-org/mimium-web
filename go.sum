@@ -1,7 +1,11 @@
 github.com/KKKZOZ/hugo-admonitions v0.4.3 h1:0WabpMZhre8wqEB3eA1+jpMDlo9FCrioeYhvfX27qPA=
 github.com/KKKZOZ/hugo-admonitions v0.4.3/go.mod h1:4PsJAsqo3mS3VzAtDLa8k0ds+CJQUWZhAo9kLi1NRlM=
+github.com/KKKZOZ/hugo-admonitions v0.12.0 h1:x74ZrNUCrySH5JHPO2qGx+b1Mz8r+F1rBlH9qM833io=
+github.com/KKKZOZ/hugo-admonitions v0.12.0/go.mod h1:4PsJAsqo3mS3VzAtDLa8k0ds+CJQUWZhAo9kLi1NRlM=
 github.com/alex-shpak/hugo-book v0.0.0-20241009212754-7c78a39c531a h1:GiRJQYc9Bt8H59/e0w/97i46Ql39CUIdDQjHikd9scA=
 github.com/alex-shpak/hugo-book v0.0.0-20241009212754-7c78a39c531a/go.mod h1:L4NMyzbn15fpLIpmmtDg9ZFFyTZzw87/lk7M2bMQ7ds=
+github.com/alex-shpak/hugo-book v0.0.0-20260108111751-81a841c92d62 h1:LQYO67RaSBiWnW3ZPyVPZCVTOFaNK/dc/ZRbh8Wu8Wo=
+github.com/alex-shpak/hugo-book v0.0.0-20260108111751-81a841c92d62/go.mod h1:L4NMyzbn15fpLIpmmtDg9ZFFyTZzw87/lk7M2bMQ7ds=
 github.com/hugomods/font-awesome v6.7.1+incompatible h1:eM2vtHyQJVMnD9tgdGFbEgEiPh3sqnmu3EP3CFTyPLY=
 github.com/hugomods/font-awesome v6.7.1+incompatible/go.mod h1:C2wW6xDvHkcMlJMVTPQ+Npt+rO0OGv13xT1iyll2z2Q=
 github.com/hugomods/icons v0.6.6 h1:gGlafcBDRP7sSID+tgLcWdog+s/QBj8DIfU+h9tZj1U=
@@ -10,5 +14,9 @@ github.com/hugomods/icons/vendors/font-awesome v0.6.12 h1:I8ckJFuxr8mD8bJ4NX9Nrm
 github.com/hugomods/icons/vendors/font-awesome v0.6.12/go.mod h1:6YBo/5GaNpAocKwnKNWcd9xkliiRJXmwz2mstY5lr9I=
 github.com/hugomods/icons/vendors/tabler v0.15.49 h1:5EwoFUwnsEdkWsoY2FzDb9dxPMk05nHQdSmDsQBSDTk=
 github.com/hugomods/icons/vendors/tabler v0.15.49/go.mod h1:ctllFzyRpadPv5FIoXYC5Yf6qbAW/oXiQO78OWWX9yI=
+github.com/hugomods/icons/vendors/tabler v0.15.54 h1:vzTlN1lEPsxQ6b1uo+bVR4+pnH5z3Njeew9egILsteE=
+github.com/hugomods/icons/vendors/tabler v0.15.54/go.mod h1:UrH2s7KtRkQ26oX6PNzxypRq1m6Ta1L+KBYXCLIe2RA=
+github.com/tabler/tabler-icons v3.37.1+incompatible h1:rj9HZiud/GHJQvIVMbXfTYAhq+R4hgTcp7dh1/Eczsg=
+github.com/tabler/tabler-icons v3.37.1+incompatible/go.mod h1:Ap75CRdhXxprnUnPlUCRLvJ2pIFNqwxIipj3GfD6XHE=
 github.com/tomoyanonymous/hugo-micromorph v1.0.0 h1:yLTPilYxKbRmVliX8jwBNUJzi53CIk50PSVqgF5fXfc=
 github.com/tomoyanonymous/hugo-micromorph v1.0.0/go.mod h1:KT3INsr1IVTcEazTHXOIybqnE1jB6JTJRAeXBY71FQ8=
