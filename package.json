@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "micromorph": "^0.4.5",
-    "mimium-web-component": "^3.0.3"
+    "mimium-web-component": "^3.0.4"
   },
   "description": "web site of mimium",
   "devDependencies": {
