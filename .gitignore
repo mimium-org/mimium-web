@@ -3,3 +3,5 @@ node_modules
 public
 resources/_gen
 .hugo_build.lock
+#copied from build script so ignore
+static/scripts/mimium-web-component

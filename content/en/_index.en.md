@@ -14,7 +14,7 @@ linkTitle: "mimium"
 
 **mimium** (*MInimal-Musical-medIUM*) is a programming language specialized for describing and generating music.
 
-```mimium
+```mimium{height="500px",label="cascadeosc.mmm"}
 #stage(main)
 let PI = 3.14159265359
 fn phasor_shift(freq,phase_shift){
@@ -30,7 +30,7 @@ fn osc(freq){
 fn cascade (n,gen){
     if (n>0.0){
         let multiplier = 1.0-(1.0/(n*0.2)) |> lift_f
-        `|rate| rate - ($gen)(rate/10) * rate * $multiplier  
+        `|rate| rate - ($gen)(rate/1.5) * rate * $multiplier  
                     |> $cascade(n - 1.0 ,gen)
     }else{
         `|rate| ($gen)(rate)
@@ -43,8 +43,8 @@ fn fbdelay(input,time,fb,mix){
 fn dsp(){
     let time_r = osc(0.015) *1500
     let time_l = osc(0.01) *1000
-    let f = 700
-    let r =  (f |> cascade!(6,`osc))*0.2
+    let f = 100
+    let r =  (f |> cascade!(10,`osc))*0.2
     let l = fbdelay(r,20400+time_l,0.9,0.7)
     let r = fbdelay(r,20000+time_r,0.9,0.7)
     (r,r)

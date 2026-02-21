@@ -14,8 +14,8 @@
     }
   },
   "dependencies": {
-    "@mimium/mimium-webaudio": "^2.0.0",
-    "micromorph": "^0.4.5"
+    "micromorph": "^0.4.5",
+    "mimium-web-component": "^3.0.3"
   },
   "description": "web site of mimium",
   "devDependencies": {
@@ -31,6 +31,7 @@
     "url": "git://github.com/tomoyanonymous/mimium-website.git"
   },
   "scripts": {
+    "build": "cp -r node_modules/mimium-web-component/ static/scripts/mimium-web-component",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "version": "0.0.0"
