@@ -1,0 +1,44 @@
+{
+  "name": "mimium-web-component",
+  "version": "3.0.3",
+  "description": "mimium editor web component",
+  "type": "module",
+  "main": "./dist/mimium-web-component.js",
+  "module": "./dist/mimium-web-component.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tomoyanonymous/mimium-web-component.git"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/mimium-web-component.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "author": "Tomoya Matsuura",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "monaco-editor": "^0.55.1"
+  },
+  "devDependencies": {
+    "@mimium/mimium-webaudio": "^2.0.0",
+    "@playwright/test": "^1.58.2",
+    "@types/audioworklet": "^0.0.65",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-checker": "^0.8.0",
+    "vite-plugin-dts": "^4.4.0",
+    "vite-plugin-top-level-await": "^1.4.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
