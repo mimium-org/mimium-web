@@ -4,7 +4,8 @@
   "description": "web site of mimium",
   "main": "index.js",
   "dependencies": {
-    "@mimium/mimium-webaudio": "^1.0.8"
+    "mimium-web-component": "^3.0.3",
+    "build": "cp -r node_modules/mimium-web-component/ static/scripts/mimium-web-component"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.4",
