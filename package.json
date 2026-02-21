@@ -5,7 +5,6 @@
   },
   "comments": {
     "dependencies": {
-      "build": "project",
       "micromorph": "github.com/tomoyanonymous/hugo-micromorph",
       "mimium-web-component": "project"
     },

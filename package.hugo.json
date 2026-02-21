@@ -11,6 +11,7 @@
     "postcss-cli": "^7.1.0"
   },
   "scripts": {
+    "build": "mkdir -p static/scripts/mimium-web-component && cp -r node_modules/mimium-web-component/ static/scripts/mimium-web-component",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
