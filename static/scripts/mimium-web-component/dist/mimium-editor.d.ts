@@ -1,4 +1,5 @@
 export declare class MimiumEditorElement extends HTMLElement {
+    private mimiumWebAudioModule;
     private editorContainer;
     private monacoEditor;
     private audioContext;
@@ -9,9 +10,12 @@ export declare class MimiumEditorElement extends HTMLElement {
     private updateButton;
     private statusDot;
     private statusText;
+    private errorText;
     private labelEl;
     private _initialCode;
     private _isPlaying;
+    private runtimeErrorListener;
+    private static readonly COMPILE_TIMEOUT_MS;
     static get observedAttributes(): string[];
     constructor();
     connectedCallback(): void;
@@ -24,6 +28,14 @@ export declare class MimiumEditorElement extends HTMLElement {
     private render;
     private setupEditor;
     private setStatus;
+    private setError;
+    private withTimeout;
+    private formatError;
+    private getSetupOptions;
+    private loadMimiumWebAudioModule;
+    private preloadLibCacheIfAvailable;
+    private detachRuntimeErrorListener;
+    private createCompiledNode;
     /**
      * Play the current code
      */
@@ -35,7 +47,7 @@ export declare class MimiumEditorElement extends HTMLElement {
     /**
      * Send updated code to running audio processor
      */
-    updateCode(): void;
+    updateCode(): Promise<void>;
     /**
      * Get the current source code from the editor
      */

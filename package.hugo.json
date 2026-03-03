@@ -4,7 +4,7 @@
   "description": "web site of mimium",
   "main": "index.js",
   "dependencies": {
-    "mimium-web-component": "^3.0.3"
+    "mimium-web-component": "4.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.4",

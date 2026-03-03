@@ -1,4 +1,15 @@
 {{ partialCached "micromorph.html" . }}
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		var searchInput = document.getElementById("book-search-input");
+		if (!searchInput) return;
+
+		var hotkeys = searchInput.getAttribute("data-hotkeys") || "";
+		if (!hotkeys) return;
+
+		searchInput.setAttribute("data-hotkeys", hotkeys.replace(/[s/]/gi, ""));
+	});
+</script>
 {{ if .Store.Get "hasMimium" }}
 <script type="module" src="/scripts/mimium-web-component/dist/mimium-web-component.js"></script>
 {{end}}
