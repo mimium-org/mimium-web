@@ -90,11 +90,12 @@ fn add(x,y){
 mimium supports the following primitive types: `float`, `string`, and `void`.
 
 - **`float`**: Represents numbers (internally as 64-bit floats). To work with integers, use functions like `round`, `ceil`, or `floor`.
-- **`string`**: Created with double quotes (e.g., `"hoge"`). String values are currently used primarily for:
+- **`string`**: Created with double quotes (e.g., `"hoge"`). String values are primarily used for:
 
 1. Debugging with `Probe!` macro
 2. Loading audio files with `Sampler_mono!` macro
-3. Including other source files with `include`
+In more advanced use cases, strings can be parsed inside mimium to embed other DSLs. See the `mini` function used in `examples/uzulang.mmm` (a subset of mini notation).
+
 - **`void`**: Indicates a function has no return value.
 
 ### Aggregate Types
@@ -123,10 +124,10 @@ You can extract values from an array by specifying a zero-based index in square 
 let arr_content = myarr[0] //arr_content should be 1
 ```
 
-You can get the number of elements in an array at runtime using the `length_array()` function.
+You can get the number of elements in an array at runtime using the `len()` function.
 
 ```rust
-let len = length_array(myarr) // len should be 10.0
+let len = len(myarr) // len should be 10.0
 ```
 
 **Currently, arrays are fixed-size and immutable. You cannot append values to the end of an array. Also, there is no boundary checking, so accessing elements outside the array's range will cause a crash.**
@@ -152,8 +153,15 @@ To annotate tuple types explicitly:
 let (one,two,three):(float,float,float) = mytup
 ```
 
-> [!NOTE]
-> In future versions, accessing tuple elements by index (e.g., `mytup.1`) will be implemented.
+This is equivalent to dot access using numeric indices:
+
+```rust
+let one = mytup.0
+let two = mytup.1
+let three = mytup.2
+```
+
+While basic arithmetic operators are usually limited to numeric values, tuples that contain only numeric elements can also use standard arithmetic operators element-wise.
 
 #### Records
 
@@ -211,6 +219,74 @@ let newadsr = { myadsr <- attack = 4000.0, decay = 2000.0 }
 ```
 
 The record update syntax is implemented as syntactic sugar and ensures functional programming semantics - creating new records rather than modifying existing ones.
+
+#### Variant Types
+
+Variant types (tagged unions/sum types, similar to Rust enums) represent a value that can be one of several alternatives.
+
+You can destructure variants with `match` expressions (which can also be used with integers and tuples).
+
+```rust
+type MyEnum = One | Two | Three
+
+fn test(e: MyEnum) {
+  match e {
+    One => 1,
+    Two => 2,
+    Three => 3
+  }
+}
+
+let x = test(One)  // 1
+```
+
+Each variant case can also carry a payload:
+
+```rust
+type MyEnum = One(float)
+            | Two((float, float))
+            | Three((float, float, float))
+
+fn test(e: MyEnum) {
+  match e {
+    One(v) => v * 1,
+    Two((x, y)) => x * 2 + y * 3,
+    Three((x, y, z)) => x + y + z
+  }
+}
+
+let x = test(One(3))           // 3
+let y = test(Two((4, 5)))      // 23
+let z = test(Three((6, 7, 8))) // 21
+```
+
+##### Recursive Variants
+
+Recursive variants are supported, but require explicit declaration with `type rec`.
+
+```rust
+type rec List = Nil | Cons(float, List)
+
+fn sum(list: List) -> float {
+    match list {
+        Nil => 0.0,
+        Cons(head, tail) => head + sum(tail)
+    }
+}
+
+fn dsp() -> float {
+    let mylist = Cons(1.0, Cons(2.0, Cons(3.0, Nil)))
+    sum(mylist)
+}
+```
+
+### Type Aliases
+
+Tuple and record annotations can become long, so you can create aliases with:
+
+```rust
+type alias FilterCoeffs = (float,float,float,float,float)
+```
 
 ## Multi-Stage Computation (Macros)
 
@@ -318,43 +394,36 @@ The pipe operator has lower precedence than any other operator. Line breaks are 
 > [!NOTE]  
 > With mimium v3's parameter pack functionality, the pipe operator can now be used with functions that accept tuples or records.
 
-### Partial Application with Underscore (`_`)
+### Partial Application with Underscore (`_`) and Macro Pipe (`||>`) Operator
 
-You can create a new function by using an underscore (`_`) in place of an argument during function application. For example, to create a new function `addone` that fixes one argument of the `add` function to 1:
+The macro pipe (`||>`) operator looks similar to the normal pipe, but is resolved at compile time. It is typically used together with compile-time partial application via underscore `_`.
 
-```rust
-let addone = add(_,1)
-```
-
-This is implemented as syntactic sugar, equivalent to the following:
+For example, assume a function `fn lowpass(input,freq,q)`. If you try to connect it with a normal pipe, you might write:
 
 ```rust
-let addone = |lambda_a1| add(lambda_a1,1)
-```
-
-When combined with the pipe operator, it can express data flow like this:
-
-```rust
-fn foo(x, y, z) {
-    100.0 * x + 10.0 * y + z
+use osc::sinwave
+fn lowpass(input,freq,q){
+  ...
 }
-let d2 = _ / _
-let f = foo(1.0, _, 3.0)
+
 fn dsp(){
-    let x = 3.0 |>
-        1.0 + _ |>
-        d2(_, 2.0) |>
-        f
-    let y = 3.0
-        |> 1.0 + _
-        |> |arg| d2(arg, 2.0)
-        |> f
-
-    (x, y)
+  sinwave(440,0)
+  |> |x|lowpass(x,2000,2)
 }
 ```
 
-Line breaks are allowed immediately before and after the pipe operator.
+This looks fine at first glance, but the filter state is reset every sample. `|x|lowpass(x,2000,2)` means creating a newly partially-applied function every sample, so internal filter state is not preserved.
+
+Instead, combine macro pipe with underscore:
+
+```rust
+fn dsp(){
+  sinwave(440,0)
+  ||> lowpass(_,2000,2)
+}
+```
+
+`a ||> b` is shorthand for compile-time piping. Function application with underscore like `hoge(a,_,b)` is shorthand for creating a lambda that receives one value and places it in the underscore position. So `a ||> hoge(x,_,y)` resolves to `hoge(x,a,y)` after compilation.
 
 ### Loops with Recursion
 
@@ -427,15 +496,38 @@ fn fact(input:float){
 }
 ```
 
-## include
+## Modules
 
-You can use the `include("path/to/file.mmm")` syntax to load other files within the current file.
+Modules are used to split and encapsulate functionality.
 
-If the file path is an absolute path, that path is used. If it’s a relative path, mimium first searches the standard library (`~/.mimium/lib`), and if not found, it searches relative to the current file's location.
+As in Rust, functions and modules marked with `pub` are exported outside their module.
 
-Currently, there is no separation of namespaces for included files; the `include` statement simply replaces itself with the content of the included file. Be cautious of infinite loops when including files that depend on each other.
+```rust
+mod outer {
+  mod inner {
+    pub fn secret() {
+      42.0
+    }
+  }
+  pub fn exposed() {
+    inner::secret()
+  }
+}
+fn dsp() {
+  outer::exposed()
+}
+```
+
+With `use` syntax, mimium first searches relative to the current file. If not found, it searches `~/.mimium/lib`. Using asterisk (`*`) imports all public symbols from the module.
+
+```rust
+use osc::sinwave
+fn dsp(){
+  sinwave(440,0)
+}
+```
 
 
 ## BNF Grammar Definitions and Operator Precedence
 
-TBD
+See https://github.com/mimium-org/mimium-rs/blob/dev/crates/lib/mimium-lang/src/compiler/parser/ebnf.md

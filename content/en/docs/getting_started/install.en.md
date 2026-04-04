@@ -32,10 +32,11 @@ The easiest and recommended way to install mimium is by using the [Visual Studio
 [^macOS]: The VSCode extension will automatically try to install a binary for Apple Silicon on macOS. If you are using an Intel-based Mac, you will need to install it manually.
 
 ```rust
-// hello.mmm
+//hello.mmm
+use osc::*
 fn dsp(){
-  let output = sin(now*440*2*3.141595/samplerate)
-  (output,output)
+  let o = sinwave(440,0)
+  (o,o)
 }
 ```
 

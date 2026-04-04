@@ -60,20 +60,10 @@ fn dsp() {
 Changes during execution:
 ```rust
 fn dsp() {
-  let freq = 880.0  // Just edit and save - no restart required
+  let freq = 880.0  // Just edit and overwrite-save
   sin(phasor(freq) * 3.14159 * 2.0)
 }
 ```
-
-### More Complex Changes
-
-The following changes are also possible without interrupting the sound:
-
-- Adding new oscillators
-- Changing filter parameters
-- Modifying delay times
-- Restructuring the audio graph
-- Adding processing with additional internal states like modulation
 
 ### Structural Changes with Macros
 

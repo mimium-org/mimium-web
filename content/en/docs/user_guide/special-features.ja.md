@@ -43,7 +43,7 @@ fn dsp()->(float,float){
 例えば次のコードではオシレーターの周波数を変更して、再帰的に自分自身を1秒後に呼び出すような関数`updater`を定義しています。このパターンは**Temporal Recursion**と呼ばれるもので、[**Extempore**](https://extemporelang.github.io/)のような言語で使われているものです。
 
 ```rust
-include("osc.mmm")
+use osc::*
 let freq = 100
 
 fn updater(){
@@ -76,8 +76,8 @@ fn metro(interval,sig:()->float)->()->float{
 `metro`関数を使うと、同じように一定間隔で周波数を更新する先程のコードは次のように書くことができます。
 
 ```rust
-include("osc.mmm")
-include("reactive.mmm")
+use osc::*
+use reactive::*
 fn counter(){
     (self+100)%1000
 }

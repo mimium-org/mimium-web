@@ -17,9 +17,9 @@ bookHidden: false
 2. そのファイルに以下のスニペットを貼り付けて、ファイルを保存します。
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp(){
-  sinwave(440.0,0.0)
+  sinwave(440,0)
 }
 ```
 
@@ -36,11 +36,9 @@ mimiumでは、`dsp`という名前の関数を定義することで、オーデ
 どのような波形がオーディオドライバに送られているか観察してみましょう。先程のコードに次のようなものを追記します。
 
 ```rust
-include("osc.mmm")
-
+use osc::*
 fn dsp(){
-  let myprobe = Probe!("test")
-  myprobe(sinwave(440.0,0.0))
+  Probe!("test")(sinwave(440,0))
 }
 ```
 
@@ -48,16 +46,14 @@ fn dsp(){
 
 ![](/img/vscode2.jpeg)
 
-`let myprobe = Probe!("test")`という行は、`Probe`という関数（正確にはマクロ）を実行した結果を、`myprobe`という名前を付けた`変数`としてあとで利用できるようにするものです。
-
-`Probe`を実行すると、GUIに値を転送する用の新しい関数が値として返ってきます。新しく作られた`myprobe`関数は入力された値をGUIに送り、元の値を返す関数です。
+`Probe`関数を実行すると、GUIに値を転送する用の新しい関数が値として返ってきます。新しく作られた関数は入力された値をGUIに送り、元の値を返す関数です。
 
 mimiumには関数適用`f(x)`を`x |> f`として書ける **パイプ演算子** があるので、次のような書き方も可能です。
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp(){
-    sinwave(440.0,0.0)
+    sinwave(440,0)
   　    |> Probe!("test")
 }
 ```
@@ -67,15 +63,17 @@ fn dsp(){
 先程の`dsp`関数は、数値を返却していました。ここで、返却する値を複数の値の **組（タプル）** にすると、ステレオ信号を出力できます。ためしに、右チャンネルに440という数値から300に変えたものを送ってみましょう。
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp(){
-    let left = sinwave(440.0,0.0) |> Probe!("left")
-    let right = sinwave(300.0,0.0) |> Probe!("right")
-    (left,right)
+    let left = sinwave(440,0)
+    let right = sinwave(300,0)
+    (left,right) |> Probe!("out")
 }
 ```
 
 `(left,right)`という部分で、値を組として返しています。
+
+Probe関数はジェネリックな関数（入力された型に応じて振る舞いを変える関数）のため、タプルの値を入力すると2種類のグラフを画面に表示します。
 
 ![](/img/vscode3.jpeg)
 
@@ -88,15 +86,26 @@ fn dsp(){
 この周波数も、また計算によって変更することができます。
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp(){
-    let freq = 440 * (sinwave(1.0,0.0)+2.0)
-    sinwave(freq,0.0)
+    let freq = 440 * (sinwave(1,0)+2)
+    sinwave(freq,0)
       |> Probe!("test")
 }
 ```
 
 このコードでは、周波数440Hzに対して、1秒周期で変動するサイン波で変動させています（モジュレーション）。`sinwave(1.0,0.0)`は-1.0から1.0までの範囲で動くので、+2.0することで範囲を1~3に変更しています。結果として、freqは440Hzから3倍の1320Hzまでを1秒周期で往復します。
+
+ちなみに、アンダースコアとマクロパイプ`||>`演算子を使うと、freqを変数に束縛しないまま次のように書くこともできます。
+
+```rust
+use osc::*
+fn dsp(){
+    440 * (sinwave(1,0)+2)
+    ||> sinwave(_,0)
+    |> Probe!("test")
+}
+```
 
 ## 音の大きさ
 
@@ -106,14 +115,12 @@ fn dsp(){
 
 ...そう、単に出力される計算結果に0.5を掛けてあげればよいのです。（ただし、波形の大きさを0.5倍にしたからといって、必ずしも聴こえの音量が半分になるわけではありません。）
 
-
-
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp(){
-    let freq = 440 * (sinwave(1.0,0.0)+2.0)
-    sinwave(freq,0.0) * 0.5
-      |> Probe!("test")
+    440 * (sinwave(1.0,0.0)+2.0)
+    ||> sinwave(_,0.0) * 0.5
+    |> Probe!("test")
 }
 ```
 
@@ -121,12 +128,12 @@ fn dsp(){
 もちろん、この音量自体もサイン波のような信号で変調することができます。これは、**トレモロ** と呼ばれるエフェクトと同じ効果です。
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp(){
     let freq = 440 * (sinwave(1.0,0.0)+2.0)
     let gain = (sinwave(3,0.0)+1.0)/2.0
     sinwave(freq,0.0) * gain
-      |> Probe!("test")
+    |> Probe!("test")
 }
 ```
 

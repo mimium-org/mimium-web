@@ -33,10 +33,11 @@ mimiumのインストールは、無料のテキストエディタ/IDEである[
 
 
 ```rust
-// hello.mmm
+//hello.mmm
+use osc::*
 fn dsp(){
-  let output = sin(now*440*2*3.141595/samplerate)
-  (output,output)
+  let o = sinwave(440,0)
+  (o,o)
 }
 ```
 
