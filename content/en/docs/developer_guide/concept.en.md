@@ -14,7 +14,7 @@ mimium is based on a computation system called λ<sub>mmm</sub> (lambda-triple-m
 
 There are various evaluation strategies in lambda calculus. Among them, λ<sub>mmm</sub> is based on **call by value**, the simplest evaluation strategy. Intuitively, call-by-value evaluation means that all arguments are copied when a function is called, creating new values.
 
-Additionally, the mimium compiler performs signal processing by defining its own VM (virtual machine) and instruction set to execute λ<sub>mmm</sub> at practical speeds. While this approach performs worse than Faust and many other prior music programming environments in terms of execution speed[^llvm], it covers most practical real-time use cases. Furthermore, since almost no optimizations have been applied yet, there is significant potential for improvement in the future. (JIT compilation via WebAssembly is planned.)
+Additionally, the mimium compiler performs signal processing by defining its own VM (virtual machine) and instruction set to execute λ<sub>mmm</sub> at practical speeds. While this approach performs worse than Faust and many other prior music programming environments in terms of execution speed[^llvm], it covers most practical real-time use cases. Furthermore, since almost no optimizations have been applied yet, there is significant potential for improvement in the future.
 
 ## λ<sub>mmm</sub>
 

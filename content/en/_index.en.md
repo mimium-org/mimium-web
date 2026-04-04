@@ -58,7 +58,6 @@ mimium is a functional programming language based on lambda calculus. By adoptin
 Additionally, mimium is designed to allow easy definition of native extensions within a host language, similar to Lua. This makes it easy to embed in game engines and applications.
 
 ```rust
-
 use core::midi_to_hz
 use osc::sinwave
 fn osc(freq){

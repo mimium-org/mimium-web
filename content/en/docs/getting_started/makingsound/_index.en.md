@@ -25,7 +25,7 @@ fn dsp(){
 
 Click the play button in the upper right corner of the VSCode file tab to execute the file and hear a 440Hz sine wave (pure tone). Press Enter to stop playback.
 
-![](/img/vscode1.jpeg)
+![](vscode1.png)
 
 ## What is Happening Here?
 
@@ -45,7 +45,7 @@ fn dsp(){
 
 When you run this code, a new oscilloscope window will open during execution.
 
-![](/img/vscode2.jpeg)
+![](vscode2.png)
 
 Running `Probe!` returns a new function for sending values to the GUI. The generated function sends the input value to the GUI and returns the same value.
 
@@ -77,7 +77,7 @@ The part `(left,right)` returns the values as a tuple.
 
 Because `Probe` is generic, if you pass a tuple it will display multiple graphs in the GUI.
 
-![](/img/vscode3.jpeg)
+![](vscode3.png)
 
 If you are using headphones, you should hear a lower sound from the right channel compared to the left.
 
@@ -133,7 +133,7 @@ use osc::*
 
 fn dsp(){
   let freq = 440 * (sinwave(1.0,0.0)+2.0)
-  let gain = (sinwave(3,0.0)+1.0)/2.0
+  let gain = (sinwave(10,0.0)+1.0)/2.0
   sinwave(freq,0.0) * gain
     |> Probe!("test")
 }
@@ -141,7 +141,7 @@ fn dsp(){
 
 You should see the waveform change according to the volume curve.
 
-![](/img/vscode4.png)
+![](vscode4.png)
 
 As you increase the tremolo frequency from 3Hz to around 20Hz, the volume changes will sound like a low pitch. This is because 20Hz is the lowest frequency humans perceive as sound.
 

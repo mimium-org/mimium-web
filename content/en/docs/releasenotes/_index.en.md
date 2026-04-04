@@ -8,6 +8,82 @@ bookHidden: false
 ---
 # Release Notes
 
+## v4.0.0(See [Changes in V4](v4))
+
+### Breaking changes
+
+- `Slider!` is replaced to `Control!`. It is generic function. If you give record and tuple type value to initial value, multiple sliders appear. Minimum/Maximum values are automatically inferred.
+- `Probe!` is now generic function too.
+- `length_array` has been replaced to `len`.
+- `Sampler_mono now returns`` `{player:(float)->float,length:float}``
+
+### New features / improvements
+
+- Introduced **Module Semantics** and rewrote standard libraries to use it (#180). `include` is still available but not recommended to use.
+- Introduced WASM backend and dynamic plugin loading (#185). `--backend=vm` option switches back to the native vm backend.
+- Introduced generics (#188).
+- Introduced basic standard operations between tuples and auto expansion (#187).
+- Introduced variant types and type aliases (#183, #184).
+- Added OSC control support for GUI sliders (#189).
+- Added Signature Help provider and Completion provider to the Language Server (#190).
+- Added a pattern library with a mini-notation subset interpreter based on parser combinators.
+- Improved WASM backend hot swap so that global context evaluation can run without blocking audio.
+- Improved macro execution performance by running macros on VM.
+
+### Bug fix
+
+- Fixed file change event watching during live coding on Windows.
+- Fixed glitch noise when delay time is modulated.
+
+## v3.2.0
+
+3.2.0 contains many new language features.
+
+### Added Features
+
+- **Abstract Data Type** with variant and type alias declaration syntax is introduced. `match` expression to decompose variants with pattern matching is also introduced. Recursive data structure like List and Tree is also supported.(#183, #184)
+- **Module Semantics** is introduced. This feature is very based on it of Rust. Users can export/import namespace of functions and types.(#180)
+
+Those change also contains some restructuring in VM deisgn and implementations, specifically for garbage collection.
+
+### Improved Features
+
+- Semantic highlighting in the language server is now fully functional by the refactoring of parser component. Code formatting is also supported in language server. Formatter can treat code without removing code trivias such as comments(though it is unstable in some situations)(#179,#181)
+
+
+## v3.1.2
+
+### Fixed bug
+
+- Fixed that copy patches are not applied correctly(#177).
+
+## v3.1.1
+
+### Fixed bug
+
+- Fixed crash in live coding when new function is added or some functions are deleted caused by that the wrong index to dsp function is referred (#176 by @karnpapon)
+- Improved system plugin cross thread safety and live state update stability (#173 #175)
+
+
+## v3.1.0
+
+### Fixed bug
+
+
+- Fixed wrong operator precedence and associativity for product operator (#172 by @karnpapon)
+- Fixed that Then expression does not generate correct statesize in mirgen and causes crash(#171)
+
+### Added feature
+
+- Added primitive array operation like `split_tail` and `lift_arrayf` for future library implementation(experimental, #168, #169)
+
+
+## v3.0.1
+
+### Fixed bug
+
+- Fixed crush when 0-input deivce is used (#167 by @karnpapon)
+
 ## v3.0.0 (See [Changes in V3](./v3.md))
 
 ### Added feature

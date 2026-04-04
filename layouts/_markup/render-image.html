@@ -1,0 +1,14 @@
+{{- $src := .Destination -}}
+{{- $resolved := $src -}}
+
+{{- if and .Page (not (or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "data:") (hasPrefix $src "mailto:") (hasPrefix $src "#") (hasPrefix $src "/"))) -}}
+  {{- $img := .Page.Resources.GetMatch $src -}}
+  {{- if not $img -}}
+    {{- $img = .Page.Resources.GetMatch (strings.TrimPrefix "./" $src) -}}
+  {{- end -}}
+  {{- if $img -}}
+    {{- $resolved = $img.RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+<img src="{{ $resolved | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" />
