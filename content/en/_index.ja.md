@@ -9,6 +9,7 @@ linkTitle: "mimium"
 > [!INFO]🎉 **mimium v4がリリースされました!** 
 > Abstract Data Type、ジェネリクス、モジュールシステム、WASMバックエンドなど多数の新機能が追加されています。
 > 詳細は[v4リリースノート](docs/releasenotes/v4)をご覧ください。
+> また、[オンラインエディタ](https://mimium-org.github.io/mimium-web-editor/)もお試しください。
 
 
 

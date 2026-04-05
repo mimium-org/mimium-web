@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "micromorph": "^0.4.5",
-    "mimium-web-component": "4.0.4"
+    "mimium-web-component": "4.0.5"
   },
   "description": "web site of mimium",
   "devDependencies": {
@@ -31,7 +31,8 @@
     "url": "git://github.com/tomoyanonymous/mimium-website.git"
   },
   "scripts": {
-    "build": "mkdir -p static/scripts/mimium-web-component && cp -r node_modules/mimium-web-component/ static/scripts/mimium-web-component",
+    "copy:mimium-web-component": "sh ./scripts/sync-mimium-web-component.sh",
+    "build": "npm run copy:mimium-web-component",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "version": "0.0.0"

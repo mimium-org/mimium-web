@@ -9,6 +9,7 @@ linkTitle: "mimium"
 > [!INFO] 🎉 **mimium v4 has been released!** 
 > New features include abstract data types, generics, a module system, and a WASM backend.
 > Check out the [v4 release notes](docs/releasenotes/v4) for details.
+> Also, You can try an [Online Editor](https://mimium-org.github.io/mimium-web-editor/).
 
 {{< figure src="/img/mimium_logo_slant.svg" class="center" >}}
 
