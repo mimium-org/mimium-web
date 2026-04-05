@@ -58,6 +58,9 @@ Also, the following arithmetic functions are available:
 - `asin`
 - `acos`
 - `atan`
+- `sinh`
+- `cosh`
+- `tanh`
 - `log` (natural logarithm)
 - `pow` (x, y)
 - `sqrt`
@@ -91,10 +94,11 @@ These functions are used for debugging purposes and output values to the standar
 - `print` and `println` accept numerical values and have the type `(float) -> void`.  
   `println` outputs with a newline.  
 - `probe` and `probeln` accept numerical inputs, output their values to the standard output, and return the same values. Their type is `(float) -> float`.
+  Avoid using them in code paths that run every sample, as this can significantly reduce performance.
 
 ## Functions Provided by System Plugins
 
-These functions are implemented as system plugins and may not work in all environments.
+These functions are implemented as system plugins. They do not work in web environments.
 
 ### mimium-guitools
 
@@ -109,9 +113,9 @@ This function sends the input value to the GUI and returns the same value.
 For example, consider the following code:
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp()->float{
-  let sig= sinwave(440,0)
+  let sig = sinwave(440,0)
   sig
 }
 ```
@@ -119,7 +123,7 @@ fn dsp()->float{
 You can use it with the pipe operator as shown below. By commenting/uncommenting the line with `|> Probe!("test")`, you can control sending to the GUI, which is convenient for debugging:
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp()->float{
   let sig = sinwave(440,0)
            |> Probe!("test") // Can be removed by commenting out
@@ -127,19 +131,36 @@ fn dsp()->float{
 }
 ```
 
-#### ``Slider(name:string,init:float,min:float,max:float)->`float``
+#### ``Control(name:string,init:a)->`a``
 
-Adds a simple dynamically editable parameter to the GUI. This function is also executed as a macro, so it's common to call it with `Slider!`.
+Adds a simple dynamically editable parameter to the GUI. This function is also executed as a macro, so it's common to call it with `Control!`.
 
 ```rust
-include("osc.mmm")
+use osc::*
 fn dsp()->float{
-  let sig = Slider!("freq",440,20,20000)
-           |> sinwave 
-           |> Probe!("test") // Can be removed by commenting out
+  let sig = Control!("freq",440)
+           ||> sinwave(_,0)
+           |> Probe!("test")
   sig
 }
 ```
+
+`Control` is generic. If you pass a record or tuple as the second argument, grouped sliders are shown together.
+
+```rust
+use osc::*
+fn dsp()->float{
+  let param = Control!("param",{
+    freq = 440,
+    amp = 0.7
+  })
+  let sig = sinwave(param.freq,0) * param.amp
+           |> Probe!("test")
+  sig
+}
+```
+
+You can edit parameter min/max values by clicking the numeric box. With the same source code, initial values are preserved and restored as much as possible using egui persistent values.
 
 ### mimium-midi
 
@@ -151,25 +172,28 @@ fn dsp()->float{
 
 ### mimium-symphonia 
 
-``Sampler_mono!(path:string)->`(float)->float``
+``Sampler_mono!(path:string)->`{player:(float)->float,length:float}``
 
 Loads an audio file using the Rust library Symphonia. It accepts the file path of an audio file (e.g., `.wav`, `.aiff`, `.flac`). If the path is not absolute, it is interpreted as a relative path based on the source file's location.
 
-Running `Sampler_mono!(path)` embeds a function that takes an array index as input and returns the corresponding sample value.
+Running `Sampler_mono!(path)` returns a record with two values: a function that takes an array index and returns the sample value, and the length of the loaded sample.
 
-For example, the following code loops a loaded WAV file every second:
+For example, the following code loops a loaded WAV file:
 
 ```rust
-fn phasor(){
-    (self+1.0) % 48000.0
+let sampler = Sampler_mono!("assets/bell.wav")
+fn counter(){
+  self+1.0
 }
+// add -1.0 offset so that the counter starts from 0 at t=0
 fn dsp(){
-    phasor() |> Sampler_mono!("./assets/bell.wav")
+  let player = sampler.player
+  let len = sampler.length
+  player((counter()-1.0)%len) |> Probe!("out")
 }
 ```
 
 > [!NOTE]  
 > File loading is a temporary implementation, so only mono audio files can be used.  
-> APIs for obtaining sample length will be added in the future. Currently, accessing out-of-range indices returns 0.  
-> Future updates will introduce structures that allow retrieving sample count, channel count, sample rate, and arrays for each channel within a single function.
+> Accessing out-of-range indices returns 0.
 

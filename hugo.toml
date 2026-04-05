@@ -97,6 +97,10 @@ BookRepo = "https://github.com/mimium-org/mimium-web"
 BookCommitPath = 'commit'
 BookEditPath = 'edit/master'
 [menus]
+[[menu.before]]
+name = "Online Editor"
+url = "https://mimium-org.github.io/mimium-web-editor/"
+weight = 10
 [[menu.after]]
 name = "GitHub"
 url = "https://github.com/mimium-org/mimium-rs"

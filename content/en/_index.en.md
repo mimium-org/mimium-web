@@ -6,9 +6,10 @@ linkTitle: "mimium"
 # mimium
 
 
-> [!INFO] 🎉 **mimium v3 has been released!** 
-> New features include record type, multi-stage computation(macro), live coding capabilities.
-> Check out the [v3 release notes](docs/releasenotes/v3) for details.
+> [!INFO] 🎉 **mimium v4 has been released!** 
+> New features include abstract data types, generics, a module system, and a WASM backend.
+> Check out the [v4 release notes](docs/releasenotes/v4) for details.
+> Also, You can try an [Online Editor](https://mimium-org.github.io/mimium-web-editor/).
 
 {{< figure src="/img/mimium_logo_slant.svg" class="center" >}}
 
@@ -58,9 +59,8 @@ mimium is a functional programming language based on lambda calculus. By adoptin
 Additionally, mimium is designed to allow easy definition of native extensions within a host language, similar to Lua. This makes it easy to embed in game engines and applications.
 
 ```rust
-include("core.mmm") // load midi_to_hz
-include("osc.mmm")  // load sinwave
-
+use core::midi_to_hz
+use osc::sinwave
 fn osc(freq){
     sinwave(freq, 0.0)
 }

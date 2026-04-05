@@ -39,7 +39,7 @@ By appending the `@` operator and a numeric value to a `void` function (a functi
 For example, the following code defines a function `updater` that changes the frequency of an oscillator and recursively calls itself after 1 second. This pattern is known as **Temporal Recursion** and is used in languages like [**Extempore**](https://extemporelang.github.io/).
 
 ```rust
-include("osc.mmm")
+use osc::*
 let freq = 100
 
 fn updater(){
@@ -71,8 +71,8 @@ fn metro(interval,sig:()->float)->()->float{
 Using the `metro` function, the previous code that updates the frequency at regular intervals can be rewritten as follows:
 
 ```rust
-include("osc.mmm")
-include("reactive.mmm")
+use osc::*
+use reactive::*
 fn counter(){
     (self+100)%1000
 }
