@@ -31,41 +31,41 @@ fn dsp(){
 ```rust
 impl<H: MimiumHost> MimiumProgram<H> {
   ...
-    fn dsp(&mut self) -> Word {
-        let mut reg_0 = [0u64; 1];
-        let mut reg_1 = [0u64; 1];
-        let mut reg_2 = [0u64; 1];
-        let mut reg_3 = [0u64; 1];
-        let mut reg_4 = [0u64; 1];
-        let mut reg_5 = [0u64; 1];
-        let mut reg_6 = [0u64; 1];
-        let mut reg_7 = [0u64; 1];
-        let mut reg_8 = [0u64; 1];
-        let mut reg_9 = [0u64; 1];
-        let mut reg_10 = [0u64; 1];
-        let mut reg_11 = [0u64; 1];
-        let mut reg_12 = [0u64; 1];
-        let mut reg_13 = [0u64; 1];
-        let mut reg_14 = [0u64; 1];
-        let mut reg_15 = [0u64; 1];
-        let mut reg_16 = [0u64; 1];
-        reg_0[0] = f64_to_word(self.host.current_time());
-        reg_1[0] = f64_to_word(440.0f64);
-        reg_2[0] = f64_to_word(word_to_f64(reg_0[0]) * word_to_f64(reg_1[0]));
-        reg_3[0] = f64_to_word(self.host.sample_rate());
-        reg_4[0] = f64_to_word(word_to_f64(reg_2[0]) / word_to_f64(reg_3[0]));
-        reg_5[0] = self.memory.alloc(1usize);
-        self.memory.store(reg_5[0], &[reg_4[0]], 1usize).unwrap();
-        reg_7 = vec_to_words::<1>(self.memory.load(reg_5[0], 1usize).unwrap()).unwrap();
-        reg_8[0] = f64_to_word(1.0f64);
-        reg_9[0] = f64_to_word(word_to_f64(reg_7[0]) % word_to_f64(reg_8[0]));
-        reg_10[0] = self.memory.alloc(1usize);
-        self.memory.store(reg_10[0], &[reg_9[0]], 1usize).unwrap();
-        reg_12 = vec_to_words::<1>(self.memory.load(reg_10[0], 1usize).unwrap()).unwrap();
-        reg_13[0] = f64_to_word(6.2831853f64);
-        reg_14[0] = f64_to_word(word_to_f64(reg_12[0]) * word_to_f64(reg_13[0]));
-        reg_15[0] = f64_to_word(word_to_f64(reg_14[0]).sin());
-        return reg_15[0];
+   fn dsp(&mut self) -> Word {
+        let mut reg_0: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_1: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_2: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_3: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_4: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_5: Word = 0u64;
+        let mut reg_6: Word = 0u64;
+        let mut reg_7: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_8: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_9: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_10: Word = 0u64;
+        let mut reg_11: Word = 0u64;
+        let mut reg_12: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_13: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_14: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_15: mmmfloat = 0.0 as mmmfloat;
+        let mut reg_16: Word = 0u64;
+        let mut stack_alloc_5 = [0u64; 1];
+        let mut stack_alloc_10 = [0u64; 1];
+        reg_0 = self.host.current_time();
+        reg_1 = 440.0 as mmmfloat;
+        reg_2 = reg_0 * reg_1;
+        reg_3 = self.host.sample_rate();
+        reg_4 = reg_2 / reg_3;
+        stack_alloc_5[0usize] = f64_to_word(reg_4);
+        reg_7 = word_to_f64(stack_alloc_5[0usize]);
+        reg_8 = 1.0 as mmmfloat;
+        reg_9 = reg_7 % reg_8;
+        stack_alloc_10[0usize] = f64_to_word(reg_9);
+        reg_12 = word_to_f64(stack_alloc_10[0usize]);
+        reg_13 = 6.2831853 as mmmfloat;
+        reg_14 = reg_12 * reg_13;
+        reg_15 = reg_14.sin();
+        return f64_to_word(reg_15);
     }
     ...
 }
