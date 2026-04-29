@@ -56,7 +56,7 @@ mimium is designed and developed not just as a tool for musicians and programmer
 
 mimium is a functional programming language based on lambda calculus. By adopting its own semantics, mimium allows concise expression of fundamental signal processing tasks, such as oscillators and filters, directly within the language. It also lets you represent signal processing chains as simple function pipes.
 
-Additionally, mimium is designed to allow easy definition of native extensions within a host language, similar to Lua. This makes it easy to embed in game engines and applications.
+Additionally, mimium is designed to allow easy definition of native extensions within a host language, similar to Lua. Also, mimium source code can be transpiled into Rust language. This makes it easy to embed in game engines and applications.
 
 ```rust
 use core::midi_to_hz
