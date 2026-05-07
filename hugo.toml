@@ -116,12 +116,12 @@ icon_vendor = "fab"
 icon = "twitter"
 weight = 20
 [[menu.after]]
-name = "Chat(Matrix)"
-url = "https://matrix.to/#/#mimium:matrix.org"
+name = "Discord"
+url = "https://discord.gg/RAY7M6Jajc"
 weight = 30
 [menu.after.params]
 icon_vendor = "tabler"
-icon = "outline/brand-matrix"
+icon = "outline/brand-discord"
 
 
 
