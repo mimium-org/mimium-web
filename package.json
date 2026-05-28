@@ -19,8 +19,8 @@
   },
   "description": "web site of mimium",
   "devDependencies": {
-    "autoprefixer": "^9.7.4",
-    "postcss-cli": "^7.1.0"
+    "autoprefixer": "^10.5.0",
+    "postcss-cli": "^11.0.1"
   },
   "homepage": "https://github.com/tomoyanonymous/mimium-website#readme",
   "license": "MPL-2.0",
