@@ -57,14 +57,14 @@ id = "UA-00000000-0"
 [languages]
 [languages.en]
 title = "mimium"
-languageName = "English"
+label = "English"
 [languages.en.params]
 description = "mimium(MInimal Musical medIUM) - a programming language as an infrastructure for sound and music."
 # Weight used for sorting.
 weight = 1
 [languages.ja]
 title = "mimium"
-languageName = "Japanese"
+label = "Japanese"
 [languages.ja.params]
 time_format_default = "02.01.2006"
 time_format_blog = "02.01.2006"
