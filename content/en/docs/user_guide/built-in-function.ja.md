@@ -104,7 +104,7 @@ mimiumでは真偽値を単に0より大きい数値をtrue、そうでなけれ
 
 RustのGUIライブラリ`egui`を利用した簡易的なオシロスコープ機能を提供します。
 
-#### ``Probe(name:string)->`(float)->float``
+#### ``Probe(name:string)->`(a)->a``
 
 使用するプローブ名を引数として`Probe!("name")`を実行すると、数値型を引数とする新しい関数のコードが返り値として受け取れます。この関数は[マクロ](multistage.ja.md)として実装されているので、dspコンテキスト内で `Probe!("test")`のように呼び出すのが普通です。
 
@@ -128,6 +128,18 @@ fn dsp()->float{
   let sig　= sinwave(440,0)
            |> Probe!("test") //コメントアウトすれば消せる
   sig
+}
+```
+
+`Probe`はジェネリックな関数で、floatもしくはfloatのタプル（マルチチャンネルシグナル）をインプットとして受け取ります。マルチチャンネルシグナルを受け取るとGUIには複数チャンネルの波形が自動的に表示されます。
+
+```rust
+use osc::*
+fn dsp()->(float,float){
+  let l = sinwave(440,0)
+  let r = sinwave(880,0)
+  (l,r)
+    |> Probe!("test") 
 }
 ```
 

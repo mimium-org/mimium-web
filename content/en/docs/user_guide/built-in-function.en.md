@@ -131,6 +131,19 @@ fn dsp()->float{
 }
 ```
 
+`Probe`is a generic function that takes float or tuple of floats(multichannel signal) as inputs. If the function takes multichannel signal, GUI automatically displays multiple waveforms.
+
+```rust
+use osc::*
+fn dsp()->(float,float){
+  let l = sinwave(440,0)
+  let r = sinwave(880,0)
+  (l,r)
+    |> Probe!("test") 
+}
+```
+
+
 #### ``Control(name:string,init:a)->`a``
 
 Adds a simple dynamically editable parameter to the GUI. This function is also executed as a macro, so it's common to call it with `Control!`.
